@@ -1,10 +1,18 @@
 CREATE DATABASE grinds;
  
-CREATE TABLE `grinds`.`grind table` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `price` DECIMAL NOT NULL,
-  `address` VARCHAR(2000) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+CREATE TABLE `grinds`.`t_grinds` (
+  `GRIND_ID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `PRICE_PER_HOUR` DECIMAL NOT NULL,
+  `GRIND_ADDRESS` VARCHAR(2000) NOT NULL,
+  `GRIND_TYPE` INT);
   
-INSERT INTO grind (price, address) VALUES (35,'123 Fake Street Blanchardstown Dublin 15');
+CREATE TABLE `grinds`.`tr_grind_type` (
+  `GRIND_TYPE_ID` INT NOT NULL PRIMARY KEY,
+  `GRIND_TYPE_DESC` VARCHAR(500) NOT NULL);
+
+INSERT INTO `grinds`.`tr_grind_type` (GRIND_TYPE_ID, GRIND_TYPE_DESC) VALUES(1, 'MATHEMATICS'),(2, 'ENGLISH'),(3,'SPANISH'), (4,'MUSIC'), (5,'IRISH'), (6,'BIOLOGY'), (7,'CHEMISTRY'), (8,'PHYSICS');
+  
+INSERT INTO `grinds`.`t_grinds` (PRICE_PER_HOUR, GRIND_ADDRESS, GRIND_TYPE) VALUES 
+(35,'123 Fake Street Blanchardstown Dublin 15', 1),
+(25,'111 Fake Street Dundrum Dublin 8', 3),
+(45,'145 Fake Street Tallaght Dublin 18', 6);
