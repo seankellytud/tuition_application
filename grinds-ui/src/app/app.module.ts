@@ -10,7 +10,7 @@ import { GrindsListModule } from'./components/grinds-list/grinds-list.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent  
   ],
   imports: [
     BrowserModule,

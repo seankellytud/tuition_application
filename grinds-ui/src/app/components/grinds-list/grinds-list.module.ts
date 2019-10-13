@@ -85,7 +85,7 @@ import { GrindsListComponent } from './grinds-list.component';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule,
+    ScrollingModule
       ],
   exports: [
     A11yModule,

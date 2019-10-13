@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'grinds-ui';
+  public readonly MENU_LIST = [{label: 'Grinds'}, {label: 'Log In'},{label: 'Sign In'}, {label: 'Profile'}, {label: 'Log out'}]; 
 }
