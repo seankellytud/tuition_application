@@ -1,0 +1,55 @@
+<!-- Register Component -->
+<h2>Register</h2>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Click this bar to register
+      </mat-panel-title>
+      <mat-panel-description>
+        Enter your details and started!
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Full name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Subject</mat-label>
+      <select matNativeControl required>
+        <option value="MATHEMATICS">Mathematics</option>
+        <option value="ENGLISH">English</option>
+        <option value="SPANISH">Spanish</option>
+        <option value="MUSIC">Music </option>
+        <option value="IRISH">Irish </option>
+        <option value="BIOLOGY">Biology </option>
+        <option value="CHEMISTRY"> Chemistry </option>
+        <option value="PHYSICS"> Physics </option>
+         <!--These subjects are taken from spring tool, spelled in caps for the values-->
+      </select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Level</mat-label>
+      <select matNativeControl required>
+        <option value="Beginner">Beginner</option>
+        <option value="Junior Certificate">Junior Certificate</option>
+        <option value="Leaving Certificate">Leaving Certificate</option>
+        <option value="Universtity Level">University Level</option>
+      </select>
+    </mat-form-field>
+   
+
+
+    
+    <div>
+      <mat-checkbox id ="1" placeholder="Student?">  I am a Student  </mat-checkbox>
+      <mat-checkbox id = "2" placeholder="Teacher?">  I am a Teacher  </mat-checkbox>
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="Price Per Hour">
+    </mat-form-field>
+    <button mat-raised-button>Register Me</button>
+  </mat-expansion-panel>
+  </mat-accordion>
