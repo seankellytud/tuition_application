@@ -14,7 +14,7 @@ import org.springframework.web.WebApplicationInitializer;
 @SpringBootApplication
 @ComponentScan({"com.grinds"})
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.grinds.repositories"})
+@EnableJpaRepositories(basePackages = {"com.grinds.models.repositories"})
 @EntityScan("com.grinds")
 public class GrindsApplication implements WebApplicationInitializer {
 

@@ -1,8 +1,5 @@
-com\grinds\models\enums\GrindType.class
 com\grinds\models\utility\EntityDataConverters.class
 com\grinds\models\utility\EntityDataConverters$BooleanConverter.class
-com\grinds\repositories\GrindRepository.class
-com\grinds\models\enums\EnumConverter.class
 com\grinds\models\utility\EntityDataConverters$BaseConverterAdapter.class
 com\grinds\models\GrindEntity.class
 com\grinds\models\utility\EntityDataConverters$GrindTypeConverter.class

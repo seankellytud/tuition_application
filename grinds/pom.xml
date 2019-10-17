@@ -8,10 +8,10 @@
 		<version>2.1.9.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.collegeproject</groupId>
-	<artifactId>grinds</artifactId>
+	<groupId>com.grinds</groupId>
+	<artifactId>grinds-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>grinds</name>
+	<name>grinds-app</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

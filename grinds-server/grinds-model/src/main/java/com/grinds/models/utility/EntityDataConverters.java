@@ -3,7 +3,7 @@ package com.grinds.models.utility;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-import com.grinds.models.enums.GrindType;
+import com.grinds.model.api.GrindType;
 
 public final class EntityDataConverters {
 	

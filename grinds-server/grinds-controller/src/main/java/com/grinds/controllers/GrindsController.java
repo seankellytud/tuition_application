@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import com.grinds.api.ControllerGrinds;
 import com.grinds.models.GrindEntity;
-import com.grinds.repositories.GrindRepository;
+import com.grinds.models.repositories.GrindRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
 @RestController
 @RequestMapping("/api/v1/grinds")
-public class GrindsController {
+public class GrindsController implements ControllerGrinds{
 	private static final Logger logger = LogManager.getLogger(GrindsController.class);
 	@Autowired
 	private GrindRepository grindRepository;
