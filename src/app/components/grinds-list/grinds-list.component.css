@@ -1,0 +1,16 @@
+/* Structure */
+.grinds_table {
+    width: 100%;
+}
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-cell {
+    text-align: left;
+}
+mat-form-field {
+    text-align: center;
+}
