@@ -50,11 +50,6 @@
             <artifactId>grinds-controller</artifactId>
             <version>1.0.0</version>
         </dependency>
-         <dependency>
-            <groupId>com.grinds</groupId>
-            <artifactId>grinds-security</artifactId>
-            <version>1.0.0</version>
-        </dependency>
 	</dependencies>
 
 	<build>
