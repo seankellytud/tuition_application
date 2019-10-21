@@ -1,7 +1,39 @@
+<header>
+<div class="container-fluid padding">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" routerLink="">Nav</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about" routerLinkActive="active">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="grinds" routerLinkActive="active">Grinds</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+</div>
+</header>
+<hr>
+<div class="container-fluid padding">
+      <router-outlet></router-outlet>
+</div>
+<hr>
+<div class="container-fluid padding">
 <mat-sidenav-container style="text-align:center">
   <mat-sidenav mode="side" opened></mat-sidenav>
   <mat-sidenav-content>
     <app-grinds-list></app-grinds-list>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<router-outlet></router-outlet>
+</div>

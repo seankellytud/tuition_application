@@ -6,3 +6,46 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-sidenav-container {
     min-height: 100%;
 }
+
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+a.logo {
+    font-weight: bold;
+}
+
+ul{
+    list-style-type : none;
+    margin : 0 ;
+    display : flex ;
+}
+a{
+    text-decoration: none;
+}
+
+li a{
+    padding: 1em;
+    display: block;
+	text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+header{
+    padding: 3em 0;
+}
+
+h1{
+    margin-top: 2em;
+}
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}
+@media (max-width: 576px) {
+
+}
