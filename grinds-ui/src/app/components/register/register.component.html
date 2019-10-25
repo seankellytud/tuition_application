@@ -1,1 +1,52 @@
-<p>register works!</p>
+<h1>Register Component</h1>
+<mat-accordion layout-align: center>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Register Here
+            </mat-panel-title>
+            <mat-panel-description>
+              Enter your Details and get started!
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <input matInput required placeholder="Full name"
+            matTooltip="enter your Full Name">
+          </mat-form-field>
+      
+          <mat-form-field>
+            <input matInput required placeholder="Address"
+            matTooltip="enter your Address">
+          </mat-form-field>
+          <mat-form-field>
+                <select matNativeControl required placeholder = "Subject"
+                matTooltip="Select your subject">
+                        <option value="mathematics">Mathematics</option>
+                        <option value="english">English</option>
+                        <option value="irish">Irish</option>
+                        <option value="spanish">Spanish</option>
+                    </select>
+            </mat-form-field>
+          <mat-form-field>
+            <input matInput required placeholder="Email Address"
+            matTooltip="enter your email address">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput required placeholder="Password"
+            matTooltip="enter your password">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput required placeholder="Re-enter Password"
+            matTooltip="enter your password again, just to be sure!">
+          </mat-form-field><br>
+          <div>
+                <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">I am a Student</mat-radio-button>
+                        <mat-radio-button value="2">I am a Teacher</mat-radio-button>
+                      </mat-radio-group><br>
+          <button mat-raised-button
+          matTooltip="Register with these details">Register Me!</button>
+        </div>
+        </mat-expansion-panel>
+      </mat-accordion>

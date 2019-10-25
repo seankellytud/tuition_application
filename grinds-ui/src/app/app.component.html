@@ -4,11 +4,11 @@
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" routerLink="">Nav</a>
+    <!-- <a class="navbar-brand" routerLink="">Nav</a> -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="about" routerLinkActive="active">About Us</a>
@@ -19,7 +19,21 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="grinds" routerLinkActive="active">Grinds</a>
         </li>
+    
       </ul>
+      <div class="example-container"> <!--Log in Field in nav bar-->
+          <mat-form-field id = "email">
+            <input matInput placeholder="Email Address">
+          </mat-form-field>
+    
+          <mat-form-field id = "password">
+            <input matInput placeholder="Password">
+          </mat-form-field>
+          <button mat-raised-button
+          matTooltip="Log In with this email and password">Log Me In!</button>
+        
+  
+        </div>
     </div>
 </nav>
 </div>
@@ -33,7 +47,7 @@
 <mat-sidenav-container style="text-align:center">
   <mat-sidenav mode="side" opened></mat-sidenav>
   <mat-sidenav-content>
-    <app-grinds-list></app-grinds-list>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 </div>

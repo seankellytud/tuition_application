@@ -5,9 +5,15 @@
   
 .mat-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 25%;
 }
 
 .mat-cell {
     text-align: left;
+}
+#search{
+    display: inline-block;
+}
+h1{
+    text-align: center;
 }

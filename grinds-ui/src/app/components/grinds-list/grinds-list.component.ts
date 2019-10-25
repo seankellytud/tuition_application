@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GrindService } from 'src/app/services/grind.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
 import { Grind } from 'src/app/models/Grind';
+import { DataSource } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-grinds-list',
@@ -38,6 +38,37 @@ export class GrindsListComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  } //THIS IS THE WORKING GLOBAL ONE
 
 }
+
+
+
+
+
+  // applyFilter(filterValue: string) {
+  //   this.dataSource.grindType.filterPredicate = function(dataSource, filterValue: string): boolean {
+  //     return dataSource.grindType.toLowerCase().includes(filterValue);
+      // dataSource.grindAddress.toLowerCase().includes(filterValue) || 
+      // dataSource.pricePerHour.toString() === filterValue ||
+      // dataSource.id.toString() === filterValue;
+  //   };
+  // }
+
+
+  // applyFilter(filterValue: string) {
+  //   this.dataSource.filterPredicate = function(data, filterValue: string): boolean {
+  //     return data.grindType.toLowerCase().includes(filterValue);
+  //   }
+  // }
+
+
+
+//   logData(row){
+//     console.log(row);// This is a click method set up for clicking rows in
+//   }
+// }
+
+
+
+
