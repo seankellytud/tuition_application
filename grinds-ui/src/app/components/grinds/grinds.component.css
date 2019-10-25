@@ -1,0 +1,11 @@
+button{
+    background-color: green;
+    color:  white;
+}
+h1{
+    text-align: center;
+}
+.postGrind {
+    position: relative;
+    left: 30%;
+}
