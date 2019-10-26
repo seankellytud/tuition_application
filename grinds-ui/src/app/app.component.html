@@ -21,18 +21,21 @@
         </li>
     
       </ul>
-      <div class="example-container"> <!--Log in Field in nav bar-->
-          <mat-form-field id = "email">
-            <input matInput placeholder="Email Address">
+      <div class="login_register_menu-container"> <!--Log in Field in nav bar-->
+          <!-- <mat-form-field id = "username">
+            <input matInput placeholder="Username">
           </mat-form-field>
     
           <mat-form-field id = "password">
             <input matInput placeholder="Password">
-          </mat-form-field>
-          <button mat-raised-button
-          matTooltip="Log In with this email and password">Log Me In!</button>
-        
-  
+          </mat-form-field> -->
+          <button mat-raised-button>Log In</button>
+          <!-- <button mat-raised-button>Register</button> -->
+          <button mat-raised-button [matMenuTriggerFor]="registerMenu" class='register_button'>Register</button>
+          <mat-menu #registerMenu="matMenu">
+            <button mat-menu-item>REGISTER AS A STUDENT</button>
+            <button mat-menu-item>REGISTER AS A TUTOR</button>
+          </mat-menu>
         </div>
     </div>
 </nav>

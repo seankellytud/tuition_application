@@ -1,7 +1,7 @@
-button{
-    background-color: green;
-    color:  white;
-}
 h1{
     text-align: center;
+}
+
+.login_register_menu-container .register_button{
+    margin-left: 5px;
 }
