@@ -1,15 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { GrindService } from './services/grind.service';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GrindsListModule } from'./components/grinds-list/grinds-list.module';
-import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
-import { GrindsComponent } from './components/grinds/grinds.component';
-import { RegisterModule } from './components/register/register.module';
+import {NgModule} from '@angular/core';
 import {A11yModule} from '@angular/cdk/a11y';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PortalModule} from '@angular/cdk/portal';
@@ -51,28 +40,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import { LoginComponent } from './components/login/login.component';
-
+import {MatFormFieldModule} from  '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    GrindsComponent,
-    LoginComponent
-  ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    GrindsListModule,
-    MatTableModule,
-    MatListModule,
-    MatExpansionModule,
-    MatTooltipModule,
-    RegisterModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
     A11yModule,
     CdkStepperModule,
     CdkTableModule,
@@ -114,8 +90,8 @@ import { LoginComponent } from './components/login/login.component';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule,
-  ],
+    ScrollingModule
+      ],
   exports: [
     A11yModule,
     CdkStepperModule,
@@ -159,8 +135,12 @@ import { LoginComponent } from './components/login/login.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-  ],
-  providers: [GrindService],
-  bootstrap: [AppComponent]
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LoginComponent  
+  ],declarations: [
+    LoginComponent
+  ]
 })
-export class AppModule { }
+export class RegisterModule {}

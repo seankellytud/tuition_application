@@ -1,39 +1,33 @@
-<h1>Register Component</h1>
-<mat-accordion layout-align: center>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Register Here
-            </mat-panel-title>
-            <mat-panel-description>
-              Enter your Details and get started!
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-      
-          <mat-form-field>
-            <input matInput required placeholder="Full name"
-            matTooltip="enter your Full Name">
-          </mat-form-field>
-
-          <mat-form-field>
-            <input matInput required placeholder="Email Address"
-            matTooltip="enter your email address">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput required placeholder="Password"
-            matTooltip="enter your password">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput required placeholder="Re-enter Password"
-            matTooltip="enter your password again, just to be sure!">
-          </mat-form-field><br>
-          <div>
-                <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button value="1">I am a Student</mat-radio-button>
-                        <mat-radio-button value="2">I am a Teacher</mat-radio-button>
-                      </mat-radio-group><br>
-          <button mat-raised-button
-          matTooltip="Register with these details">Register Me!</button>
-        </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+<mat-card class="my-card">
+    <h5>Register as a student</h5>
+  <mat-card-content>
+     <form class="registration-form">
+      <mat-form-field class="full-width">
+          <input matInput required placeholder="First Name" matTooltip="Enter your first name">
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+          <input matInput required placeholder="Last Name" matTooltip="Enter your last name">
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+          <input matInput required placeholder="Email Address" matTooltip="Enter email address">
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+          <input matInput required placeholder="Username" matTooltip="Enter username">
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+          <input matInput  required placeholder="Password"  type="password" name="password" matTooltip="Enter password">
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+          <input matInput  required placeholder="Password"  type="password" name="password" matTooltip="Confirm password">
+      </mat-form-field>
+     </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button matTooltip="Register as a student">Register</button>
+  </mat-card-actions>
+</mat-card>

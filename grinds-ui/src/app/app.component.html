@@ -13,9 +13,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="about" routerLinkActive="active">About Us</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="register" routerLinkActive="active">Register</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="grinds" routerLinkActive="active">Post a Grind</a>
         </li>
@@ -29,12 +29,12 @@
           <mat-form-field id = "password">
             <input matInput placeholder="Password">
           </mat-form-field> -->
-          <button mat-raised-button>Log In</button>
+          <button mat-raised-button routerLink="login">Log In</button>
           <!-- <button mat-raised-button>Register</button> -->
           <button mat-raised-button [matMenuTriggerFor]="registerMenu" class='register_button'>Register</button>
           <mat-menu #registerMenu="matMenu">
-            <button mat-menu-item>REGISTER AS A STUDENT</button>
-            <button mat-menu-item>REGISTER AS A TUTOR</button>
+            <button mat-menu-item routerLink="register">REGISTER AS A STUDENT</button>
+            <button mat-menu-item routerLink="register_tutor">REGISTER AS A TUTOR</button>
           </mat-menu>
         </div>
     </div>
