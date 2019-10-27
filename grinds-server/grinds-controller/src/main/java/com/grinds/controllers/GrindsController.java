@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.grinds.api.ControllerGrinds;
+import com.grinds.model.api.Grind;
 import com.grinds.models.GrindEntity;
 import com.grinds.models.repositories.GrindRepository;
+import com.grinds.services.GrindService;
 
 
 @RestController
@@ -21,24 +23,24 @@ import com.grinds.models.repositories.GrindRepository;
 public class GrindsController implements ControllerGrinds{
 	
 	@Autowired
-	private GrindRepository grindRepository;
+	private GrindService grindService;
 	
 	public GrindsController() {}
 	
 	@GetMapping
-	public List<GrindEntity> grindList(){
-		return grindRepository.findAll();
+	public List<Grind> grindList(){
+		return grindService.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
 	public void createGrind(@RequestBody GrindEntity grind) {
-		grindRepository.save(grind);
+		grindService.save(grind);
 	}
 	
 	@GetMapping("/{id}")
-	public GrindEntity get(@PathVariable("id")long id) {
-		return grindRepository.getOne(id);
+	public Grind get(@PathVariable("id")long id) {
+		return grindService.findById(id);
 	}
 
 }
