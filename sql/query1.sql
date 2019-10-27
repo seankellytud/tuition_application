@@ -30,6 +30,24 @@ update t_grinds set grind_level= 'junior certificate' where grind_id =1;
 insert into `grinds`.`t_grinds` (grind_id,price_per_hour,grind_address,grind_type,grind_level) values
 (4,30,'88 New Street Killester Dublin 5', 9, `beginner`);
 
+drop table if exists t_user;
+drop table if exists t_role;
+create table t_role (ID bigint not null auto_increment, DESCRIPTION varchar(255), NAME varchar(255), primary key (ID)) engine=MyISAM
+create table t_user (ID bigint not null auto_increment, PASSWORD varchar(255), FIRST_NAME varchar(255), LAST_NAME varchar(255), USERNAME varchar(255), EMAIL_ADDRESS varchar(255) , primary key (ID)) engine=MyISAM
+create table t_user_roles (USER_ID bigint not null, ROLE_ID bigint not null, primary key (USER_ID, ROLE_ID)) engine=MyISAM
+alter table t_user_roles add constraint FKrhfovtciq1l558cw6udg0h0d3 foreign key (ROLE_ID) references role (ID)
+alter table t_user_roles add constraint FK55itppkw3i07do3h7qoclqd4k foreign key (USER_ID) references user (ID)
+
+INSERT INTO t_user (ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS) VALUES (1, 'user1', '$2a$04$Ye7/lJoJin6.m9sOJZ9ujeTgHEVM4VXgI2Ingpsnf9gXyXEXf/IlW', 'John', 'Doe', 'john.doe@yahoo.com');
+INSERT INTO t_user (ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS) VALUES (2, 'user2', '$2a$04$StghL1FYVyZLdi8/DIkAF./2rz61uiYPI3.MaAph5hUq03XKeflyW', 'Michael', 'Michael', 'michael.michael@gmail.com');
+INSERT INTO t_user (ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS) VALUES (3, 'user3', '$2a$04$Lk4zqXHrHd82w5/tiMy8ru9RpAXhvFfmHOuqTmFPWQcUhBD8SSJ6W', 'Cristian', 'Suia', 'cristian.suia@yahoo.ie');
+
+INSERT INTO t_role (ID, DESCRIPTION, NAME) VALUES (4, 'Admin role', 'ADMIN');
+INSERT INTO t_role (ID, DESCRIPTION, NAME) VALUES (5, 'User role', 'USER');
+
+INSERT INTO t_user_roles (USER_ID, ROLE_ID) VALUES (1, 4);
+INSERT INTO t_user_roles (USER_ID, ROLE_ID) VALUES (2, 5);
+
 
 
  create table `grinds`.`grind_level` (

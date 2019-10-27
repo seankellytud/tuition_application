@@ -26,6 +26,7 @@
 		<module>./grinds-model-api</module>
 		<module>./grinds-model</module>
 		<module>./grinds-services</module>
+		<module>./grinds-services-api</module>
 		<!--module>./bcdfx-javadoc-generation/trunk</module-->
 	</modules>
 	<dependencies>

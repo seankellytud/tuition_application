@@ -14,14 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.grinds.api.ControllerGrinds;
 import com.grinds.models.GrindEntity;
 import com.grinds.models.repositories.GrindRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 @RestController
 @RequestMapping("/api/v1/grinds")
 public class GrindsController implements ControllerGrinds{
-	private static final Logger logger = LogManager.getLogger(GrindsController.class);
+	
 	@Autowired
 	private GrindRepository grindRepository;
 	
@@ -29,7 +27,6 @@ public class GrindsController implements ControllerGrinds{
 	
 	@GetMapping
 	public List<GrindEntity> grindList(){
-		logger.debug("GrindsController");
 		return grindRepository.findAll();
 	}
 	

@@ -44,6 +44,7 @@ import { RegisterComponent } from './register.component';
 import { RegisterTutorComponent } from './register_tutor.component';
 import {MatFormFieldModule} from  '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterService } from './services/register_service';
 
 @NgModule({
   imports: [
@@ -145,6 +146,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],declarations: [
     RegisterComponent,
     RegisterTutorComponent
+  ],
+  providers: [
+    RegisterService
   ]
 })
 export class RegisterModule {}

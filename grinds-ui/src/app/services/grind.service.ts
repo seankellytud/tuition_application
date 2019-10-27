@@ -16,6 +16,6 @@ export class GrindService {
   }
 
   registerUser(user: User): Observable<User> {
-    return this.httpClient.post<User>('/server/api/v1/user', user, httpOptions).pipe();
+    return this.httpClient.post<User>('/server/api/v1/users', user, httpOptions).pipe();
   }
 }

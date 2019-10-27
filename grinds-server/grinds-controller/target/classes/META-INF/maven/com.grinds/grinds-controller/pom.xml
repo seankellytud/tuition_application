@@ -30,16 +30,21 @@
             <artifactId>grinds-api</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.grinds</groupId>
+            <artifactId>grinds-services</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grinds</groupId>
+            <artifactId>grinds-services-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- Add Log4j2 Dependency -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-log4j2</artifactId>
-</dependency>
     </dependencies>
 	<build>
 		<finalName>grinds-controller</finalName>

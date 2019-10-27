@@ -15,6 +15,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.grinds.app.GrindsApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -48,6 +49,20 @@
         <dependency>
             <groupId>com.grinds</groupId>
             <artifactId>grinds-controller</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+			 <groupId>org.springframework.boot</groupId>
+		 	<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+         <dependency>
+            <groupId>com.grinds</groupId>
+            <artifactId>grinds-services</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grinds</groupId>
+            <artifactId>grinds-services-api</artifactId>
             <version>1.0.0</version>
         </dependency>
 	</dependencies>
