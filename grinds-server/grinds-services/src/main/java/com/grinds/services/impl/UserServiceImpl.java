@@ -6,12 +6,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.grinds.model.api.User;
-import com.grinds.models.GrindEntity;
 import com.grinds.models.UserEntity;
 import com.grinds.models.repositories.UserRepository;
 import com.grinds.services.UserService;
@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepo;
 	
-//	@Autowired
-//	private BCryptPasswordEncoder bcryptEncoder;
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
 
 
 	@SuppressWarnings("unchecked")
@@ -55,9 +55,17 @@ public class UserServiceImpl implements UserService {
 	    newUser.setUsername(user.getUsername());
 	    newUser.setFirstName(user.getFirstName());
 	    newUser.setLastName(user.getLastName());
-	    newUser.setPassword(user.getPassword());
 	    newUser.setEmailAddress(user.getEmailAddress());
+	    newUser.setPassword(bcryptEncoder.encode(user.getPassword()));  
 	    logger.info("UserServiceImpl --> save user"+user);
         return (User) userRepo.save(newUser);
     }
+
+	@Override
+	public UserDetails findUserByUsername(String username) {
+		UserDetails user = userRepo.findUserByUsername(username);
+		if(user == null)
+			throw new UsernameNotFoundException("User not found with username: " + username);
+		return user;
+	}
 }

@@ -1,3 +1,5 @@
 D:\cristian\codeBase\college_msc\sktud_with_login\sktud\grinds-server\grinds-model\src\main\java\com\grinds\models\GrindEntity.java
 D:\cristian\codeBase\college_msc\sktud_with_login\sktud\grinds-server\grinds-model\src\main\java\com\grinds\models\repositories\GrindRepository.java
 D:\cristian\codeBase\college_msc\sktud_with_login\sktud\grinds-server\grinds-model\src\main\java\com\grinds\models\utility\EntityDataConverters.java
+D:\cristian\codeBase\college_msc\sktud_with_login\sktud\grinds-server\grinds-model\src\main\java\com\grinds\models\repositories\UserRepository.java
+D:\cristian\codeBase\college_msc\sktud_with_login\sktud\grinds-server\grinds-model\src\main\java\com\grinds\models\UserEntity.java

@@ -27,6 +27,7 @@
 		<module>./grinds-model</module>
 		<module>./grinds-services</module>
 		<module>./grinds-services-api</module>
+		<module>./grinds-security</module>
 		<!--module>./bcdfx-javadoc-generation/trunk</module-->
 	</modules>
 	<dependencies>
@@ -42,6 +43,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

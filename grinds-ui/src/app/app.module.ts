@@ -52,6 +52,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { LoginComponent } from './components/login/login.component';
+import { AuthModule } from './components/auth/auth.module';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { LoginComponent } from './components/login/login.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    AuthModule
   ],
   exports: [
     A11yModule,
@@ -159,6 +161,7 @@ import { LoginComponent } from './components/login/login.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    AuthModule
   ],
   providers: [GrindService],
   bootstrap: [AppComponent]

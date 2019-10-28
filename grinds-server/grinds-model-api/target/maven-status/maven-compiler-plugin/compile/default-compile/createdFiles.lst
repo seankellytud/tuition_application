@@ -1,3 +1,4 @@
 com\grinds\model\api\GrindType.class
-com\grinds\model\api\EnumConverter.class
 com\grinds\model\api\Grind.class
+com\grinds\model\api\EnumConverter.class
+com\grinds\model\api\User.class
