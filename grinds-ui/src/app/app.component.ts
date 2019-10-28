@@ -14,4 +14,8 @@ export class AppComponent {
   public isAuth():boolean{
     return this.authService.isAuth();
   }
+
+  public logOut():void{
+    this.authService.logout();
+  }
 }

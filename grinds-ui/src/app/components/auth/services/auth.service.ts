@@ -38,8 +38,10 @@ export class AuthService {
   }
 
   logout() {
+    console.log('AuthService --> logout');
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('token');
     this.currentUserSubject.next(null);
 }
 }
