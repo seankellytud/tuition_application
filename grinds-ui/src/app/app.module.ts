@@ -53,6 +53,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { LoginComponent } from './components/login/login.component';
 import { AuthModule } from './components/auth/auth.module';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { AuthModule } from './components/auth/auth.module';
     HomeComponent,
     AboutComponent,
     GrindsComponent,
-    LoginComponent
+    LoginComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

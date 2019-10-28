@@ -8,4 +8,9 @@ h1{
 .postGrind {
     position: relative;
     left: 30%;
+    background-color: grey;
+    display: inline-block;
+    border: 20px;
+    border-radius: 5px;
+
 }
