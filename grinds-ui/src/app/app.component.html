@@ -31,7 +31,7 @@
           </mat-menu>
         </div>
         <div *ngIf="isAuth()"class="login_register_menu-container"> <!--Log in Field in nav bar-->
-          <mat-icon [matMenuTriggerFor]="profileMenu">person_outline</mat-icon>
+          <span class="profile_text" [matMenuTriggerFor]="profileMenu">Hello {{getUsername()}} <mat-icon class="profile_icon">person_outline</mat-icon></span>
           <mat-menu #profileMenu="matMenu">
             <button mat-menu-item>View Profile</button>
             <button mat-menu-item (click)="logOut()">Logout</button>

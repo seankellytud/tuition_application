@@ -8,6 +8,7 @@ import { AuthService } from './components/auth/services/auth.service';
 })
 export class AppComponent {
   title = 'grinds-ui';
+  public username: string = '';
   
   constructor(private authService: AuthService ) {}
 
@@ -17,5 +18,9 @@ export class AppComponent {
 
   public logOut():void{
     this.authService.logout();
+  }
+
+  public getUsername(): string {
+    return sessionStorage.getItem('currentUser');
   }
 }

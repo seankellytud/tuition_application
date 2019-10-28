@@ -5,3 +5,13 @@ h1{
 .login_register_menu-container .register_button{
     margin-left: 5px;
 }
+
+.profile_icon,
+.profile_text {
+    color: white;
+    cursor: pointer;
+}
+
+.profile_text {
+ margin-right: 10px;;
+}
