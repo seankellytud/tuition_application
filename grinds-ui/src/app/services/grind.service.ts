@@ -16,9 +16,6 @@ export class GrindService {
     return this.httpClient.get<Grind[]>('/server/api/v1/grinds');
   }
 
-
-
-
   registerUser(user: User): Observable<User> {
     console.log("GrindService --> registerUser()"+JSON.stringify(user));
     return this.httpClient.post<User>('/server/api/v1/register', user, httpOptions).pipe();

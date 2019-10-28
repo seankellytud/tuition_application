@@ -13,13 +13,13 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 const routes: Routes = [
   {path: 'grinds-list', component: GrindsListComponent, canActivate: [AuthGuard]},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: 'home', component: HomeComponent,canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'grinds', component: GrindsComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register_tutor', component: RegisterTutorComponent},
-  {path: 'my-account', component: MyAccountComponent},
+  // {path: 'my-account', component: MyAccountComponent},
 
 ];
 

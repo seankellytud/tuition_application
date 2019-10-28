@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { RegisterService } from './services/register_service';
+import { Router } from '@angular/router';
+import { timeout } from 'q';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +13,9 @@ import { RegisterService } from './services/register_service';
 export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
+  public message: string = '';
 
-  constructor(private service: RegisterService) { 
+  constructor(private service: RegisterService, private router: Router) { 
    
   }
 
@@ -50,8 +53,11 @@ export class RegisterComponent implements OnInit {
       console.log("RegisterComponent --> registration form is valid");
       this.service.registerUser(this.createUser()).subscribe((user) => {
         console.log("RegisterComponent --> user registered");
-        alert('You are now a registered member!');
-        window.location.href = "http://localhost:4200/home"; //relocates to the homepage when you click ok
+        this.registerForm.reset();
+        this.message = "Registration success. Please log in.";
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        },3000);
       });
     }
     else

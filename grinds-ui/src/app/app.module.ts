@@ -118,7 +118,7 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    AuthModule
+    AuthModule, 
   ],
   exports: [
     A11yModule,
