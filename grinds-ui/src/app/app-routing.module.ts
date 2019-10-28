@@ -7,6 +7,7 @@ import {GrindsComponent} from './components/grinds/grinds.component';
 import {RegisterComponent} from './components/register/register.component';
 import { RegisterTutorComponent } from './components/register/register_tutor.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 const routes: Routes = [
   {path: 'grinds-list', component: GrindsListComponent},
@@ -16,7 +17,9 @@ const routes: Routes = [
   {path: 'grinds', component: GrindsComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register_tutor', component: RegisterTutorComponent}
+  {path: 'register_tutor', component: RegisterTutorComponent},
+  {path: 'my-account', component: MyAccountComponent},
+
 ];
 
 @NgModule({

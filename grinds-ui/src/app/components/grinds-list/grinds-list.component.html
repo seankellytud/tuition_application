@@ -1,4 +1,5 @@
       <h1>Grinds List Component</h1>
+      <div id="searchFields">
       <mat-form-field>
         <input id = "idSearch" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By ID">
       </mat-form-field>
@@ -11,7 +12,7 @@
       <mat-form-field>
         <input id = "addressSearch" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Address">
       </mat-form-field>
-     
+     </div>
 
 
 
@@ -60,5 +61,6 @@
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+       
       </table>
 

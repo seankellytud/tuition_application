@@ -44,7 +44,7 @@
 
   <!-- ########################################################################### -->
 <!-- Below is the nav bar for when a user in logged in, gets rid of log in fields and adds log out button-->
-<!-- <header>
+<header>
     <div class="container-fluid padding">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,23 +59,27 @@
               <a class="nav-link" routerLink="about" routerLinkActive="active">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="register" routerLinkActive="active">Register</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" routerLink="grinds" routerLinkActive="active">Post a Grind</a>
             </li>
         
           </ul>
           <div class="example-container"> <!--Log out button for nav bar-->
         
-              <!-- <button mat-raised-button
-              matTooltip="Log In with this email and password">Log Me Out!</button>
+            <button mat-raised-button
+              matTooltip="Log out of your account" onclick="alert('You have now logged out of your account.')">
+              Log Me Out</button>
+            
+            <button mat-raised-button [matMenuTriggerFor]="myAccountMenu" class='my_account_button'>My Account</button>
+              <mat-menu #myAccountMenu="matMenu">
+                <button mat-raised-button matTooltip="Delete your account">Delete Account</button>
+                <button mat-menu-item routerLink="my-account">Edit Account</button>
+              </mat-menu>
           
             </div>
         </div>
     </nav>
     </div>
-    </header> --> 
+    </header>  
     <!-- ########################################################################### -->
 <hr>
 <div class="container-fluid padding">

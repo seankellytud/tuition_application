@@ -52,6 +52,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { LoginComponent } from './components/login/login.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { LoginComponent } from './components/login/login.component';
     HomeComponent,
     AboutComponent,
     GrindsComponent,
-    LoginComponent
+    LoginComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

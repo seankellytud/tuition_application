@@ -7,6 +7,8 @@ export class UserService {
 
   constructor( private appService: GrindService) { }
 
+  
+
   public register(user: User) {
       this.appService.registerUser(user);
   }

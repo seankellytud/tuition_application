@@ -36,11 +36,39 @@ export class GrindsListComponent implements OnInit {
     }, () => console.log('grinds loaded'));
   }
 
+
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   } //THIS IS THE WORKING GLOBAL ONE
+ 
 
+
+  ////////////////AJAX REVEAL ADDRESS?/////////////////////
+// showAddress(){
+//   var xmlhttp = new XMLHttpRequest();
+//   xmlhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//       var myObj = JSON.parse(this.responseText);
+//       document.getElementById().innerHTML = myObj[].address; //This might be a way to get an ajax call to show address
+//     }
+//   };
+//   xmlhttp.open("GET", "/server/api/v1/grinds", true);
+//   xmlhttp.send();
+/////////////////////////////////////////
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -66,9 +94,3 @@ export class GrindsListComponent implements OnInit {
 
 //   logData(row){
 //     console.log(row);// This is a click method set up for clicking rows in
-//   }
-// }
-
-
-
-

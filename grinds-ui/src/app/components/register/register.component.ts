@@ -50,10 +50,13 @@ export class RegisterComponent implements OnInit {
       console.log("RegisterComponent --> registration form is valid");
       this.service.registerUser(this.createUser()).subscribe((user) => {
         console.log("RegisterComponent --> user registered");
+        alert('You are now a registered member!');
+        window.location.href = "http://localhost:4200/home"; //relocates to the homepage when you click ok
       });
     }
     else
       console.error("RegisterComponent --> registration form has errors");
+      
   }
 
   private createUser(): User {
