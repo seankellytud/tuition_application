@@ -46,18 +46,23 @@ export class GrindsListComponent implements OnInit {
  
 
 
-  ////////////////AJAX REVEAL ADDRESS?/////////////////////
-// showAddress(){
-//   var xmlhttp = new XMLHttpRequest();
-//   xmlhttp.onreadystatechange = function() {
-//     if (this.readyState == 4 && this.status == 200) {
-//       var myObj = JSON.parse(this.responseText);
-//       document.getElementById().innerHTML = myObj[].address; //This might be a way to get an ajax call to show address
-//     }
-//   };
-//   xmlhttp.open("GET", "/server/api/v1/grinds", true);
-//   xmlhttp.send();
-/////////////////////////////////////////
+ ////////////////AJAX REVEAL ADDRESS?/////////////////////
+ public showAddress(index){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      console.log(myObj[2].grindAddress); // returns 145 Fake Street Tallaght Dublin 18 when button clicked => attributes are accessible
+      var revealAddress = alert('The address for that grind is: '+ myObj[index].grindAddress); 
+      return revealAddress;
+     
+     
+    }
+  };
+  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
+  xmlhttp.send();
+}
+
 }
 
 
