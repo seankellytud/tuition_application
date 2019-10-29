@@ -30,7 +30,7 @@ export class GrindsListComponent implements OnInit {
   initializeGrindsProvider() {
     this.grindService.getGrinds().subscribe(grinds => {
       console.log(JSON.stringify(grinds));
-      this.dataSource =  new MatTableDataSource<Grind>(grinds);
+      this.dataSource =  new MatTableDataSource<Grind>(grinds); 
     }, err =>{
       console.error(err);
     }, () => console.log('grinds loaded'));
@@ -38,7 +38,9 @@ export class GrindsListComponent implements OnInit {
 
 
 
-  applyFilter(filterValue: string) {
+  applyFilter(filterValue: string, predicate: string) {
+    console.log("GrindsListComponent --> applyFilter "+"filterValue: "+filterValue+" predicate: "+predicate);
+    this.dataSource.filterPredicate = (data: Grind, filterValue:string) => data[predicate].toString().trim().toLowerCase().includes(filterValue.trim().toLowerCase()); 
     this.dataSource.filter = filterValue.trim().toLowerCase();
   } //THIS IS THE WORKING GLOBAL ONE
  
