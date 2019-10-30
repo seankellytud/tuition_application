@@ -1,12 +1,14 @@
-<!-- Below is the nav bar for when a user hasn't logged in yet -->
+<!-- Comments -->
 <header>
+<hr>
 <div class="container-fluid padding">
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar fixed-top navbar-expand-sm bg-light navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
+      Menu
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="nav navbar-nav bd-navbar-nav nav-fill w-100">
         <li class="nav-item">
           <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
         </li>
@@ -19,42 +21,38 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="grinds" routerLinkActive="active">Post a Grind</a>
         </li>
-    
       </ul>
-      <div *ngIf="!isAuth()"class="login_register_menu-container"> <!--Log in Field in nav bar-->
-          <button mat-raised-button routerLink="login">Log In</button>
-          <!-- <button mat-raised-button>Register</button> -->
-          <button mat-raised-button [matMenuTriggerFor]="registerMenu" class='register_button'>Register</button>
-          <mat-menu #registerMenu="matMenu">
-            <button mat-menu-item routerLink="register">REGISTER AS A STUDENT</button>
-            <button mat-menu-item routerLink="register_tutor">REGISTER AS A TUTOR</button>
-          </mat-menu>
-        </div>
-        <div *ngIf="isAuth()"class="login_register_menu-container"> <!--Log in Field in nav bar-->
-          <span class="profile_text" [matMenuTriggerFor]="profileMenu">Hello {{getUsername()}} <mat-icon class="profile_icon">person_outline</mat-icon></span>
-          <mat-menu #profileMenu="matMenu">
-            <button mat-menu-item routerLink="my-account">View Profile</button>
-            <button mat-menu-item (click)="logOut()">Logout</button>
-          </mat-menu>
-        </div>
     </div>
+    <div *ngIf="!isAuth()"class="login_register_menu-container"> <!--Log in Field in nav bar-->
+      <button mat-raised-button routerLink="login" class='login_button'>Log In</button>
+      <!-- <button mat-raised-button>Register</button> -->
+      <button mat-raised-button [matMenuTriggerFor]="registerMenu" class='register_button'>Register</button>
+      <mat-menu #registerMenu="matMenu">
+        <button mat-menu-item routerLink="register">REGISTER AS A STUDENT</button>
+        <button mat-menu-item routerLink="register_tutor">REGISTER AS A TUTOR</button>
+      </mat-menu>
+    </div>
+    <div *ngIf="isAuth()"class="login_register_menu-container"> <!--Log in Field in nav bar-->
+      <span class="profile_text" [matMenuTriggerFor]="profileMenu">Hello {{getUsername()}} <mat-icon class="profile_icon">person_outline</mat-icon></span>
+      <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item>View Profile</button>
+        <button mat-menu-item (click)="logOut()">Logout</button>
+      </mat-menu>
+    </div> 
 </nav>
 </div>
 </header>
-
+<body>
   <!-- ########################################################################### -->
 <!-- Below is the nav bar for when a user in logged in, gets rid of log in fields and adds log out button-->
     <!-- ########################################################################### -->
-<hr>
-<div class="container-fluid padding">
-      <router-outlet></router-outlet>
-</div>
-<hr>
-<div class="container-fluid padding">
-<mat-sidenav-container style="text-align:center">
-  <mat-sidenav mode="side" opened></mat-sidenav>
-  <mat-sidenav-content>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
-</div>
+    <div class="container-fluid padding">
+          <router-outlet></router-outlet>
+    </div>
+    <hr>
+    <div class="container-fluid padding">
+      <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Footer</p>
+      </div>
+    </div>
+</body>
