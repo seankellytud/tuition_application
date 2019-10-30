@@ -15,7 +15,9 @@
         <input id = "addressSearch" matInput (keyup)="applyFilter($event.target.value, 'grindAddress')" placeholder="Search By Address">
       </mat-form-field>
      </div>   
+     
       <table mat-table [dataSource]="dataSource" class="grinds_table mat-elevation-z8">
+        
         <!-- ID Column -->
         <mat-form-field>
             <input id = "idSearch" matInput (keyup)="applyFilter($event.target.value, 'id')" placeholder="Search By ID">

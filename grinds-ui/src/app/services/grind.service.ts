@@ -27,6 +27,8 @@ export class GrindService {
     return this.httpClient.post<User>('/server/api/v1/authenticate', credentials, httpOptions).pipe();
   }
 
+  
+
   // deleteUser(user: User): Observable<void> {
   //   return this.httpClient.delete<void>('/server/api/v1/user',httpOptions).pipe();
   // } ##############Trying to add a delete user function#############

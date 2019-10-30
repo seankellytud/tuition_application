@@ -1,33 +1,32 @@
 <div class="col-md-6 user-container">
-        <h2 class="text-center">Edit User</h2>
+        <h2 class="text-center">View Profile</h2>
         <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-          <div class="hidden">
-            <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
-          </div>
-          <div class="form-group">
-            <label for="username">User Name:</label>
-            <input type="text" formControlName="username" placeholder="username" name="username" class="form-control" id="username" readonly="true">
-          </div>
-      
-          <div class="form-group">
-            <label for="firstName">First Name:</label>
-            <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
-          </div>
-      
-          <div class="form-group">
-            <label for="lastName">Last Name:</label>
-            <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
-          </div>
-      
-
-      
-          <button class="btn btn-success">Update</button>
-          
-
-          
          
+              <label for="username">First Name:</label>
+            <input type="text" formControlName="fullName" placeholder= "Sean (get first name function)" name="firstName" class="form-control" id="firstName" readonly="true">
+        
+              <label for="username">Last Name:</label>
+            <input type="text" formControlName="lastName" placeholder= "Kelly (get last name function)" name="lastName" class="form-control" id="lastName" readonly="true">
+        
+            <label for="username">User Name:</label>
+            <input type="text" formControlName="userName" placeholder= "ilovemaths123 (getuser name function)" name="userName" class="form-control" id="userName" readonly="true">
+        
+            <label for="firstName">Email Address:</label>
+            <input formControlName="firstName" placeholder= "sean@maths.ie (get email function)" name="emailAddress" class="form-control" id="emailAddress" readonly= "true">
 
-        </form>
-        <button class="deleteAccount" (click) ="deleteUser(24)">Delete My Account</button> 
-        </div>
+</form><br>
+<div id = "editProfileButtons">
+        <button id="edit" (click) = "activateFields()">Edit Profile</button>
+        <button id="saveChanges"  (click)="updateUser()" disabled = "true">Save Changes</button>
+      </div>
+      <br>
+        <button id="deleteAccount" (click) ="deleteUser(24)">Delete My Account</button> 
+   
+      
+      
+          
+
+        
+          
+        
       
