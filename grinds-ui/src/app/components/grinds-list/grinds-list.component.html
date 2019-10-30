@@ -1,38 +1,23 @@
       <h1>Grinds List Component</h1>
       <div id="searchFields">
       <mat-form-field>
-        <input id = "idSearch" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By ID">
+        <input id = "idSearch" matInput (keyup)="applyFilter($event.target.value, 'id')" placeholder="Search By ID">
       </mat-form-field>
       <mat-form-field>
-        <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Grind Type">
+        <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')" placeholder="Search By Grind Type">
       </mat-form-field>
       <mat-form-field>
-          <input id = "priceSearch" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Price">
+          <input id = "priceSearch" matInput (keyup)="applyFilter($event.target.value, 'pricePerHour')" placeholder="Search By Price">
         </mat-form-field>   
       <mat-form-field>
-        <input id = "addressSearch" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search By Address">
+        <input id = "addressSearch" matInput (keyup)="applyFilter($event.target.value, 'grindAddress')" placeholder="Search By Address">
       </mat-form-field>
-     </div>
-
-
-
-
-      <!-- <mat-form-field>
-        <mat-select [(value)] = "filter.field">
-          <mat-option value = "GrindType">Grind Type</mat-option>
-          <mat-option value = "Price">Price</mat-option>
-        </mat-select>
-      </mat-form-field> -->
- 
-
-
-
-
-
-        
-
+     </div>   
       <table mat-table [dataSource]="dataSource" class="grinds_table mat-elevation-z8">
         <!-- Position Column -->
+        <mat-form-field>
+            <input id = "idSearch" matInput (keyup)="applyFilter($event.target.value, 'id')" placeholder="Search By ID">
+          </mat-form-field>
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> ID </th>
           <td mat-cell *matCellDef="let grind"> {{grind.id}} </td>
@@ -54,9 +39,14 @@
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef> Address 
-          </th>
-          <td mat-cell *matCellDef="let grind"> {{grind.grindAddress}} </td>
+          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <!-- <td mat-cell *matCellDef="let grind"> {{grind.grindAddress}} </td> -->
+              <td mat-cell *matCellDef="let grind; let i = index;">  <!-- Use this to get the index of the row to pass into function -->
+                  <button mat-button (click) = "showAddress(i)">
+                    Show Address
+                  </button>
+              </td>
+    
         </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
