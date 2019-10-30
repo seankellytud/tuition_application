@@ -12,4 +12,8 @@ export class MyAccountComponent implements OnInit {
   ngOnInit() {
   }
 
+  public getUsername(): string {
+    return sessionStorage.getItem('currentUser');
+  }
 }
+

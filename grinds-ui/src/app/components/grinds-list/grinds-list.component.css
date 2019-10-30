@@ -21,3 +21,8 @@ h1{
 #searchFields{
     background-color: black;
 }
+#addressReveal{
+    text-align: center;
+    font-size: 28px;
+    color: red;
+}

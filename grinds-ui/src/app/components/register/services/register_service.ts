@@ -13,4 +13,8 @@ export class RegisterService {
   registerUser(user: User): Observable<User> {
     return this.grindService.registerUser(user);
   }
+  
+  // deleteUser(user:User): Observable<void>{
+  //   return this.grindService.deleteUser(user);
+  // } ##############Trying to add a delete user function
 }
