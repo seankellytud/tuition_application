@@ -42,17 +42,19 @@
 </nav>
 </div>
 </header>
-<body>
-  <!-- ########################################################################### -->
-<!-- Below is the nav bar for when a user in logged in, gets rid of log in fields and adds log out button-->
-    <!-- ########################################################################### -->
-    <div class="container-fluid padding">
-          <router-outlet></router-outlet>
+<main>
+<!--Router Outlet -->
+<div class="container-fluid padding">
+  <router-outlet></router-outlet>
+</div>
+<hr>
+</main>
+<!-- Footer Section-->
+<footer class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <p class="text-center">Original design by The A team </p>
     </div>
-    <hr>
-    <div class="container-fluid padding">
-      <div class="jumbotron text-center" style="margin-bottom:0">
-        <p>Footer</p>
-      </div>
-    </div>
-</body>
+  </div>
+</footer>
+
