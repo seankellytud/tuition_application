@@ -6,6 +6,7 @@
 .mat-form-field {
     font-size: 14px;
     width: 25%;
+    min-width: 50px;
 }
 
 .mat-cell {
@@ -19,5 +20,11 @@ h1{
 }
 
 #searchFields{
-    background-color: black;
+    background-color: black;   
+    /* OR     #5bc0de; */
+}
+#addressReveal{
+    text-align: center;
+    font-size: 28px;
+    color: red;
 }
