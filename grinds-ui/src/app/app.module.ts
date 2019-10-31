@@ -54,6 +54,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { LoginComponent } from './components/login/login.component';
 import { AuthModule } from './components/auth/auth.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { GrindsDetailComponent } from './components/grinds-detail/grinds-detail.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     AboutComponent,
     GrindsComponent,
     LoginComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    GrindsDetailComponent
   ],
   imports: [
     BrowserModule,

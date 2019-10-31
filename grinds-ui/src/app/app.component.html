@@ -1,7 +1,6 @@
 <!-- Comments -->
 <header>
 <hr>
-<div class="container-fluid padding">
 <nav class="navbar fixed-top navbar-expand-sm bg-light navbar-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,9 +14,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="about" routerLinkActive="active">About Us</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="register" routerLinkActive="active">Register</a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="grinds" routerLinkActive="active">Post a Grind</a>
         </li>
@@ -39,17 +35,15 @@
         <button mat-menu-item (click)="logOut()">Logout</button>
       </mat-menu>
     </div> 
-</nav>
-</div>
+  </nav>
 </header>
-<main>
 <!--Router Outlet -->
 <div class="container-fluid padding">
   <router-outlet></router-outlet>
 </div>
-<hr>
-</main>
+
 <!-- Footer Section-->
+<hr>
 <footer class="container mt-4">
   <div class="row">
     <div class="col">
