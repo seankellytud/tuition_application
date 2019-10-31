@@ -1,16 +1,96 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from 'src/app/models/User';
+import { GrindService } from 'src/app/services/grind.service';
+import { AuthService } from '../auth/services/auth.service';
+import { Router } from '@angular/router';
+import { UserService } from '../auth/services/user.service';
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
-  styleUrls: ['./my-account.component.css']
+  styleUrls: ['./my-account.component.css'],
+  preserveWhitespaces: true
 })
+
 export class MyAccountComponent implements OnInit {
 
-  constructor() { }
+  public pofileViewForm: FormGroup ;
+  public message: string = '';
+  public deleteMode: boolean = false;
+  private userId: number;
+  constructor(private grindService: GrindService,
+              private authService: AuthService,
+              private router: Router,
+              private userService: UserService) {
+                this.pofileViewForm = new FormGroup({
+                  firstName: new FormControl('', [
+                    Validators.required,
+                    Validators.minLength(2)
+                  ]), 
+                  lastName: new FormControl('', [
+                    Validators.required,
+                    Validators.minLength(2)
+                  ]),
+                  emailAddress: new FormControl('', [
+                    Validators.required,
+                    Validators.minLength(2)
+                  ]),
+                  userName: new FormControl('', [
+                    Validators.required,
+                    Validators.minLength(2)
+                  ])
+                });
+               }
 
   ngOnInit() {
+    if(this.authService.isAuth()){
+      this.grindService.getUserByUsername(this.userService.getLoggedInUserName()).subscribe((user: User) => {
+        if(user){
+          console.info('MyAccountComponent --> ngOnInit user returned'+JSON.stringify(user));
+          this.userId = user.id;
+          this.pofileViewForm.setValue({
+            firstName: user.firstName, 
+            lastName: user.lastName,
+            emailAddress: user.emailAddress,
+            userName: user.username
+          });
+        }else {
+          console.error('MyAccountComponent --> ngOnInit no user returned');
+        }
+        
+      });
+    }else {
+      this.router.navigate(['home']);
+    }
   }
+
+  // public onRegisterUser() {
+  //   if(this.registerForm.valid){
+  //     console.log("RegisterComponent --> registration form is valid");
+  //     this.service.registerUser(this.createUser()).subscribe((user) => {
+  //       console.log("RegisterComponent --> user registered");
+  //       this.registerForm.reset();
+  //       this.message = "Registration success. Please log in.";
+  //       setTimeout(() => {
+  //         this.router.navigate(['/login']);
+  //       },3000);
+  //     });
+  //   }
+  //   else
+  //     console.error("RegisterComponent --> registration form has errors");
+      
+  // }
+
+  // private createUser(): User {
+  //   let newUser: User = new User();
+  //   newUser.firstName = this.registerForm.controls['firstName'].value;
+  //   newUser.lastName = this.registerForm.controls['lastName'].value;
+  //   newUser.emailAddress = this.registerForm.controls['emailAddress'].value;
+  //   newUser.username = this.registerForm.controls['userName'].value;
+  //   newUser.password = this.registerForm.controls['password'].value;
+  //   return newUser;
+  // }
 
   public getUsername(): string {
     return sessionStorage.getItem('currentUser');
@@ -34,9 +114,23 @@ export class MyAccountComponent implements OnInit {
     //info passed into the form fields will update logged in users credentials....BACKEND TO BE SET UP FOR THIS
   }
 
-  public deleteUser(){
+  public deleteUserMode(){
+    this.message = "Are you sure ?";
+    this.deleteMode = true;
+  }
 
-    //Remove user's info completely from the database....BACKEND TO BE SET UP FOR THIS
+  public deleteUser() {
+    this.userService.deleteAccount(this.userId).then((res) => {
+      this.message = "Account deleted.";
+      setTimeout(() => {
+        this.userService.logoutUser();
+    },1000);
+    });
+  }
+
+  public cancelDelete() {
+    this.message = "";
+    this.deleteMode = false;
   }
 }
 

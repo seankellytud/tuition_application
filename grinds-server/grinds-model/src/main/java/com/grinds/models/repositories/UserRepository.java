@@ -10,7 +10,7 @@ import com.grinds.models.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	
 	 @Query(value = "SELECT * FROM T_USER WHERE username = ?1", nativeQuery = true)
-	  User findByUsername(String username);
+	  UserEntity findByUsername(String username);
 	 
 	 @Query(value = "SELECT * FROM T_USER WHERE username = ?1", nativeQuery = true)
 	 UserDetails findUserByUsername(String username);

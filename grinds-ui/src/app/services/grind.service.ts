@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Grind } from '../models/Grind';
 import { User } from '../models/User';
 import { Observable } from 'rxjs';
@@ -25,6 +25,26 @@ export class GrindService {
     console.log("GrindService --> attemptLogin()"+username);
     const credentials = {username: username, password: password};
     return this.httpClient.post<User>('/server/api/v1/authenticate', credentials, httpOptions).pipe();
+  }
+
+  getUserByUsername(username: string): Observable<User> {
+    console.log("GrindService --> getUserByUsername()");
+    let params = new HttpParams().set("username", username);
+    return this.httpClient.get<User>('/server/api/v1/user', { headers: httpOptions.headers, params: params }).pipe();
+  }
+
+  deleteAccount(id: number):Promise<any>{
+    return new Promise(resolve => {
+      console.log("GrindService --> deleteAccount()"+id);
+      let parameters = new HttpParams().set("id", id.toString());
+      this.httpClient.delete('/server/api/v1/delete', {headers:httpOptions.headers, params:parameters}).subscribe(res => {     
+            resolve(res);
+        }, err => {               
+            resolve(err);
+        });
+      
+    });
+    // return this.httpClient.delete<any>('/server/api/v1/user/delete',{ headers: httpOptions.headers, params: params }).pipe();
   }
 
   

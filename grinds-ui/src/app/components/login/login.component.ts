@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { AuthService } from '../auth/services/auth.service';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
   
 
   ngOnInit() {
@@ -30,7 +31,10 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       console.log("LoginComponent --> login form is valid");
       this.authService.attemptAuth(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value).subscribe((token) => {
-        console.log("LoginComponent --> logged with "+token);
+        console.log("LoginComponent --> logged");
+        setTimeout(() => {
+          this.router.navigate(['home']);
+        },1000);
       });
     }
     else

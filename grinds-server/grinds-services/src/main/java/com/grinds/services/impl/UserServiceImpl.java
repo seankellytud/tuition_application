@@ -35,11 +35,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void delete(long id) {
+		logger.info("UserServiceImpl --> delete ");
 		userRepo.deleteById(id);
 	}
 
 	@Override
-	public User findOne(String username) {
+	public User findByUsername(String username) {
+		logger.info("UserServiceImpl --> findByUserName "+username);
+		User myUser = userRepo.findByUsername(username);
+		logger.info("UserServiceImpl --> findByUserName found "+myUser.toString());
 		return userRepo.findByUsername(username);
 	}
 

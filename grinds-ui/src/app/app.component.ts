@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './components/auth/services/auth.service';
 import { GrindService } from './services/grind.service'
+import { UserService } from './components/auth/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,14 @@ export class AppComponent {
   title = 'grinds-ui';
   public username: string = '';
   
-  constructor(private authService: AuthService, private grindService: GrindService ) {}
+  constructor(private userService: UserService, private grindService: GrindService ) {}
 
   public isAuth():boolean{
-    return this.authService.isAuth();
+    return this.userService.isUserAuth();
   }
 
   public logOut():void{
-    this.authService.logout();
+    this.userService.logoutUser();
   }
 
   public getUsername(): string {
