@@ -4,10 +4,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Grind } from 'src/app/models/Grind';
 import { DataSource } from '@angular/cdk/table';
 
+
 @Component({
   selector: 'app-grinds-list',
   templateUrl: './grinds-list.component.html',
-  styleUrls: ['./grinds-list.component.css']
+  styleUrls: ['./grinds-list.component.css'],
 })
 export class GrindsListComponent implements OnInit {
 
@@ -16,7 +17,8 @@ export class GrindsListComponent implements OnInit {
     'id',
     'type',
     'pricePerHour',
-    'address'
+    'address',
+    'moreDetails'
   ];
 
   constructor(private grindService: GrindService) { }
