@@ -8,7 +8,8 @@ import {RegisterComponent} from './components/register/register.component';
 import { RegisterTutorComponent } from './components/register/register_tutor.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './components/auth/auth.guard';
-import { MyAccountComponent } from './components/my-account/my-account.component';
+import { MyAccountComponent } from './components/my-account/my-account.component'
+import { GrindsDetailComponent } from './components/grinds-detail/grinds-detail.component';
 
 const routes: Routes = [
   {path: 'grinds-list', component: GrindsListComponent, canActivate: [AuthGuard]},
@@ -19,8 +20,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register_tutor', component: RegisterTutorComponent},
-  {path: 'my-account', component: MyAccountComponent}
-
+  {path: 'my-account', component: MyAccountComponent},
+  {path: 'grinds-detail',component: GrindsDetailComponent}
 ];
 
 @NgModule({

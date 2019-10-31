@@ -41,6 +41,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { GrindsListComponent } from './grinds-list.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { GrindsListComponent } from './grinds-list.component';
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
+    RouterModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,

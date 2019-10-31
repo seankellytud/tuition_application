@@ -52,11 +52,22 @@
               </td>
     
         </ng-container>
+        <ng-container matColumnDef="moreDetails">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <!-- <td mat-cell *matCellDef="let grind"> {{grind.grindAddress}} </td> -->
+              <td mat-cell *matCellDef="let grind; let i = index;">  <!-- Use this to get the index of the row to pass into function -->
+                <button mat-button routerLink="/grinds-detail">
+                    Show More Details ->
+                  </button>
+              </td>
+    
+        </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
        
       </table>
+      <router-outlet></router-outlet>
 
     
 
