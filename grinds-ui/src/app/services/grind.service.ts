@@ -44,14 +44,18 @@ export class GrindService {
         });
       
     });
-    // return this.httpClient.delete<any>('/server/api/v1/user/delete',{ headers: httpOptions.headers, params: params }).pipe();
   }
 
-  
-
-  // deleteUser(user: User): Observable<void> {
-  //   return this.httpClient.delete<void>('/server/api/v1/user',httpOptions).pipe();
-  // } ##############Trying to add a delete user function#############
-
-  
+  updateAccount(user: User):Promise<any>{
+    return new Promise(resolve => {
+      console.log("GrindService --> updateAccount()");
+      this.httpClient.post<User>('/server/api/v1/update', user, httpOptions).subscribe(res => {     
+            resolve(res);
+        }, err => {               
+            resolve(err);
+        });
+      
+    });
+  }
+ 
 }

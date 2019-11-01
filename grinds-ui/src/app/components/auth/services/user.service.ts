@@ -29,6 +29,14 @@ export class UserService {
     return this.authService.isAuth();
   }
 
+  public updateAccount(user: User): Promise<any> {
+    return new Promise(resolve => {
+      this.grindService.updateAccount(user).then((res) => {
+        resolve(res);
+      }); 
+    });
+  }
+
   public deleteAccount(id: number):Promise<any> {
     return new Promise(resolve => {
       this.grindService.deleteAccount(id).then((res) => {
