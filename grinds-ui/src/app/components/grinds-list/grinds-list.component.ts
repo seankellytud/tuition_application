@@ -3,6 +3,7 @@ import { GrindService } from 'src/app/services/grind.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Grind } from 'src/app/models/Grind';
 import { DataSource } from '@angular/cdk/table';
+import { UserService } from '../auth/services/user.service';
 
 
 @Component({
@@ -17,11 +18,11 @@ export class GrindsListComponent implements OnInit {
     'id',
     'type',
     'pricePerHour',
-    'address'
-    // 'moreDetails'
+    'address',
+    'moreDetails'
   ];
 
-  constructor(private grindService: GrindService) { }
+  constructor(private grindService: GrindService, private userService: UserService) { }
 
   ngOnInit() {
     // this.dataSource = this.grindService.getGrinds();
@@ -46,7 +47,9 @@ export class GrindsListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   } //THIS IS THE WORKING GLOBAL ONE
  
-
+  public isAuth() {
+    return this.userService.isUserAuth();
+  }
 
  ////////////////AJAX REVEAL ADDRESS?/////////////////////
  public showAddress(index: number){

@@ -42,6 +42,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { GrindsListComponent } from './grinds-list.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
 
 @NgModule({
   imports: [
@@ -87,7 +88,8 @@ import { RouterModule } from '@angular/router';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    CommonModule
       ],
   exports: [
     A11yModule,
@@ -132,7 +134,8 @@ import { RouterModule } from '@angular/router';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    GrindsListComponent
+    GrindsListComponent,
+    CommonModule
   ],declarations: [
     GrindsListComponent
   ]
