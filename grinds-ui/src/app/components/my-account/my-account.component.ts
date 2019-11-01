@@ -18,7 +18,8 @@ export class MyAccountComponent implements OnInit {
   public pofileViewForm: FormGroup ;
   public message: string = '';
   public deleteMode: boolean = false;
-  private userId: number;
+  private editMode: boolean = false;
+  private user: User = null;
   constructor(private grindService: GrindService,
               private authService: AuthService,
               private router: Router,
@@ -41,20 +42,16 @@ export class MyAccountComponent implements OnInit {
                     Validators.minLength(2)
                   ])
                 });
-               }
+}
 
   ngOnInit() {
     if(this.authService.isAuth()){
       this.grindService.getUserByUsername(this.userService.getLoggedInUserName()).subscribe((user: User) => {
         if(user){
           console.info('MyAccountComponent --> ngOnInit user returned'+JSON.stringify(user));
-          this.userId = user.id;
-          this.pofileViewForm.setValue({
-            firstName: user.firstName, 
-            lastName: user.lastName,
-            emailAddress: user.emailAddress,
-            userName: user.username
-          });
+          this.user = user;
+          this.pofileViewForm.setValue({firstName: user.firstName, lastName: user.lastName, emailAddress: user.emailAddress, userName: user.username});
+          this.pofileViewForm.disable();
         }else {
           console.error('MyAccountComponent --> ngOnInit no user returned');
         }
@@ -65,53 +62,24 @@ export class MyAccountComponent implements OnInit {
     }
   }
 
-  // public onRegisterUser() {
-  //   if(this.registerForm.valid){
-  //     console.log("RegisterComponent --> registration form is valid");
-  //     this.service.registerUser(this.createUser()).subscribe((user) => {
-  //       console.log("RegisterComponent --> user registered");
-  //       this.registerForm.reset();
-  //       this.message = "Registration success. Please log in.";
-  //       setTimeout(() => {
-  //         this.router.navigate(['/login']);
-  //       },3000);
-  //     });
-  //   }
-  //   else
-  //     console.error("RegisterComponent --> registration form has errors");
-      
-  // }
-
-  // private createUser(): User {
-  //   let newUser: User = new User();
-  //   newUser.firstName = this.registerForm.controls['firstName'].value;
-  //   newUser.lastName = this.registerForm.controls['lastName'].value;
-  //   newUser.emailAddress = this.registerForm.controls['emailAddress'].value;
-  //   newUser.username = this.registerForm.controls['userName'].value;
-  //   newUser.password = this.registerForm.controls['password'].value;
-  //   return newUser;
-  // }
+  private overWriteUser() {
+    this.user.firstName = this.pofileViewForm.controls['firstName'].value;
+    this.user.lastName = this.pofileViewForm.controls['lastName'].value;
+    this.user.emailAddress = this.pofileViewForm.controls['emailAddress'].value;
+    this.user.username = this.pofileViewForm.controls['userName'].value;
+  }
 
   public getUsername(): string {
     return sessionStorage.getItem('currentUser');
   }
-  public activateFields() { //This makes the fields editable once the edit button is click and enables the save changes button
-    const ele1 = document.getElementById("firstName") as HTMLInputElement;
-    ele1.readOnly = false;
-    const ele2 = document.getElementById("lastName") as HTMLInputElement;
-    ele2.readOnly = false;
-    const ele3 = document.getElementById("userName") as HTMLInputElement;
-    ele3.readOnly = false;
-    const ele4 = document.getElementById("emailAddress") as HTMLInputElement;
-    ele4.readOnly = false; 
-    const ele5 = document.getElementById("saveChanges") as HTMLInputElement;
-    ele5.disabled = false;
-    return {ele1, ele2, ele3, ele4, ele5};
-  }
 
   public updateUser(){
-
-    //info passed into the form fields will update logged in users credentials....BACKEND TO BE SET UP FOR THIS
+    this.overWriteUser();
+    this.userService.updateAccount(this.user).then((res) => {
+      sessionStorage.setItem('currentUser',this.user.username);
+      this.message = "Account updated.";
+      this.editMode = false;
+    });
   }
 
   public deleteUserMode(){
@@ -120,12 +88,17 @@ export class MyAccountComponent implements OnInit {
   }
 
   public deleteUser() {
-    this.userService.deleteAccount(this.userId).then((res) => {
+    this.userService.deleteAccount(this.user.id).then((res) => {
       this.message = "Account deleted.";
       setTimeout(() => {
         this.userService.logoutUser();
     },1000);
     });
+  }
+
+  public activateFields() {
+    this.editMode = true;
+    this.pofileViewForm.enable();
   }
 
   public cancelDelete() {
