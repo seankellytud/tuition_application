@@ -17,8 +17,8 @@ export class GrindsListComponent implements OnInit {
     'id',
     'type',
     'pricePerHour',
-    'address',
-    'moreDetails'
+    'address'
+    // 'moreDetails'
   ];
 
   constructor(private grindService: GrindService) { }

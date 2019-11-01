@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { RegisterService } from './services/register_service';
 import { Router } from '@angular/router';
-import { timeout } from 'q';
+import  { passwordValidator } from './services/validator';
+
 
 @Component({
   selector: 'app-register',
@@ -31,19 +32,20 @@ export class RegisterComponent implements OnInit {
       ]),
       emailAddress: new FormControl('', [
         Validators.required,
-        Validators.minLength(2)
+        Validators.email
       ]),
       userName: new FormControl('', [
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(6)
       ]), 
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(6)
       ]),
       confirmPassword: new FormControl('', [
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(6),
+        passwordValidator //Custom validator to ensure both passwords match
       ]),
     });
   }

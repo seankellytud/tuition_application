@@ -1,7 +1,10 @@
 <mat-card class="my-card">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
+        <!--for red/green validation icons-->
     <h5>Register As a Student</h5>
   <mat-card-content>
-     <form class="registration-form" [formGroup]="registerForm" (ngSubmit)="onRegisterUser()" id="ngForm" #documentEditForm="ngForm">
+     <form class="registration-form" [formGroup]="registerForm" (ngSubmit)="onRegisterUser()" 
+     id="ngForm" #documentEditForm="ngForm">
       <mat-form-field class="full-width">
           <input matInput required formControlName="firstName" placeholder="First Name">
       </mat-form-field>
@@ -25,6 +28,33 @@
       <mat-form-field class="full-width">
           <input matInput  required placeholder="Confirm Password"  type="password" formControlName="confirmPassword">
       </mat-form-field>
+
+      <div class="validations">
+              
+        <span>
+            <i class="fa fa-check-circle" style="color:green;" *ngIf="registerForm.controls.emailAddress.valid"></i>
+            <i class="fa fa-times-circle" style="color:red;"  *ngIf="registerForm.controls.emailAddress.invalid"></i>
+            Email Address should be in someone@something.something format
+        </span>
+        <span>
+            <i class="fa fa-check-circle" style="color:green;" *ngIf="registerForm.controls.userName.valid"></i>
+            <i class="fa fa-times-circle" style="color:red;"  *ngIf="registerForm.controls.userName.invalid"></i>
+            Username should be minimum 6 characters long.
+        </span>
+        <span>
+            <i class="fa fa-check-circle" style="color:green;" *ngIf="registerForm.controls.password.valid"></i>
+            <i class="fa fa-times-circle" style="color:red;" *ngIf="registerForm.controls.password.invalid"></i>
+            Password be minimum 6 characters long
+        </span>
+        <span>
+            <i class="fa fa-check-circle" style="color:green;"  *ngIf="registerForm.controls.confirmPassword.valid"></i>
+            <i class="fa fa-times-circle" style="color:red;" *ngIf="registerForm.controls.confirmPassword.invalid"></i>
+            Both Passwords Should Match
+        </span>
+      </div>
+
+
+
      </form>
   </mat-card-content>
   <mat-card-actions>
@@ -32,3 +62,5 @@
   </mat-card-actions>
   <div id="messageContainer">{{message}}</div>
 </mat-card>
+
+

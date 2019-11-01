@@ -45,11 +45,15 @@ import { RegisterTutorComponent } from './register_tutor.component';
 import {MatFormFieldModule} from  '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './services/register_service';
+import { CommonModule } from '@angular/common';  
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
     MatFormFieldModule,
     FormsModule,
+    CommonModule,
+    BrowserModule,
     ReactiveFormsModule,
     A11yModule,
     CdkStepperModule,
