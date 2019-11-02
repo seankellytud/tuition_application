@@ -16,6 +16,11 @@ import com.grinds.models.UserEntity;
 import com.grinds.models.repositories.UserRepository;
 import com.grinds.services.UserService;
 
+/**
+ * @author cristian
+ * Service (see @Service annotation) that implements methods declared in the UserService interface 
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService {
 	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -25,7 +30,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
 
-
+	//returns all grinds entities by making a call to repository, the repository communicates with the database
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<User> findAll() {
 		List list = new ArrayList<User>();
@@ -48,11 +54,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findById(Long id) {
-		return null;
-	}
-
-	@Override
     public User save(User user) {
 		logger.info("UserServiceImpl --> save");
 	    UserEntity newUser = new UserEntity();
@@ -71,5 +72,26 @@ public class UserServiceImpl implements UserService {
 		if(user == null)
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		return user;
+	}
+
+	@Override
+	public User findById(long id) {
+		logger.info("UserServiceImpl --> findById");
+		User foundUser = this.userRepo.findById(id);
+		if(foundUser == null)
+			throw new UsernameNotFoundException("User not found with id: " + id);
+		return foundUser;
+	}
+
+	@Override
+	public void updateUser(User user) {
+		UserEntity updateUser = this.userRepo.findById(user.getId());
+		if(updateUser == null)
+			throw new UsernameNotFoundException("User not found with id: " + user.getId());
+		updateUser.setFirstName(user.getFirstName());
+		updateUser.setLastName(user.getLastName());
+		updateUser.setUsername(user.getUsername());
+		updateUser.setEmailAddress(user.getEmailAddress());
+		this.userRepo.save(updateUser);
 	}
 }

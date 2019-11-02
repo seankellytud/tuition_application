@@ -1,6 +1,12 @@
 package com.grinds.services;
 import java.util.List;
 
+/**
+ * @author cristian
+ *Interface for user service, any methods declared must be implemented in the UserServiceImpl
+ *
+ */
+
 import org.springframework.security.core.userdetails.UserDetails;
 import com.grinds.model.api.User;
 

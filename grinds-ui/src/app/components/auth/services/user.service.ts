@@ -33,7 +33,9 @@ export class UserService {
     return new Promise(resolve => {
       this.grindService.updateAccount(user).then((res) => {
         resolve(res);
-      }); 
+      }, err => {               
+        resolve(err);
+    }); 
     });
   }
 

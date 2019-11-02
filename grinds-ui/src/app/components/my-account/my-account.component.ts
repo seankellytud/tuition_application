@@ -79,7 +79,9 @@ export class MyAccountComponent implements OnInit {
       sessionStorage.setItem('currentUser',this.user.username);
       this.message = "Account updated.";
       this.editMode = false;
-    });
+    }, err => {               
+      console.error("MyAccountComponent --> update user failed");
+  });
   }
 
   public deleteUserMode(){

@@ -9,20 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grinds.model.api.Grind;
-import com.grinds.model.api.User;
 import com.grinds.models.GrindEntity;
-import com.grinds.models.UserEntity;
 import com.grinds.models.repositories.GrindRepository;
 import com.grinds.services.GrindService;
 
+/**
+ * @author cristian
+ * Service (see @Service annotation) that implements methods declared in the GrindService interface 
+ *
+ */
 @Service
 public class GrindServiceImpl implements GrindService{
 	private static final Logger logger = LoggerFactory.getLogger(GrindServiceImpl.class);
 	
+	//autowires the repository used to communicate with database
 	@Autowired
 	private GrindRepository grindRepo;
 	
-    
+    //returns all grinds entities by making a call to repository, the repository communicates with the database
+	@Override
     @SuppressWarnings("unchecked")
 	public List<Grind> findAll() {
 		List list = new ArrayList<Grind>();
@@ -30,17 +35,19 @@ public class GrindServiceImpl implements GrindService{
 		return list;
 	}
 
+	//deletes a grind from the database by calling the repository and passing the grind id as parameter
 	@Override
 	public void delete(long id) {
 		grindRepo.deleteById(id);
 	}
 
-
+	// finds a grind by id, needs implementation
 	@Override
 	public Grind findById(Long id) {
 		return null;
 	}
 
+	//create a new grind entity and calls the repository to save it in the database
 	@Override
     public Grind save(Grind grind) {
 		logger.info("GrindServiceImpl --> save");

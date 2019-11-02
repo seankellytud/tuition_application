@@ -1,8 +1,0 @@
-com\grinds\models\UserEntity.class
-com\grinds\models\utility\EntityDataConverters.class
-com\grinds\models\utility\EntityDataConverters$BooleanConverter.class
-com\grinds\models\repositories\UserRepository.class
-com\grinds\models\utility\EntityDataConverters$BaseConverterAdapter.class
-com\grinds\models\GrindEntity.class
-com\grinds\models\utility\EntityDataConverters$GrindTypeConverter.class
-com\grinds\models\repositories\GrindRepository.class

@@ -50,4 +50,12 @@ public class UserController {
     	long delId = Long.parseLong(id);
     	userService.delete(delId);
     }
+    
+    @RequestMapping(value="/api/v1/update", method= RequestMethod.POST)
+	public void updateUser(@RequestBody UserEntity user) {
+    	logger.info("UserController --> updateUser");
+		userService.updateUser(user);
+	}
+    
+    
 }

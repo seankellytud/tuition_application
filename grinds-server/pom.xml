@@ -22,7 +22,6 @@
 	<modules>
 		<module>./grinds-api</module>
 		<module>./grinds-app</module>
-		<module>./grinds-controller</module>
 		<module>./grinds-model-api</module>
 		<module>./grinds-model</module>
 		<module>./grinds-services</module>
