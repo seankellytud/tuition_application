@@ -35,11 +35,11 @@ export class MyAccountComponent implements OnInit {
                   ]),
                   emailAddress: new FormControl('', [
                     Validators.required,
-                    Validators.minLength(2)
+                    Validators.email
                   ]),
                   userName: new FormControl('', [
                     Validators.required,
-                    Validators.minLength(2)
+                    Validators.minLength(6)
                   ])
                 });
 }

@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
         passwordValidator //Custom validator to ensure both passwords match
-      ]),
+      ])
     });
   }
 

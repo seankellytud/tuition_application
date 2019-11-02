@@ -1,30 +1,44 @@
 <mat-card class="my-card">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <h5>View Profile</h5>
   <mat-card-content>
     <form class="registration-form" [formGroup]="pofileViewForm" (ngSubmit)="onUpdateAccount()" id="ngForm"
       #documentEditForm="ngForm">
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input matInput formControlName="firstName" placeholder="First Name">
+        <input required matInput formControlName="firstName" placeholder="First Name">
       </mat-form-field>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input matInput placeholder="Last Name" formControlName="lastName">
+        <input required matInput placeholder="Last Name" formControlName="lastName">
       </mat-form-field>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input matInput placeholder="Email Address" formControlName="emailAddress">
+        <input required matInput placeholder="Email Address" formControlName="emailAddress">
       </mat-form-field>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input matInput placeholder="Username" formControlName="userName">
+        <input required matInput placeholder="Username" formControlName="userName">
       </mat-form-field>
+      <div class="validations">
+        <span>
+          <i class="fa fa-check-circle" style="color:green;" *ngIf="pofileViewForm.controls.emailAddress.valid"></i>
+          <i class="fa fa-times-circle" style="color:red;"  *ngIf="pofileViewForm.controls.emailAddress.invalid"></i>
+          Email Address should be in someone@something.something format.
+      </span>
+    <br>
+      <span>
+          <i class="fa fa-check-circle" style="color:green;" *ngIf="pofileViewForm.controls.userName.valid"></i>
+          <i class="fa fa-times-circle" style="color:red;"  *ngIf="pofileViewForm.controls.userName.invalid"></i>
+          Username should be minimum 6 characters long.
+      </span>
+    </div>
     </form>
   </mat-card-content>
   <mat-card-actions class>
-    <button id="edit" [disabled]="editMode" mat-raised-button (click)="activateFields()">Edit Profile</button>
-    <button id="saveChanges" mat-raised-button (click)="updateUser()" [disabled]="!editMode">Save Changes</button>
-    <button id="deleteAccount"  mat-raised-button color="warn" [disabled]="deleteMode" (click)="deleteUserMode()">Delete Account</button>
-  </mat-card-actions>
+      <button id="edit" [disabled]="editMode" mat-raised-button (click)="activateFields()">Edit Profile</button>
+      <button id="saveChanges" mat-raised-button (click)="updateUser()" [disabled]="!documentEditForm.form.valid">Save Changes</button>
+      <button id="deleteAccount"  mat-raised-button color="warn" [disabled]="deleteMode" (click)="deleteUserMode()">Delete Account</button>
+    </mat-card-actions>  
   <div id="messageContainer">
     {{message}}
     <span *ngIf="deleteMode">
