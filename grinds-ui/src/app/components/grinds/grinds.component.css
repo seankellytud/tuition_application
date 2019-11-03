@@ -1,16 +1,14 @@
 button{
-    background-color: green;
+    background-color: rgb(29, 74, 110);
     color:  white;
 }
 h1{
     text-align: center;
 }
 .postGrind {
-    position: relative;
     left: 30%;
     background-color: grey;
-    display: inline-block;
     border: 20px;
     border-radius: 5px;
-
+    text-align: center;
 }
