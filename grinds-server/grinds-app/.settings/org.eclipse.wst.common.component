@@ -5,8 +5,22 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-test-sources/test-annotations"/>
+        <dependent-module archiveName="grinds-model-api-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/grinds-model-api/grinds-model-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="grinds-api-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/grinds-api/grinds-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="grinds-services-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/grinds-services/grinds-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="grinds-model-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/grinds-model/grinds-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="grinds-services-api-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/grinds-services-api/grinds-services-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="grinds-security-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/grinds-security/grinds-security">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="grinds-app"/>

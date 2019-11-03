@@ -4,6 +4,8 @@ import { User } from 'src/app/models/User';
 import { RegisterService } from './services/register_service';
 import { Router } from '@angular/router';
 import  { passwordValidator } from './services/validator';
+import { usernameValidator } from './services/username.validator';
+
 
 
 @Component({
@@ -34,10 +36,10 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.email
       ]),
-      userName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6)
-      ]), 
+      userName: new FormControl('', Validators.compose([ 
+        Validators.required, 
+        Validators.minLength(6), 
+        usernameValidator])),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6)
@@ -76,4 +78,6 @@ export class RegisterComponent implements OnInit {
     newUser.password = this.registerForm.controls['password'].value;
     return newUser;
   }
+  
 }
+
