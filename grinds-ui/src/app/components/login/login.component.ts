@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public message: string = ''
 
   constructor(private authService: AuthService, private router: Router) { }
   
@@ -28,13 +29,18 @@ export class LoginComponent implements OnInit {
   }
 
   public onLogin() {
+    this.message = '';
     if(this.loginForm.valid){
       console.log("LoginComponent --> login form is valid");
-      this.authService.attemptAuth(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value).subscribe((token) => {
+      this.authService.attemptAuth(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value).then((token) => {
         console.log("LoginComponent --> logged");
         setTimeout(() => {
           this.router.navigate(['home']);
         },1000);
+      },err =>{
+        console.log(console.log("LoginComponent --> log in failed"));
+        this.loginForm.reset();
+        this.message = 'You have entered an invalid username or password.';
       });
     }
     else

@@ -20,15 +20,19 @@ export class AuthService {
     return this.currentUserSubject.value;
 }
 
-  attemptAuth(username: string, password: string): Observable<any> {
+  attemptAuth(username: string, password: string): Promise<any> {
+  return new Promise((resolve,reject) => {
     console.log('attempAuth ::');
-    return this.grindService.attemptLogin(username, password) .pipe(map(userData => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
+    this.grindService.attemptLogin(username, password).then((userData) => {
       sessionStorage.setItem('currentUser',username);
       let tokenStr= 'Bearer '+userData.token;
       sessionStorage.setItem('token', tokenStr);
-      return userData;
-  }));
+      resolve();
+    }, err =>{
+      reject(err);
+    });
+    
+  });
   }
 
   isAuth() {

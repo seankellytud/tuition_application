@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -93,5 +94,15 @@ public class UserServiceImpl implements UserService {
 		updateUser.setUsername(user.getUsername());
 		updateUser.setEmailAddress(user.getEmailAddress());
 		this.userRepo.save(updateUser);
+	}
+	
+	@Override
+	public User findByUsernameAndPassword(String username, String password) {
+		logger.info("UserServiceImpl --> findByUserNameAndPassword ");
+		User myUser = userRepo.findByUsername(username);
+		if(myUser == null || !bcryptEncoder.matches(password, myUser.getPassword()))
+				throw new BadCredentialsException("User not found");
+		logger.info("UserServiceImpl --> findByUserName found "+myUser.toString());
+		return myUser;
 	}
 }

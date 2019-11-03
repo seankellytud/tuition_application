@@ -21,10 +21,19 @@ export class GrindService {
     return this.httpClient.post<User>('/server/api/v1/register', user, httpOptions).pipe();
   }
 
-  attemptLogin(username: string, password: string): Observable<any> {
-    console.log("GrindService --> attemptLogin()"+username);
+  attemptLogin(username: string, password: string): Promise<any> {
+    // console.log("GrindService --> attemptLogin()"+username);
     const credentials = {username: username, password: password};
-    return this.httpClient.post<User>('/server/api/v1/authenticate', credentials, httpOptions).pipe();
+    // return this.httpClient.post<User>('/server/api/v1/authenticate', credentials, httpOptions).pipe();
+    return new Promise((resolve,reject) => {
+      console.log("GrindService --> updateAccount()");
+      this.httpClient.post<User>('/server/api/v1/authenticate', credentials, httpOptions).subscribe(res => {     
+            resolve(res);
+        }, err => {               
+          reject(err);
+        });
+      
+    });
   }
 
   getUserByUsername(username: string): Observable<User> {

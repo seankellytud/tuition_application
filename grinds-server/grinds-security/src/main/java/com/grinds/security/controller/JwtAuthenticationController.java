@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grinds.model.api.User;
 import com.grinds.security.model.JwtRequest;
 import com.grinds.security.model.JwtResponse;
 import com.grinds.security.utils.JwtTokenUtil;
@@ -34,8 +37,8 @@ public class JwtAuthenticationController {
 	@RequestMapping(value = "/api/v1/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		try {
-		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-		}catch(Throwable e) {
+			authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+		}catch(StackOverflowError e) {
 			logger.error("JwtAuthenticationController --> error "+e);
 		}
 		final UserDetails userDetails = userService.findUserByUsername(authenticationRequest.getUsername());
@@ -45,11 +48,17 @@ public class JwtAuthenticationController {
 
 	private void authenticate(String username, String password) throws Exception {
 		try {
+			User user = userService.findByUsernameAndPassword(username, password);
+		     
+           if (user == null) {
+               throw new BadCredentialsException("User not found.");
+           }
+    
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
 			throw new Exception("USER_DISABLED", e);
-		} catch (BadCredentialsException e) {
-			throw new Exception("INVALID_CREDENTIALS", e);
-		}
+		}catch (LockedException e1) {
+			throw new Exception("USER_LOCKED", e1);
+		}  
 	}
 }
