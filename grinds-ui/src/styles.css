@@ -1,8 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 .mat-sidenav-container {
     min-height: 100%;
 }
@@ -33,7 +29,7 @@ h1{
 }
 
 .jumbotron {
-    background-color:transparent !important; 
+  background-color:transparent !important; 
 }
 
 .bg-1 {
@@ -49,7 +45,30 @@ h1{
     color: #555555;
   }
 
-  .bg-4 {
+.bg-4 {
     background-color: #2f2f2f;
     color: #ffffff;
   }
+
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+  }
+  
+  .jumbotron {
+    font-family: Montserrat, sans-serif;
+  }
+  
+  .navbar {
+    font-family: Montserrat, sans-serif;
+  }
+
+html,
+body {
+    height: 100%;
+}
+
+footer {
+    margin: 50px 0;
+}
