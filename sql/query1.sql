@@ -27,8 +27,7 @@ update t_grinds set grind_level= 'junior certificate' where grind_id =1;
  update t_grinds set grind_level= 'leaving certificate' where grind_id =2;
  update t_grinds set grind_level= 'university level' where grind_id =3;
 
-insert into `grinds`.`t_grinds` (grind_id,price_per_hour,grind_address,grind_type,grind_level) values
-(4,30,'88 New Street Killester Dublin 5', 9, `beginner`);
+
 
 drop table if exists t_user;
 drop table if exists t_role;
@@ -49,14 +48,4 @@ INSERT INTO t_user_roles (USER_ID, ROLE_ID) VALUES (1, 4);
 INSERT INTO t_user_roles (USER_ID, ROLE_ID) VALUES (2, 5);
 
 
-
- create table `grinds`.`grind_level` (
-    `grind_level_id` INT NOT NULL PRIMARY KEY,
-     `grind_level` VARCHAR (2000) NOT NULL);
-
-insert into `grinds`.`grind_level` (grind_level_id,grind_level) values
-     (1,'junior certicate'),
-     (2,'leaving certificate'),
-     (3,'university level'),
-     (4, 'beginner');
 
