@@ -57,5 +57,11 @@ public class UserController {
 		userService.updateUser(user);
 	}
     
+    @RequestMapping(value="/api/v1/authenticate/systemhasusername", method= RequestMethod.POST)
+	public boolean systemHasUsername(@RequestParam("username")String username) {
+    	logger.info("UserController --> systemHasUsername");
+		return userService.systemHasUsername(username);
+	}
+    
     
 }

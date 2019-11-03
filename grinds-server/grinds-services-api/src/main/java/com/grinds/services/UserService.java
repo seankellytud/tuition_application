@@ -20,4 +20,5 @@ public interface UserService {
     UserDetails findUserByUsername(String username);
     void updateUser(User user);
     User findByUsernameAndPassword(String username, String password);
+    boolean systemHasUsername(String username);
 }

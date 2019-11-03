@@ -105,4 +105,9 @@ public class UserServiceImpl implements UserService {
 		logger.info("UserServiceImpl --> findByUserName found "+myUser.toString());
 		return myUser;
 	}
+	
+	@Override
+	public boolean systemHasUsername(String username) {
+		return this.userRepo.findByUsername(username) != null;
+	}
 }
