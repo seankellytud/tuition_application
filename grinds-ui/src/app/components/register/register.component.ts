@@ -4,7 +4,7 @@ import { User } from 'src/app/models/User';
 import { RegisterService } from './services/register_service';
 import { Router } from '@angular/router';
 import  { passwordValidator } from './services/validator';
-import { usernameValidator } from './services/username.validator';
+import { usernameValidator } from './services/validator';
 
 
 
