@@ -11,14 +11,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li><a routerLink="home" routerLinkActive="active">Home</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" routerLink="about" routerLinkActive="active">About Us<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Sean</a></li>
-              <li><a href="#">Caleb</a></li>
-              <li><a href="#">Christian</a></li>
-            </ul>
-          </li>
+          <li><a routerLink="about" routerLinkActive="active">About Us</a></li>
           <li><a routerLink="grinds" routerLinkActive="active">Post a Grind</a></li>
         </ul>
         <ul *ngIf="!isAuth()" class="nav navbar-nav navbar-right">
