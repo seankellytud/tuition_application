@@ -33,3 +33,4 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('.content span').textContent).toContain('grinds-ui app is running!');
   });
 });
+
