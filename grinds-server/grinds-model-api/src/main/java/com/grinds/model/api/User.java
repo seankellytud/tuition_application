@@ -13,6 +13,8 @@ public interface User {
 	
 	public String getEmailAddress();
 	
+	public UserRole getUserRole();
+	
 	public void setFirstName(String firstName);
 
 	public void setLastName(String lastName);
@@ -22,5 +24,7 @@ public interface User {
 	public void setPassword(String password);
 	
 	public void setEmailAddress(String emailAddress);
+	
+	public void setUserRole(UserRole userRole);
 	
 }

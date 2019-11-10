@@ -4,6 +4,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 import com.grinds.model.api.GrindType;
+import com.grinds.model.api.UserRole;
 
 public final class EntityDataConverters {
 	
@@ -74,6 +75,21 @@ public final class EntityDataConverters {
 
 		@Override
 		protected Integer convertToDatabaseValue(GrindType attribute) {
+			return attribute.getEntValue();
+		}
+
+	}
+	
+	@Converter
+	public static final class UserRoleConverter extends BaseConverterAdapter<UserRole, Integer> {
+
+		@Override
+		protected UserRole convertToEntityValue(Integer attribute) {
+			return UserRole.getEnumType(attribute);
+		}
+
+		@Override
+		protected Integer convertToDatabaseValue(UserRole attribute) {
 			return attribute.getEntValue();
 		}
 

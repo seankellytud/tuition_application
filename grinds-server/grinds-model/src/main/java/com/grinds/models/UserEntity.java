@@ -1,14 +1,16 @@
 package com.grinds.models;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.grinds.model.api.User;
+import com.grinds.model.api.UserRole;
+import com.grinds.models.utility.EntityDataConverters.UserRoleConverter;
 
 @Entity(name = "UserEntity")
 @Table(name = "t_user")
@@ -27,6 +29,10 @@ public class UserEntity implements User{
     private String password;
     @Column(name="EMAIL_ADDRESS")
 	private String emailAddress;
+    
+    @Column(name = "USER_ROLE")
+	@Convert(converter = UserRoleConverter.class)
+	private UserRole userRole;
 
 	public long getId() {
 		return id;
@@ -75,5 +81,15 @@ public class UserEntity implements User{
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
+
+	public UserRole getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
+	
+	
 	
 }

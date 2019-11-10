@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
 	    newUser.setFirstName(user.getFirstName());
 	    newUser.setLastName(user.getLastName());
 	    newUser.setEmailAddress(user.getEmailAddress());
+	    newUser.setUserRole(user.getUserRole());
 	    newUser.setPassword(bcryptEncoder.encode(user.getPassword()));  
 	    logger.info("UserServiceImpl --> save user"+user);
         return (User) userRepo.save(newUser);
