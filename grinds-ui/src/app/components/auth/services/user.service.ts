@@ -3,6 +3,7 @@ import { GrindService } from 'src/app/services/grind.service';
 import { User } from 'src/app/models/User';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/models/Role';
 
 @Injectable()
 export class UserService {
@@ -45,5 +46,9 @@ export class UserService {
         resolve(res);
       }); 
     });
+  }
+
+  public getUserRole(): Role {
+    return this.authService.getUserRole();
   }
 }

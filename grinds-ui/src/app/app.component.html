@@ -12,7 +12,7 @@
         <ul class="nav navbar-nav">
           <li><a routerLink="home" routerLinkActive="active">Home</a></li>
           <li><a routerLink="about" routerLinkActive="active">About Us</a></li>
-          <li><a routerLink="grinds" routerLinkActive="active">Post a Grind</a></li>
+          <li *ngIf="isTeacher()"><a routerLink="grinds" routerLinkActive="active">Post a Grind</a></li>
         </ul>
         <ul *ngIf="!isAuth()" class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -28,6 +28,8 @@
               <a class="dropdown-toggle" data-toggle="dropdown">Hello {{getUsername()}}<span class="glyphicon glyphicon-user"></span></a>
               <ul class="dropdown-menu">
                 <li><a routerLink="my-account">View/Edit Profile</a></li>
+                <li *ngIf="isTeacher()"><a routerLink="my-account">My Grinds</a></li>
+                <li *ngIf="isTeacher()"><a routerLink="grinds" routerLinkActive="active">Create New Grind</a></li>
                 <li><a (click)="logOut()">Logout</a></li>
               </ul>
           </ul>

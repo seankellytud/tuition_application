@@ -3,62 +3,66 @@
         <!--for red/green validation icons-->
     <h5>Register As a Student</h5>
   <mat-card-content>
-     <form class="registration-form" [formGroup]="registerForm" (ngSubmit)="onRegisterUser()" 
-     id="ngForm" #documentEditForm="ngForm">
+     <form class="registration-form"  id="ngForm" #documentEditForm="ngForm">
       <mat-form-field class="full-width">
-          <input matInput required formControlName="firstName" placeholder="First Name">
+          <input matInput required placeholder="First Name" [formControl]="firstName" [(ngModel)]="firstName.value">
+          <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="firstName.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="firstName.invalid">{{getErrorMessage('1')}}</mat-error>
       </mat-form-field>
   
       <mat-form-field class="full-width">
-          <input matInput required placeholder="Last Name" formControlName="lastName">
+          <input matInput required placeholder="Last Name" [formControl]="lastName" [(ngModel)]="lastName.value">
+          <button mat-button *ngIf="lastName.value" matSuffix mat-icon-button aria-label="Clear" (click)="lastName.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="lastName.invalid">{{getErrorMessage('2')}}</mat-error>
       </mat-form-field>
   
       <mat-form-field class="full-width">
-          <input matInput required  placeholder="Email Address" formControlName="emailAddress">
+          <input matInput required  placeholder="Email Address" [formControl]="emailAddress" [(ngModel)]="emailAddress.value">
+          <button mat-button *ngIf="emailAddress.value" matSuffix mat-icon-button aria-label="Clear" (click)="emailAddress.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="emailAddress.invalid">{{getErrorMessage('3')}}</mat-error>
       </mat-form-field>
   
       <mat-form-field class="full-width">
-          <input matInput required  placeholder="Username" formControlName="userName">
+          <input matInput required  placeholder="Username" [formControl]="userName" [(ngModel)]="userName.value">
+          <button mat-button *ngIf="userName.value" matSuffix mat-icon-button aria-label="Clear" (click)="userName.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="userName.invalid">{{getErrorMessage('4')}}</mat-error>
       </mat-form-field>
   
       <mat-form-field class="full-width">
-          <input matInput required placeholder="Password"  type="password" formControlName="password">
+          <input matInput required placeholder="Password"  type="password" [formControl]="password" (ngModelChange)="checkPasswordStrength();" [(ngModel)]="password.value">
+          <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Clear" (click)="password.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage('5')}}</mat-error>
       </mat-form-field>
+      <div class="progress-bar-container">
+        <div [style.width.%]="(newPasswordStrength / 4) * 100" [class]="'progress-bar-value ' + newPasswordStrengthColor"></div>
+      </div>
+      <div class="message">{{newPasswordStrenghtMessage}}</div>
   
       <mat-form-field class="full-width">
-          <input matInput  required placeholder="Confirm Password"  type="password" formControlName="confirmPassword">
+          <input matInput  required placeholder="Confirm Password"  type="password" [formControl]="confirmPassword" [(ngModel)]="confirmPassword.value">
+          <button mat-button *ngIf="confirmPassword.value" matSuffix mat-icon-button aria-label="Clear" (click)="confirmPassword.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-error *ngIf="confirmPassword.invalid">{{getErrorMessage('6')}}</mat-error>
       </mat-form-field>
 
       <div class="validations">
-              
-        <span>
-            <i class="fa fa-check-circle" style="color:green;" *ngIf="registerForm.controls.emailAddress.valid"></i>
-            <i class="fa fa-times-circle" style="color:red;"  *ngIf="registerForm.controls.emailAddress.invalid"></i>
-            Email Address should be in someone@something.something format.
-        </span>
-        <span>
-            <i class="fa fa-check-circle" style="color:green;" *ngIf="registerForm.controls.userName.valid"></i>
-            <i class="fa fa-times-circle" style="color:red;"  *ngIf="registerForm.controls.userName.invalid"></i>
-            Username should be minimum 6 characters long and also unique.
-        </span>
-        <span>
-            <i class="fa fa-check-circle" style="color:green;" *ngIf="registerForm.controls.password.valid"></i>
-            <i class="fa fa-times-circle" style="color:red;" *ngIf="registerForm.controls.password.invalid"></i>
-            Password be minimum 6 characters long.
-        </span>
-        <span>
-            <i class="fa fa-check-circle" style="color:green;"  *ngIf="registerForm.controls.confirmPassword.valid"></i>
-            <i class="fa fa-times-circle" style="color:red;" *ngIf="registerForm.controls.confirmPassword.invalid"></i>
-            Both Passwords Should Match.
-        </span>
       </div>
-
-
-
      </form>
   </mat-card-content>
   <mat-card-actions>
-      <button mat-raised-button form="ngForm" [disabled]="!documentEditForm.form.valid">Register</button>
+      <button mat-raised-button form="ngForm" (click) ="onRegisterUser()" [disabled]="!isFormValid()">Register as Student</button>
+      <button mat-raised-button form="ngForm" (click) ="onClearForm()">Clear</button>
   </mat-card-actions>
   <div id="messageContainer">{{message}}</div>
 </mat-card>

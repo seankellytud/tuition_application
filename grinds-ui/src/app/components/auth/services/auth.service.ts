@@ -4,12 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GrindService } from 'src/app/services/grind.service';
 import { User } from 'src/app/models/User';
 import { map } from 'rxjs/operators';
+import { Role } from 'src/app/models/Role';
 
 @Injectable()
 export class AuthService {
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+  private userRole: Role;
 
   constructor(private grindService: GrindService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -27,7 +29,10 @@ export class AuthService {
       sessionStorage.setItem('currentUser',username);
       let tokenStr= 'Bearer '+userData.token;
       sessionStorage.setItem('token', tokenStr);
-      resolve();
+      this.grindService.getUserByUsername(username).subscribe((user)=>{
+        sessionStorage.setItem('role', user.userRole);
+        resolve();
+      });
     }, err =>{
       reject(err);
     });
@@ -46,6 +51,11 @@ export class AuthService {
     // remove user from local storage to log user out
     sessionStorage.removeItem('currentUser');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
     this.currentUserSubject.next(null);
-}
+  }
+
+  getUserRole(): Role {
+    return Role[sessionStorage.getItem('role')];
+  }
 }

@@ -15,7 +15,6 @@ export class GrindsListComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Grind>();
   public displayedColumns = [
-    'id',
     'type',
     'pricePerHour',
     'address',

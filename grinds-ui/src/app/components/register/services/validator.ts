@@ -1,25 +1,5 @@
 //Sourced: https://github.com/AzharHusain/reactive-form-custom-validation/blob/master/src/app/validator.ts
-import { AbstractControl, FormGroup } from '@angular/forms'; 
-
-
-export function passwordValidator(control: AbstractControl) {
-    if (control && (control.value !== null || control.value !== undefined)) { //set stipulations for control to move forward with fuction
-        const confirmPassword = control.value; //save control into variable
-
-        const passControl = control.root.get('password'); //get value that was passed into the first password field
-        if (passControl) {
-            const passValue = passControl.value; //save that value into variable
-            if (passValue !== confirmPassword || passValue === '') { //compare the two variables
-                return {
-                    isError: true
-                };
-            }
-        }
-    }
-
-    return null;
-}
-
+import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms'; 
 
 export function usernameValidator(control: AbstractControl) {
     let debouncer: any;
@@ -31,7 +11,7 @@ export function usernameValidator(control: AbstractControl) {
               var userNameExists = JSON.parse(this.responseText);
                   if(userNameExists == true){
                     console.log('UsernameValidator --> resolve: '+userNameExists+ "isError = true");
-                    let passControl = control.root.get('userName').setErrors({userNameTaken: true});
+                    control.setErrors({userNameTaken: true});
                     return {userNameTaken: true};         
                 }
             }
