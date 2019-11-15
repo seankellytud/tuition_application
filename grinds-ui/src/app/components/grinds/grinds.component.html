@@ -1,89 +1,188 @@
-<main role="main" class="container">
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="jumbotron jumbotron-fluid" style="margin-bottom:0">
-          <div class="container">
-            <h2 style="text-align: center;">Tutors that fit your schedule</h2>      
-            <p class="lead" style="text-align: center;">Find your perfect tutor and arrange a Free Video Meeting. Then book one-to-one Lessons to fit your schedule.</p>
-          </div>
+<mat-card class="my-card">
+  <h3>Post a Grind</h3>
+<form class="post-grind-form"  id="ngForm" #documentEditForm="ngForm">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Where will the Grind be?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+          <input required matInput placeholder="Building Number or Name: " [formControl] = "buildingNoName">
+          <!-- <button mat-button *ngIf="buildingNoName.value" matSuffix mat-icon-button aria-label="Clear" (click)="buildingNoName.value=''">
+              <mat-icon>close</mat-icon>
+            </button> -->
+        </mat-form-field><br>
+        <mat-form-field>
+          <input matInput placeholder="Street Address" [formControl] = "streetAddress">
+          <!-- <button mat-button *ngIf="streetAddress.value" matSuffix mat-icon-button aria-label="Clear" (click)="streetAddress.value=''">
+              <mat-icon>close</mat-icon>
+            </button> -->
+        </mat-form-field><br>
+        <mat-form-field>
+          <input matInput placeholder="County" [formControl] = "county">
+          <!-- <button mat-button *ngIf="county.value" matSuffix mat-icon-button aria-label="Clear" (click)="county.value=''">
+              <mat-icon>close</mat-icon>
+            </button> -->
+        </mat-form-field><br>
+    
+        <mat-form-field>
+          <input required matInput placeholder="Eircode" [formControl] = "eircode">
+          <!-- <button mat-button *ngIf="eircode.value" matSuffix mat-icon-button aria-label="Clear" (click)="eircode.value=''">
+              <mat-icon>close</mat-icon>
+            </button> -->
+        </mat-form-field><br>
+    </mat-expansion-panel>
+    </mat-accordion>
+    <br>
+    <!-- <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Grind Type?
+        </mat-panel-title>
+      </mat-expansion-panel-header> --> 
+  
+      <mat-form-field>
+          <select matNativeControl required placeholder = "Subject"
+          matTooltip="Select your subject" [formControl] = "subject">
+                  <option value="mathematics">Mathematics</option>
+                  <option value="english">English</option>
+                  <option value="spanish">Spanish</option>
+                  <option value="music">Music</option>
+                  <option value="irish">Irish</option>
+                  <option value="biology">Biology</option>
+                  <option value="chemistry">Chemistry</option>
+                  <option value="physics">Physics</option>
+              </select>
+              <!-- <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="subject.value=''">
+                  <mat-icon>close</mat-icon>
+                </button> -->
+        </mat-form-field><br>
+    <!-- </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            How much do you charge per hour?
+        </mat-panel-title>
+      </mat-expansion-panel-header> -->
+  
+      <mat-form-field>
+          <input required matInput placeholder="Enter price in euro: " [formControl] = "pricePerHour">
+          <!-- <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="firstName.value=''">
+            <mat-icon>close</mat-icon>
+          </button> -->
+      </mat-form-field><br>
+  
+
+          <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button> -->
+          
+   
+    <!-- </mat-expansion-panel> -->
+  <button mat-raised-button (click)="postGrind()"> Post Grind </button>
+  <button mat-raised-button form="ngForm" (click) ="grindClearForm()">Clear</button>
+
+
+  <!-- </mat-accordion> -->
+  
+</form>
+</mat-card>
+
+
+
+<!-- <main role="main" class="container">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="jumbotron jumbotron-fluid" style="margin-bottom:0">
+              <div class="container">
+                <h2 style="text-align: center;">Tutors that fit your schedule</h2>      
+                <p class="lead" style="text-align: center;">Find your perfect tutor and arrange a Free Video Meeting. Then book one-to-one Lessons to fit your schedule.</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+          <div class="col">
+    <div class ="postGrind">
+          <mat-form-field>         
+            <input matInput required placeholder="Price Per Hour"
+            matTooltip="enter the price per hour">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput required placeholder="Address"
+            matTooltip="enter your Address">
+          </mat-form-field>
+          <mat-form-field>
+                <select matNativeControl required placeholder = "Subject"
+                matTooltip="Select your subject">
+                        <option value="mathematics">Mathematics</option>
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="music">Music</option>
+                        <option value="irish">Irish</option>
+                        <option value="biology">Biology</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="physics">Physics</option>
+                    </select>
+            </mat-form-field>
+          <div>
+          <button mat-raised-button
+          matTooltip="Register with these details"
+          onclick="alert('Grind posted to website.')">
+          Post Grind!
+        </button>
         </div>
     </div>
-  </div>
-</div>
-<hr>
-<div class="container">
-    <div class="row">
-      <div class="col">
-<div class ="postGrind">
-      <mat-form-field>         
-        <input matInput required placeholder="Price Per Hour"
-        matTooltip="enter the price per hour">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput required placeholder="Address"
-        matTooltip="enter your Address">
-      </mat-form-field>
-      <mat-form-field>
-            <select matNativeControl required placeholder = "Subject"
-            matTooltip="Select your subject">
-                    <option value="mathematics">Mathematics</option>
-                    <option value="english">English</option>
-                    <option value="spanish">Spanish</option>
-                    <option value="music">Music</option>
-                    <option value="irish">Irish</option>
-                    <option value="biology">Biology</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="physics">Physics</option>
-                </select>
-        </mat-form-field>
-      <div>
-      <button mat-raised-button
-      matTooltip="Register with these details"
-      onclick="alert('Grind posted to website.')">
-      Post Grind!
-    </button>
     </div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<div class="container">
+    </div>
+    </div>
+    <hr>
+    <div class="container">
     <div class="row">
-  <div class="col-sm-4">
-      <h2>Tutor</h2>
-      <div class="card">
-        <img class="card-img-top" src="https://source.unsplash.com/9UVmlIb0wJU/500x350" alt="Card image" style="width:100%">
-        <div class="card-body">
-          <h4 class="card-title">John Doe</h4>
-          <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-          <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+        <div class="col-sm-4">
+            <div class="container">
+                <h2>Tutor</h2>
+                <div class="card" style="width:400px">
+                  <img class="card-img-top" src="https://source.unsplash.com/9UVmlIb0wJU/500x350" alt="Card image" style="width:100%">
+                  <div class="card-body">
+                    <h4 class="card-title">John Doe</h4>
+                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="container">
+                <h2>Tutor</h2>
+                <div class="card" style="width:400px">
+                  <img class="card-img-top" src="https://source.unsplash.com/9UVmlIb0wJU/500x350" alt="Card image" style="width:100%">
+                  <div class="card-body">
+                    <h4 class="card-title">John Doe</h4>
+                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="container">
+                <h2>Tutor</h2>
+                <div class="card" style="width:400px">
+                  <img class="card-img-top" src="https://source.unsplash.com/9UVmlIb0wJU/500x350" alt="Card image" style="width:100%">
+                  <div class="card-body">
+                    <h4 class="card-title">John Doe</h4>
+                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+                  </div>
+                </div>
+              </div>
         </div>
       </div>
-  </div>
-  <div class="col-sm-4">
-      <h2>Tutor</h2>
-      <div class="card">
-        <img class="card-img-top" src="https://source.unsplash.com/9UVmlIb0wJU/500x350" alt="Card image" style="width:100%">
-        <div class="card-body">
-          <h4 class="card-title">John Doe</h4>
-          <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-          <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-        </div>
-      </div>
-  </div>
-  <div class="col-sm-4">
-      <h2>Tutor</h2>
-      <div class="card">
-        <img class="card-img-top" src="https://source.unsplash.com/9UVmlIb0wJU/500x350" alt="Card image" style="width:100%">
-        <div class="card-body">
-          <h4 class="card-title">John Doe</h4>
-          <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-          <a href="#" class="btn btn-primary stretched-link">See Profile</a>
-        </div>
-      </div>
-  </div>
-</div>
-  </div>
-</main>
+    </div>
+    </main> -->

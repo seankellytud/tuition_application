@@ -1,46 +1,44 @@
+h1,h3{
+  text-align: center;
+}
+.registration-form{
+  min-width: 50%;
+  max-width: 50%;
+  width: 100%;
+}
+ 
+.full-width {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}  
 
-h1{
-    text-align: center;
+.validations > span{
+  display: block;
 }
 
-.registration-form{
-    min-width: 50%;
-    max-width: 50%;
-    width: 100%;
-  }
-   
-  .full-width {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }  
-
-  .validations > span{
-    display: block;
-  }
-
-  .progress-bar-container {
-    height: 2px;
-    margin-top: 3px;
+.progress-bar-container {
+  height: 2px;
+  margin-top: 3px;
 }
 
 .progress-bar-value {
-  height: 2px;
-  transition: all 200ms ease;
+height: 2px;
+transition: all 200ms ease;
 }
 
 .progress-bar-value.low-strength {
-  background-color: #D12A36;
+background-color: #D12A36;
 }
 
 .progress-bar-value.medium-stregth {
-  background-color: #FFDE00;
+background-color: #FFDE00;
 }
 
 .progress-bar-value.high-strenght {
-  background-color: #4CC95A;
+background-color: #4CC95A;
 }
 
 .progress-bar-value.very-high-strenght {
-  background-color: #246129;
-}
+background-color: #246129;
+} 
