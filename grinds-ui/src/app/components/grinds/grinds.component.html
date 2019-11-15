@@ -10,29 +10,29 @@
       </mat-expansion-panel-header>
   
       <mat-form-field>
-          <input required matInput placeholder="Building Number or Name: " [formControl] = "buildingNoName">
-          <!-- <button mat-button *ngIf="buildingNoName.value" matSuffix mat-icon-button aria-label="Clear" (click)="buildingNoName.value=''">
+          <input required matInput placeholder="Building Number or Name: " [formControl] = "buildingNoName" [(ngModel)]="buildingNoName.value">
+          <button mat-button *ngIf="buildingNoName.value" matSuffix mat-icon-button aria-label="Clear" (click)="buildingNoName.value=''">
               <mat-icon>close</mat-icon>
-            </button> -->
+            </button>
         </mat-form-field><br>
         <mat-form-field>
-          <input matInput placeholder="Street Address" [formControl] = "streetAddress">
-          <!-- <button mat-button *ngIf="streetAddress.value" matSuffix mat-icon-button aria-label="Clear" (click)="streetAddress.value=''">
+          <input matInput placeholder="Street Address" [formControl] = "streetAddress" [(ngModel)]="streetAddress.value">
+          <button mat-button *ngIf="streetAddress.value" matSuffix mat-icon-button aria-label="Clear" (click)="streetAddress.value=''">
               <mat-icon>close</mat-icon>
-            </button> -->
+            </button>
         </mat-form-field><br>
         <mat-form-field>
-          <input matInput placeholder="County" [formControl] = "county">
-          <!-- <button mat-button *ngIf="county.value" matSuffix mat-icon-button aria-label="Clear" (click)="county.value=''">
+          <input matInput placeholder="County" [formControl] = "county" [(ngModel)]="county.value">
+          <button mat-button *ngIf="county.value" matSuffix mat-icon-button aria-label="Clear" (click)="county.value=''">
               <mat-icon>close</mat-icon>
-            </button> -->
+            </button>
         </mat-form-field><br>
     
         <mat-form-field>
-          <input required matInput placeholder="Eircode" [formControl] = "eircode">
-          <!-- <button mat-button *ngIf="eircode.value" matSuffix mat-icon-button aria-label="Clear" (click)="eircode.value=''">
+          <input required matInput placeholder="Eircode" [formControl] = "eircode" [(ngModel)]="eircode.value">
+          <button mat-button *ngIf="eircode.value" matSuffix mat-icon-button aria-label="Clear" (click)="eircode.value=''">
               <mat-icon>close</mat-icon>
-            </button> -->
+            </button>
         </mat-form-field><br>
     </mat-expansion-panel>
     </mat-accordion>
@@ -46,7 +46,8 @@
   
       <mat-form-field>
           <select matNativeControl required placeholder = "Subject"
-          matTooltip="Select your subject" [formControl] = "subject">
+          matTooltip="Select your subject" [formControl] = "subject"
+          [(ngModel)]="subject.value">
                   <option value="mathematics">Mathematics</option>
                   <option value="english">English</option>
                   <option value="spanish">Spanish</option>
@@ -56,9 +57,9 @@
                   <option value="chemistry">Chemistry</option>
                   <option value="physics">Physics</option>
               </select>
-              <!-- <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="subject.value=''">
+              <button mat-button *ngIf="subject.value" matSuffix mat-icon-button aria-label="Clear" (click)="subject.value=''">
                   <mat-icon>close</mat-icon>
-                </button> -->
+                </button>
         </mat-form-field><br>
     <!-- </mat-expansion-panel>
     <mat-expansion-panel>
@@ -69,10 +70,10 @@
       </mat-expansion-panel-header> -->
   
       <mat-form-field>
-          <input required matInput placeholder="Enter price in euro: " [formControl] = "pricePerHour">
-          <!-- <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="firstName.value=''">
+          <input required matInput placeholder="Enter price in euro: " [formControl] = "pricePerHour" [(ngModel)]="pricePerHour.value">
+          <button mat-button *ngIf="pricePerHour.value" matSuffix mat-icon-button aria-label="Clear" (click)="pricePerHour.value=''">
             <mat-icon>close</mat-icon>
-          </button> -->
+          </button>
       </mat-form-field><br>
   
 
