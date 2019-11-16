@@ -1,6 +1,10 @@
 export class Grind {
     id: number;
-    grindType: string;
+    buildingNo: number;
+    streetAddress: string;
+    county: string;  
+    eircode: string;
+    subject: string;
     grindAddress: string;
     pricePerHour: number;
 } 

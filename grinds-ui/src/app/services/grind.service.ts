@@ -15,6 +15,14 @@ export class GrindService {
     console.log("GrindService --> getGrinds()");
     return this.httpClient.get<Grind[]>('/server/api/v1/grinds');
   }
+  createGrind(grind: Grind) {
+    console.log("GrindService --> updateGrinds()");
+    return this.httpClient.post<Grind[]>('/server/api/v1/update', grind, httpOptions);
+  }
+
+  postGrind(grind: Grind): Observable<Grind> {
+    return this.grindService.registerUser(grind);
+  }
 
   registerUser(user: User): Observable<User> {
     console.log("GrindService --> registerUser()"+JSON.stringify(user));

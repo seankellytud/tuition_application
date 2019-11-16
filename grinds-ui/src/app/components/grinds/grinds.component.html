@@ -10,8 +10,8 @@
       </mat-expansion-panel-header>
   
       <mat-form-field>
-          <input required matInput placeholder="Building Number or Name: " [formControl] = "buildingNoName" [(ngModel)]="buildingNoName.value">
-          <button mat-button *ngIf="buildingNoName.value" matSuffix mat-icon-button aria-label="Clear" (click)="buildingNoName.value=''">
+          <input required matInput placeholder="Building Number: " [formControl] = "buildingNo" [(ngModel)]="buildingNo.value">
+          <button mat-button *ngIf="buildingNo.value" matSuffix mat-icon-button aria-label="Clear" (click)="buildingNo.value=''">
               <mat-icon>close</mat-icon>
             </button>
         </mat-form-field><br>
