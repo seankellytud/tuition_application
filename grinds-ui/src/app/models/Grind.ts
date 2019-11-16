@@ -4,7 +4,7 @@ export class Grind {
     streetAddress: string;
     county: string;  
     eircode: string;
-    subject: string;
+    grindType: string;
     grindAddress: string;
     pricePerHour: number;
 } 

@@ -35,19 +35,19 @@
             </button>
         </mat-form-field><br>
     </mat-expansion-panel>
-    </mat-accordion>
+   
     <br>
-    <!-- <mat-expansion-panel>
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Grind Type?
         </mat-panel-title>
-      </mat-expansion-panel-header> --> 
+      </mat-expansion-panel-header> 
   
       <mat-form-field>
           <select matNativeControl required placeholder = "Subject"
-          matTooltip="Select your subject" [formControl] = "subject"
-          [(ngModel)]="subject.value">
+          matTooltip="Select your subject" [formControl] = "grindType"
+          [(ngModel)]="grindType.value">
                   <option value="mathematics">Mathematics</option>
                   <option value="english">English</option>
                   <option value="spanish">Spanish</option>
@@ -57,17 +57,19 @@
                   <option value="chemistry">Chemistry</option>
                   <option value="physics">Physics</option>
               </select>
-              <button mat-button *ngIf="subject.value" matSuffix mat-icon-button aria-label="Clear" (click)="subject.value=''">
+              <button mat-button *ngIf="grindType.value" matSuffix mat-icon-button aria-label="Clear" (click)="grindType.value=''">
                   <mat-icon>close</mat-icon>
                 </button>
         </mat-form-field><br>
-    <!-- </mat-expansion-panel>
+     </mat-expansion-panel> 
+
+
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
             How much do you charge per hour?
         </mat-panel-title>
-      </mat-expansion-panel-header> -->
+      </mat-expansion-panel-header> 
   
       <mat-form-field>
           <input required matInput placeholder="Enter price in euro: " [formControl] = "pricePerHour" [(ngModel)]="pricePerHour.value">
@@ -77,15 +79,15 @@
       </mat-form-field><br>
   
 
-          <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button> -->
+        
           
    
-    <!-- </mat-expansion-panel> -->
+    </mat-expansion-panel>
   <button mat-raised-button (click)="postGrind()"> Post Grind </button>
   <button mat-raised-button form="ngForm" (click) ="grindClearForm()">Clear</button>
 
 
-  <!-- </mat-accordion> -->
+  </mat-accordion>
   
 </form>
 </mat-card>

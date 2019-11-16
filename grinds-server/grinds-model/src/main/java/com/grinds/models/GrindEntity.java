@@ -26,12 +26,45 @@ public class GrindEntity implements Grind{
 	private GrindType grindType;
 	@Column(name = "PRICE_PER_HOUR")
 	private BigDecimal pricePerHour;
-	@Column(name = "GRIND_ADDRESS")
+	@Column(name = "BUILDING_NO")
+	private String buildingNo;
+	@Column(name = "STREET_ADDRESS")
 	private String grindAddress;
+	@Column(name = "COUNTY")
+	private String county;
+	@Column(name = "EIRCODE")
+	private String eircode;
+
+
 	
 	@Override
 	public long getId() {
 		return id;
+	}
+	public String getBuildingNo() {
+		return buildingNo;
+	}
+	public void setBuildingNo(String buildingNo) {
+		this.buildingNo = buildingNo;
+	}
+	public String getCounty() {
+		return county;
+	}
+	public void setCounty(String county) {
+		this.county = county;
+	}
+	public String getEircode() {
+		return eircode;
+	}
+	public void setEircode(String eircode) {
+		this.eircode = eircode;
+	}
+	
+	public String getGrindAddress() {
+		return grindAddress;
+	}
+	public void setGrindAddress(String grindAddress) { //Street Name
+		this.grindAddress = grindAddress;
 	}
 	public void setId(long id) {
 		this.id = id;
@@ -50,12 +83,6 @@ public class GrindEntity implements Grind{
 	public void setPricePerHour(BigDecimal pricePerHour) {
 		this.pricePerHour = pricePerHour;
 	}
-	@Override
-	public String getGrindAddress() {
-		return grindAddress;
-	}
-	public void setAddress(String grindAddress) {
-		this.grindAddress = grindAddress;
-	}
+
 		
 }

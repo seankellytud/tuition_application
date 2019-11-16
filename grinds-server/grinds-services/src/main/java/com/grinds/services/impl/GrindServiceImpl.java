@@ -52,9 +52,13 @@ public class GrindServiceImpl implements GrindService{
     public Grind save(Grind grind) {
 		logger.info("GrindServiceImpl --> save");
 	    GrindEntity newGrind = new GrindEntity();
-	    newGrind.setAddress(grind.getGrindAddress());
+	    newGrind.setGrindAddress(grind.getGrindAddress());//Street Name
+	    newGrind.setBuildingNo(grind.getBuildingNo());
+	    newGrind.setCounty(grind.getCounty());
+	    newGrind.setEircode(grind.getEircode());
 	    newGrind.setGrindType(grind.getGrindType());
 	    newGrind.setPricePerHour(grind.getPricePerHour());
+	    
 	    logger.info("UserServiceImpl --> save user"+grind);
         return (Grind) grindRepo.save(newGrind);
     }
