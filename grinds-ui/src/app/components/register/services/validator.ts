@@ -17,7 +17,7 @@ export function usernameValidator(control: AbstractControl) {
             }
           };
           let data = 'username='+control.value;
-          xmlhttp.open("POST", "/server/api/v1/authenticate/systemhasusername", true); 
+          xmlhttp.open("POST", "/server/api/v1/username", true); 
           xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xmlhttp.send(data);
         }, 1000);      

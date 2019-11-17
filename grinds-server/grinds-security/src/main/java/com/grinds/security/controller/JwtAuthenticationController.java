@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.grinds.model.api.User;
+import com.grinds.models.utility.UriConstructor;
 import com.grinds.security.model.JwtRequest;
 import com.grinds.security.model.JwtResponse;
 import com.grinds.security.utils.JwtTokenUtil;
@@ -27,6 +28,7 @@ import com.grinds.services.UserService;
 @CrossOrigin
 public class JwtAuthenticationController {
 	private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationController.class);
+	private static final String PATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.AUTHENTICATION;
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	@Autowired
@@ -34,7 +36,7 @@ public class JwtAuthenticationController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/api/v1/authenticate", method = RequestMethod.POST)
+	@RequestMapping(value = PATH, method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		try {
 			authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());

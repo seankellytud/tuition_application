@@ -55,6 +55,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthModule } from './components/auth/auth.module';
 import { GrindsDetailComponent } from './components/grinds-detail/grinds-detail.component';
 import { MyAccountModule } from './components/my-account/my-account.module';
+import { UriConstructorService } from './services/uri-contructor.service';
 
 
 @NgModule({
@@ -167,7 +168,7 @@ import { MyAccountModule } from './components/my-account/my-account.module';
     ScrollingModule,
     AuthModule
   ],
-  providers: [GrindService],
+  providers: [GrindService, UriConstructorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
+import { UriType } from 'src/app/models/UriType';
 
 export function usernameValidator(control: AbstractControl) {
     let debouncer: any;
@@ -16,7 +17,8 @@ export function usernameValidator(control: AbstractControl) {
             }
           };
           let data = 'username='+control.value;
-          xmlhttp.open("POST", "/server/api/v1/authenticate/systemhasusername", true); 
+          let uri: string = this.uriConstructor.constructUri(UriType.USER); 
+          xmlhttp.open("GET", uri, true); 
           xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xmlhttp.send(data);
         }, 1000);      

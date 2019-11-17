@@ -1,5 +1,7 @@
 package com.grinds.security.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +18,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.grinds.models.utility.UriConstructor;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -24,6 +28,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         prePostEnabled = true
 )
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	//"/api/v1/authenticate/**"
+	private static final Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
+	private static final String AUTHPATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.AUTHENTICATION;
+	private static final String REGISTERPATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.REGISTRATION;
+	private static final String GRINDPATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.GRIND;
+	private static final String PATHUSERNAME = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.USERNAME;
+	
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 	@Autowired
@@ -71,11 +82,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/")
                         .permitAll()
-                    .antMatchers("/api/v1/authenticate/**")
+                    .antMatchers(AUTHPATH)
                         .permitAll()
-                    .antMatchers(HttpMethod.POST, "/api/v1/register")
+                    .antMatchers(PATHUSERNAME)
                         .permitAll()
-                    .antMatchers(HttpMethod.GET, "/api/v1/grinds")
+                    .antMatchers(HttpMethod.POST, REGISTERPATH)
+                        .permitAll()
+                    .antMatchers(HttpMethod.GET, GRINDPATH)
                         .permitAll()
                     .anyRequest()
                         .authenticated();

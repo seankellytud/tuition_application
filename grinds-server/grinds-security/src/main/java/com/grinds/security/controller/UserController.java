@@ -6,10 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,45 +19,48 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.grinds.model.api.User;
 import com.grinds.models.UserEntity;
+import com.grinds.models.utility.UriConstructor;
 import com.grinds.services.UserService;
 
 @RestController
 @CrossOrigin(origins="*", maxAge=3600)
 public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final String PATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.USER;
+	private static final String PATHUSERNAME = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.USERNAME;
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value="/api/v1/users", method= RequestMethod.GET)
+    @RequestMapping(value=PATH, method= RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public List<User> listUser(){
         return userService.findAll();
     }
     
-    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	@ResponseStatus(HttpStatus.OK)
-	public void createUser(@RequestBody UserEntity user) {
-		userService.save(user);
-	}
-	
-    @RequestMapping(value="/api/v1/user", method= RequestMethod.GET)
+    @RequestMapping(value=PATH, method= RequestMethod.GET, params={"username"}, consumes = "application/json", produces = "application/json")
 	public User get(@RequestParam("username")String username) {
 		return userService.findByUsername(username);
 	}
     
-    @DeleteMapping(value="/api/v1/delete")
+    @PostMapping(consumes = "application/json")
+	@ResponseStatus(HttpStatus.OK)
+	public void createUser(@RequestBody UserEntity user) {
+		userService.save(user);
+	}
+    
+    @DeleteMapping(value=PATH)
     public void deleteById(@RequestParam("id")String id) {
     	logger.info("UserController --> deleteById");
     	long delId = Long.parseLong(id);
     	userService.delete(delId);
     }
     
-    @RequestMapping(value="/api/v1/update", method= RequestMethod.POST)
+    @PutMapping(value=PATH, consumes = "application/json")
 	public void updateUser(@RequestBody UserEntity user) {
     	logger.info("UserController --> updateUser");
 		userService.updateUser(user);
 	}
     
-    @RequestMapping(value="/api/v1/authenticate/systemhasusername", method= RequestMethod.POST)
+    @RequestMapping(value=PATHUSERNAME, method= RequestMethod.POST, params={"username"})
 	public boolean systemHasUsername(@RequestParam("username")String username) {
     	logger.info("UserController --> systemHasUsername");
 		return userService.systemHasUsername(username);
