@@ -4,6 +4,7 @@ import { User } from 'src/app/models/User';
 import { Router } from '@angular/router';
 import { GrindService } from 'src/app/services/grind.service';
 import { Grind } from 'src/app/models/Grind'
+import { HttpClient } from '@angular/common/http' //https://www.positronx.io/how-to-use-angular-8-httpclient-to-post-formdata/
 @Component({
   selector: 'app-grinds',
   templateUrl: './grinds.component.html',
@@ -18,7 +19,7 @@ export class GrindsComponent implements OnInit {
   public grindType =  new FormControl('', [Validators.required, Validators.minLength(2)]);
   public pricePerHour =  new FormControl('', [Validators.required, Validators.minLength(2)]);
 
-  constructor(protected service: GrindService, protected router: Router) { }
+  constructor(protected service: GrindService, protected router: Router, private http: HttpClient)  { }
 
 
   grindClearForm() {
@@ -38,8 +39,14 @@ private createGrind(): Grind {
   newGrind.eircode = this.eircode.value;
   newGrind.grindType = this.grindType.value;
   newGrind.pricePerHour = this.pricePerHour.value;
+  newGrind.userName = this.getUsername(); // Not sure if this is correct way to to pass in user's username into this variable
+
   return newGrind;
 }
+
+public getUsername(): string {
+    return sessionStorage.getItem('currentUser');
+  }
 
 public onCreateGrind() {
   if(this.isFormValid()){
@@ -48,7 +55,7 @@ public onCreateGrind() {
       console.log(" Post Grind Component--> Grind Posted");
       this.message = "Grind Posted.";
       setTimeout(() => {
-        this.router.navigate(['/grinds']);
+        this.router.navigate(['/home']);
       },3000);
     });
   }

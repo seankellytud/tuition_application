@@ -19,14 +19,13 @@ export class GrindService {
     console.log("GrindService --> getGrinds() "+uri);
     return this.httpClient.get<Grind[]>(uri);
   }
-  createGrind(grind: Grind) {
+  
+  postGrind(grind: Grind) {
     console.log("GrindService --> updateGrinds()");
-    return this.httpClient.post<Grind[]>('/server/api/v1/update', grind, httpOptions);
+    return this.httpClient.post('/server/api/v1/grinds', grind, httpOptions);
   }
 
-  postGrind(grind: Grind): Observable<Grind> {
-    return null;
-  }
+  
 
   registerUser(user: User): Observable<User> {
     let uri = this.uriConstructor.constructUri(UriType.REGISTRATION);

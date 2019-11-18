@@ -37,7 +37,7 @@ public class GrindsController implements ControllerGrinds{
 		return grindService.findAll();
 	}
 	
-	@RequestMapping(value = "/api/v1/grinds", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/v1/grinds", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
 	public void createGrind(@RequestBody Grind grind) {
 		grindService.save(grind);

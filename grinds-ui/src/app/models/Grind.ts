@@ -7,4 +7,5 @@ export class Grind {
     grindType: string;
     grindAddress: string;
     pricePerHour: number;
+    userName: string; //for Grind table cross referencing.
 } 
