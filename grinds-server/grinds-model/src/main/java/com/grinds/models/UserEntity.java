@@ -7,10 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.grinds.model.api.User;
 import com.grinds.model.api.UserRole;
 import com.grinds.models.utility.EntityDataConverters.UserRoleConverter;
+import com.grinds.models.validators.ValidPassword;
 
 @Entity(name = "UserEntity")
 @Table(name = "t_user")
@@ -19,15 +23,30 @@ public class UserEntity implements User{
     @GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name = "ID")
     private long id;
+	
     @Column(name = "FIRST_NAME")
+    @NotNull
+    @Size(min=2, max=40)
     private String firstName;
+    
     @Column(name = "LAST_NAME")
+    @NotNull
+    @Size(min=2, max=40)
     private String lastName;
+    
     @Column(name = "USERNAME")
+    @NotNull
+    @Size(min=6, max=30)
     private String username;
+    
     @Column(name = "PASSWORD")
+    @NotNull
+    @ValidPassword(message="validation.password.notValid")
     private String password;
+    
     @Column(name="EMAIL_ADDRESS")
+    @NotNull
+    @Email(message="{validation.email.notValid}")
 	private String emailAddress;
     
     @Column(name = "USER_ROLE")

@@ -2,6 +2,8 @@ package com.grinds.security.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +45,7 @@ public class UserController {
     
     @PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
-	public void createUser(@RequestBody UserEntity user) {
+	public void createUser(@Valid @RequestBody UserEntity user) {
 		userService.save(user);
 	}
     
@@ -55,7 +57,7 @@ public class UserController {
     }
     
     @PutMapping(value=PATH, consumes = "application/json")
-	public void updateUser(@RequestBody UserEntity user) {
+	public void updateUser(@Valid @RequestBody UserEntity user) {
     	logger.info("UserController --> updateUser");
 		userService.updateUser(user);
 	}

@@ -1,5 +1,7 @@
 package com.grinds.security.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +29,7 @@ public class RegisterController {
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @RequestMapping(value=PATH, method= RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
-	public void createUser(@RequestBody UserEntity user) {
+	public void createUser(@Valid @RequestBody UserEntity user) {
 		userService.save(user);
 	}
 }

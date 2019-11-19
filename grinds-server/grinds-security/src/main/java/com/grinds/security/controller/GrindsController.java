@@ -2,6 +2,8 @@ package com.grinds.security.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class GrindsController implements ControllerGrinds{
 	
 	@RequestMapping(value = "/api/v1/grinds", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
-	public void createGrind(@RequestBody Grind grind) {
+	public void createGrind(@Valid @RequestBody Grind grind) {
 		grindService.save(grind);
 	}
 	

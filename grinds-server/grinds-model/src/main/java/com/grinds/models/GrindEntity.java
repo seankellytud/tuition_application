@@ -7,6 +7,9 @@ import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.grinds.model.api.Grind;
@@ -21,18 +24,32 @@ public class GrindEntity implements Grind{
 	@Id//may need to add the generated annotation
 	@Column(name = "GRIND_ID")
 	private long id;
+	
 	@Column(name = "GRIND_TYPE")
+	@NotNull
 	@Convert(converter = GrindTypeConverter.class)
 	private GrindType grindType;
+	
 	@Column(name = "PRICE_PER_HOUR")
+	@NotNull
+	@DecimalMin(value = "0.0", inclusive = false)
+    @Digits(integer=3, fraction=2)
 	private BigDecimal pricePerHour;
+	
 	@Column(name = "BUILDING_NO")
+	@NotNull
 	private String buildingNo;
+	
 	@Column(name = "STREET_ADDRESS")
+	@NotNull
 	private String grindAddress;
+	
 	@Column(name = "COUNTY")
+	@NotNull
 	private String county;
+	
 	@Column(name = "EIRCODE")
+	@NotNull
 	private String eircode;
 
 

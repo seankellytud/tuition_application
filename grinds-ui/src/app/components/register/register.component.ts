@@ -49,6 +49,9 @@ export class RegisterComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/login']);
         },3000);
+      },error => {
+        console.error("RegisterComponent --> registration "+error);
+        this.message = "Ops something went wrong. ";
       });
     }
     else
