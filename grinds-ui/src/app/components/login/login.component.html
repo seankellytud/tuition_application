@@ -14,4 +14,11 @@
   <mat-card-actions>
       <button mat-raised-button form="ngForm" [disabled]="!documentEditForm.form.valid">Log In</button>
   </mat-card-actions>
+
+  Don't have an account?
+  <a class="dropdown-toggle" data-toggle="dropdown">Sign Up Here<span class="glyphicon glyphicon-user"></span></a>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/register">Register as a Student</a></li>
+              <li><a routerLink="/register_tutor">Register as a Teacher</a></li>
+            </ul>
 </mat-card>

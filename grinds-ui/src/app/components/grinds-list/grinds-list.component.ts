@@ -17,10 +17,7 @@ export class GrindsListComponent implements OnInit {
   public displayedColumns = [
     'type',
     'pricePerHour',
-    'buildingNo',
-    'grindAddress',
     'county',
-    'eircode',
     'moreDetails'
   ];
 
