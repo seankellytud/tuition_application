@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { GrindService } from 'src/app/services/grind.service';
 import { Grind } from 'src/app/models/Grind'
 import { HttpClient } from '@angular/common/http' //https://www.positronx.io/how-to-use-angular-8-httpclient-to-post-formdata/
+import { MatTableDataSource } from '@angular/material';
+import { UserService } from '../auth/services/user.service';
+
 @Component({
   selector: 'app-grinds',
   templateUrl: './grinds.component.html',
@@ -19,7 +22,44 @@ export class GrindsComponent implements OnInit {
   public grindType =  new FormControl('', [Validators.required, Validators.minLength(2)]);
   public pricePerHour =  new FormControl('', [Validators.required, Validators.minLength(2)]);
 
-  constructor(protected service: GrindService, protected router: Router, private http: HttpClient)  { }
+  constructor(private grindService: GrindService,
+    protected service: GrindService, 
+    protected router: Router, 
+    private http: HttpClient,
+    private userService: UserService)  { }
+
+
+  dataSource = new MatTableDataSource<Grind>();
+  public displayedColumns = [
+    'type',
+    'pricePerHour',
+    'grindAddress',
+    'moreDetails'
+  ];
+
+  public isAuth() {
+    return this.userService.isUserAuth();
+  }
+
+ initializeMyGrindsProvider(userName:string) {
+    this.grindService.getGrindsByUsername(userName).subscribe(grinds => {
+      console.log(JSON.stringify(grinds));
+      this.dataSource =  new MatTableDataSource<Grind>(grinds); 
+    }, err =>{
+      console.error(err);
+    }, () => console.log('grinds loaded'));
+  }
+
+  ngOnInit() {
+    // this.dataSource = this.grindService.getGrinds();
+    // this.dataSource = new MatTableDataSource(this.dataSource);
+    let userName:string = this.getUsername();
+    console.log('user currently logged in: ' + userName);
+    this.initializeMyGrindsProvider(userName);
+  }
+
+  
+
 
 
   grindClearForm() {
@@ -68,9 +108,5 @@ isFormValid(): boolean {
 }
 
   
-
-  ngOnInit() {
-    
-  }
 
 }

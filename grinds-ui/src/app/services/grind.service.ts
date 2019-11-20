@@ -16,10 +16,37 @@ export class GrindService {
 
   getGrinds() {
     let uri = this.uriConstructor.constructUri(UriType.GRIND);
-    console.log("GrindService --> getGrinds() "+uri);
+    console.log("GrindService --> getGrinds() " + uri);
     return this.httpClient.get<Grind[]>(uri);
   }
-  
+
+
+// ###################################################
+  // GETGRIND BY USERNAME FOR MYGRIND TABLE IN HERE
+// ###################################################
+  getGrindsByUsername(username:string) {
+    let uri = this.uriConstructor.constructUri(UriType.GRIND);
+    console.log("GrindService --> getGrindsByUserName() " + uri);
+    let params = new HttpParams().set("username", username);
+    return this.httpClient.get<Grind[]>(uri, { headers: httpOptions.headers, params: params }).pipe();
+  }
+
+
+// ###################################################
+  // GET GRIND BY USERNAME FOR MYGRIND TABLE IN HERE
+// ###################################################
+
+
+ getUserByUsername(username: string): Observable<User> {
+    let uri = this.uriConstructor.constructUri(UriType.USER);
+    console.log("GrindService --> getUserByUsername() "+uri);
+    let params = new HttpParams().set("username", username);
+    return this.httpClient.get<User>(uri, { headers: httpOptions.headers, params: params }).pipe();
+  }
+
+
+
+
   postGrind(grind: Grind) {
     console.log("GrindService --> updateGrinds()");
     return this.httpClient.post('/server/api/v1/grinds', grind, httpOptions);
@@ -47,12 +74,7 @@ export class GrindService {
     });
   }
 
-  getUserByUsername(username: string): Observable<User> {
-    let uri = this.uriConstructor.constructUri(UriType.USER);
-    console.log("GrindService --> getUserByUsername() "+uri);
-    let params = new HttpParams().set("username", username);
-    return this.httpClient.get<User>(uri, { headers: httpOptions.headers, params: params }).pipe();
-  }
+ 
 
   deleteAccount(id: number):Promise<any>{
     return new Promise(resolve => {
