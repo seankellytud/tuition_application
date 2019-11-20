@@ -35,6 +35,7 @@
     }
   }
 /*scroll spy code*/
+/*
   @media screen and (max-width: 810px) {
     #section1, #section2, #section3, #section41, #section42  {
       margin-left: 150px;
@@ -56,3 +57,16 @@
   #section3 {color: #fff; background-color: #ff9800;}
   #section41 {color: #fff; background-color: #00bcd4;}
   #section42 {color: #fff; background-color: #009688;}
+  */
+
+  .current-section {
+    background-color: cornflowerblue
+  }
+  .current-section::after { 
+    content: "\039e";
+    background-color: yellow; 
+    color: red;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+  }

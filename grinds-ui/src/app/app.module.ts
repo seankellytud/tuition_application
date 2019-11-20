@@ -56,6 +56,9 @@ import { AuthModule } from './components/auth/auth.module';
 import { GrindsDetailComponent } from './components/grinds-detail/grinds-detail.component';
 import { MyAccountModule } from './components/my-account/my-account.module';
 import { UriConstructorService } from './services/uri-contructor.service';
+import { ScrollSpyDirective } from './components/about/scroll-spy.directive';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -65,7 +68,8 @@ import { UriConstructorService } from './services/uri-contructor.service';
     AboutComponent,
     GrindsComponent,
     LoginComponent,
-    GrindsDetailComponent
+    GrindsDetailComponent,
+    ScrollSpyDirective
   ],
   imports: [
     BrowserModule,
@@ -121,7 +125,8 @@ import { UriConstructorService } from './services/uri-contructor.service';
     PortalModule,
     ScrollingModule,
     AuthModule, 
-    MyAccountModule
+    MyAccountModule,
+    FormsModule
   ],
   exports: [
     A11yModule,
