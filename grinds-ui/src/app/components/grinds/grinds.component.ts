@@ -53,9 +53,9 @@ export class GrindsComponent implements OnInit {
   ngOnInit() {
     // this.dataSource = this.grindService.getGrinds();
     // this.dataSource = new MatTableDataSource(this.dataSource);
-    let userName:string = this.getUsername();
-    console.log('user currently logged in: ' + userName);
-    this.initializeMyGrindsProvider(userName);
+    let currentUserName:string = this.getUsername();
+    console.log('user currently logged in: ' + currentUserName);
+    this.initializeMyGrindsProvider(currentUserName);
   }
 
   
