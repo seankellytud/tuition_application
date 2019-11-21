@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public message: string = ''
+  public uname =  new FormControl;
+  public pword =  new FormControl;
 
   constructor(private authService: AuthService, private router: Router) { }
   
@@ -27,6 +29,11 @@ export class LoginComponent implements OnInit {
       ]),
     });
   }
+
+  loginClearForm() {
+    this.uname.setValue('');
+    this.pword.setValue('');
+}
 
   public onLogin() {
     this.message = '';

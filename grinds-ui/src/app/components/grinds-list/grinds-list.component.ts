@@ -57,7 +57,7 @@ export class GrindsListComponent implements OnInit {
     if (this.readyState == 4 && this.status == 200) {
       var myObj = JSON.parse(this.responseText);
       console.log(myObj[2].grindAddress); // returns 145 Fake Street Tallaght Dublin 18 when button clicked => attributes are accessible
-      var revealAddress = document.getElementById("addressReveal").innerHTML=('The address for that grind is: '+ myObj[index].grindAddress); //Put into Empty div
+      var revealAddress = document.getElementById("addressReveal").innerHTML=('The address for that grind is: '+ myObj[index].grindAddress + 'And price per hour: '+myObj[index].pricePerHour); //Put into Empty div
       return revealAddress;
     }
   };

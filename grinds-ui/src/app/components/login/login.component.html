@@ -1,18 +1,25 @@
  <mat-card class="my-card">
-    <h5>Log In</h5>
+    <h3>Log In</h3>
   <mat-card-content>
      <form class="registration-form" [formGroup]="loginForm" (ngSubmit)="onLogin()" id="ngForm" #documentEditForm="ngForm">
       <mat-form-field class="full-width">
-          <input matInput required  placeholder="Username" formControlName="username">
+          <input matInput required  placeholder="Username" formControlName="username" [formControl]="uname" [(ngModel)]="uname.value">
+          <button mat-button *ngIf="uname.value" matSuffix mat-icon-button aria-label="Clear" (click)="uname.value=''">
+              <mat-icon>close</mat-icon>
+            </button>
       </mat-form-field>
       <mat-form-field class="full-width">
-          <input matInput required placeholder="Password"  type="password" formControlName="password">
+          <input matInput required placeholder="Password"  type="password"[formControl]="pword" formControlName="password" [(ngModel)]="pword.value">
+          <button mat-button *ngIf="pword.value" matSuffix mat-icon-button aria-label="Clear" (click)="pword.value=''">
+              <mat-icon>close</mat-icon>
+            </button>
       </mat-form-field>
      </form>
   </mat-card-content>
   {{message}}
   <mat-card-actions>
       <button mat-raised-button form="ngForm" [disabled]="!documentEditForm.form.valid">Log In</button>
+      <button mat-raised-button form="ngForm" (click) ="loginClearForm()">Clear</button>
   </mat-card-actions>
 
   Don't have an account?
