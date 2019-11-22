@@ -7,16 +7,18 @@ public interface Grind {
 	public GrindType getGrindType();
 	public BigDecimal getPricePerHour();
 	public String getBuildingNo();
-	public String getGrindAddress();//Street Name
+	public String getStreet();//Street Name
 	public String getCounty();
 	public String getEircode();
+	public String getUsername();
 	public void setBuildingNo(String buildingNo);
 	public void setCounty(String county);
 	public void setEircode(String eircode);
-	public void setGrindAddress(String grindAddress); //Street Name
+	public void setStreet(String street); //Street Name
 	public void setId(long id);
 	public void setGrindType(GrindType grindType);
 	public void setPricePerHour(BigDecimal pricePerHour);
+	public void setUsername(String username);
 	
 }
 

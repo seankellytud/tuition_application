@@ -13,6 +13,6 @@ public interface GrindService {
 	Grind save(Grind user);
     List<Grind> findAll();
     void delete(long id);
-    Grind findById(Long id);
+    List<Grind> grindListByUsername(String username);
 
 }

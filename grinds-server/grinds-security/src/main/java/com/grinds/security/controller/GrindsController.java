@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.grinds.api.ControllerGrinds;
 import com.grinds.model.api.Grind;
+import com.grinds.models.GrindEntity;
 import com.grinds.models.utility.UriConstructor;
 import com.grinds.services.GrindService;
 
 
 @RestController
 @CrossOrigin(origins="*", maxAge=3600)
-public class GrindsController implements ControllerGrinds{
+public class GrindsController{
 	private static final Logger logger = LoggerFactory.getLogger(GrindsController.class);
 	private static final String PATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.GRIND;
 	
@@ -39,15 +39,19 @@ public class GrindsController implements ControllerGrinds{
 		return grindService.findAll();
 	}
 	
-	@RequestMapping(value = "/api/v1/grinds", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = PATH, method = RequestMethod.POST, consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
-	public void createGrind(@Valid @RequestBody Grind grind) {
+	public void createGrind( @RequestBody GrindEntity grind) {
 		grindService.save(grind);
 	}
 	
-	@RequestMapping(value = PATH, method = RequestMethod.GET, params={"id"}, consumes = "application/json", produces = "application/json")
-	public Grind get(@RequestParam("id")long id) {
-		return grindService.findById(id);
+	
+	//retrieving grind list by username, assuming username is unique
+	@RequestMapping(value = PATH, method = RequestMethod.GET, params={"username"}, consumes = "application/json", produces = "application/json")
+	public List<Grind> grindListByUsername(@RequestParam("username")String username){
+		logger.info("GrindController --> grindListByUsername "+PATH+" "+username);
+		return grindService.grindListByUsername(username);
 	}
+
 	
 }

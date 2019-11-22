@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { Router } from '@angular/router';
 import { GrindService } from 'src/app/services/grind.service';
 import { Grind } from 'src/app/models/Grind'
 import { HttpClient } from '@angular/common/http' //https://www.positronx.io/how-to-use-angular-8-httpclient-to-post-formdata/
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatAccordion } from '@angular/material';
 import { UserService } from '../auth/services/user.service';
 
 @Component({
@@ -14,6 +14,7 @@ import { UserService } from '../auth/services/user.service';
   styleUrls: ['./grinds.component.css']
 })
 export class GrindsComponent implements OnInit {
+
   public message: string = ''
   public buildingNo =  new FormControl('', [Validators.required, Validators.minLength(2)]);
   public streetAddress =  new FormControl('', [Validators.required, Validators.minLength(2)]);
@@ -58,10 +59,6 @@ export class GrindsComponent implements OnInit {
     this.initializeMyGrindsProvider(currentUserName);
   }
 
-  
-
-
-
   grindClearForm() {
     this.buildingNo.setValue('');
     this.streetAddress.setValue('');
@@ -74,12 +71,12 @@ export class GrindsComponent implements OnInit {
 private createGrind(): Grind {
   let newGrind: Grind = new Grind();
   newGrind.buildingNo = this.buildingNo.value;
-  newGrind.streetAddress = this.streetAddress.value;
+  newGrind.street = this.streetAddress.value;
   newGrind.county = this.county.value;
   newGrind.eircode = this.eircode.value;
-  newGrind.grindType = this.grindType.value;
+  newGrind.grindType = this.grindType.value.toString().toUpperCase();
   newGrind.pricePerHour = this.pricePerHour.value;
-  newGrind.userName = this.getUsername(); // Not sure if this is correct way to to pass in user's username into this variable
+  newGrind.username = this.getUsername(); // Not sure if this is correct way to to pass in user's username into this variable
 
   return newGrind;
 }
@@ -88,15 +85,18 @@ public getUsername(): string {
     return sessionStorage.getItem('currentUser');
   }
 
-public onCreateGrind() {
+public onCreateGrind(accordion: any) {
   if(this.isFormValid()){
     console.log("CreateGrindComponent --> Create Grind form is valid");
     this.service.postGrind(this.createGrind()).subscribe((grind) => {
       console.log(" Post Grind Component--> Grind Posted");
       this.message = "Grind Posted.";
+      
       setTimeout(() => {
-        this.router.navigate(['/home']);
-      },3000);
+        accordion.closeAll();
+        this.grindClearForm();
+        this.initializeMyGrindsProvider(this.getUsername());
+      },100);
     });
   }
   else

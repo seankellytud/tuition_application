@@ -1,7 +1,7 @@
 <mat-card class="my-card">
   <h3>Post a Grind</h3>
 <form class="post-grind-form"  id="ngForm" #documentEditForm="ngForm">
-  <mat-accordion>
+  <mat-accordion #accordion="matAccordion" [multi]="true">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -83,7 +83,7 @@
           
    
     </mat-expansion-panel><br>
-  <button mat-raised-button (click)="onCreateGrind()"> Post Grind </button>
+  <button mat-raised-button (click)="onCreateGrind(accordion)"> Post Grind </button>
   <button mat-raised-button form="ngForm" (click) ="grindClearForm()">Clear</button>
 
 

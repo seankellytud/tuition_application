@@ -17,7 +17,7 @@ import com.grinds.model.api.GrindType;
 import com.grinds.models.utility.EntityDataConverters.GrindTypeConverter;
 
 @Entity(name = "GrindEntity")
-@Table(name = "t_grinds")
+@Table(name = "t_grind")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class GrindEntity implements Grind{
 	
@@ -40,9 +40,9 @@ public class GrindEntity implements Grind{
 	@NotNull
 	private String buildingNo;
 	
-	@Column(name = "STREET_ADDRESS")
+	@Column(name = "STREET")
 	@NotNull
-	private String grindAddress;
+	private String street;
 	
 	@Column(name = "COUNTY")
 	@NotNull
@@ -51,6 +51,10 @@ public class GrindEntity implements Grind{
 	@Column(name = "EIRCODE")
 	@NotNull
 	private String eircode;
+	
+	@Column(name = "USERNAME")
+	@NotNull
+	private String username;
 
 
 	
@@ -58,31 +62,40 @@ public class GrindEntity implements Grind{
 	public long getId() {
 		return id;
 	}
+	
+	@Override
 	public String getBuildingNo() {
 		return buildingNo;
 	}
+	@Override
 	public void setBuildingNo(String buildingNo) {
 		this.buildingNo = buildingNo;
 	}
+	@Override
 	public String getCounty() {
 		return county;
 	}
+	@Override
 	public void setCounty(String county) {
 		this.county = county;
 	}
+	@Override
 	public String getEircode() {
 		return eircode;
 	}
+	@Override
 	public void setEircode(String eircode) {
 		this.eircode = eircode;
 	}
-	
-	public String getGrindAddress() {
-		return grindAddress;
+	@Override
+	public String getStreet() {
+		return street;
 	}
-	public void setGrindAddress(String grindAddress) { //Street Name
-		this.grindAddress = grindAddress;
+	@Override
+	public void setStreet(String street) { //Street Name
+		this.street = street;
 	}
+	@Override
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -99,6 +112,16 @@ public class GrindEntity implements Grind{
 	}
 	public void setPricePerHour(BigDecimal pricePerHour) {
 		this.pricePerHour = pricePerHour;
+	}
+
+	@Override
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public void setUsername(String username) {
+		this.username = username;	
 	}
 
 		

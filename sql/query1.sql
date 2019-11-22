@@ -1,13 +1,15 @@
 CREATE DATABASE grinds;
- 
-CREATE TABLE `grinds`.`t_grinds` (
-  `GRIND_ID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `PRICE_PER_HOUR` DECIMAL NOT NULL,
-  `GRIND_ADDRESS` VARCHAR(2000) NOT NULL,
-  `GRIND_TYPE` INT,
-  `GRIND_LEVEL` VARCHAR(2000) NOT NULL
-);
-  
+
+drop table if exists t_user;
+create table t_user (ID bigint not null auto_increment, PASSWORD varchar(255), FIRST_NAME varchar(255), LAST_NAME varchar(255), USERNAME varchar(255), EMAIL_ADDRESS varchar(255) , `USER_ROLE` INT,primary key (ID)) engine=MyISAM
+
+#student
+INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user1', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'John', 'Doe', 'john.doe@yahoo.com',2);
+#teacher
+INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user2', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Michael', 'Michael', 'michael.michael@gmail.com',3);
+#student
+INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user3', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Cristian', 'Suia', 'cristian.suia@yahoo.ie',2);
+
 CREATE TABLE `grinds`.`tr_grind_type` (
   `GRIND_TYPE_ID` INT NOT NULL PRIMARY KEY,
   `GRIND_TYPE_DESC` VARCHAR(500) NOT NULL);
@@ -20,56 +22,33 @@ CREATE TABLE `grinds`.`tr_role` (
   
 INSERT INTO `grinds`.`tr_role` (ROLE_ID, ROLE_DESC) VALUES(1, 'ADMIN'),(2, 'STUDENT'),(3,'TEACHER');
 
-INSERT INTO `grinds`.`t_grinds` (PRICE_PER_HOUR, GRIND_ADDRESS, GRIND_TYPE, GRIND_LEVEL) VALUES 
-(35,`123 Fake Street Blanchardstown Dublin 15`, 1, `JUNIOR CERTIFICATE`),
-(25,`111 Fake Street Dundrum Dublin 8`, 3, `LEAVING CERTIFICATE`),
-(45,`145 Fake Street Tallaght Dublin 18`, 6, `UNIVERSITY LEVEL`);
+
+drop table if exists t_grind;
+commit;
+
+CREATE TABLE `grinds`.`t_grind` (
+  `GRIND_ID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `PRICE_PER_HOUR` DECIMAL NOT NULL,
+  `GRIND_TYPE` INT,
+  `BUILDING_NO` INT NOT NULL,
+  `STREET` VARCHAR(2000) NOT NULL,
+  `COUNTY` VARCHAR (100) NOT NULL,
+  `EIRCODE` VARCHAR (100) NOT NULL,
+  `USERNAME` VARCHAR(100)
+);
+commit;
+ 
+#POPULATE WITH NEW INFO
+#user2 is the username of a teacher
+ INSERT INTO `GRINDS`.`T_GRIND` (PRICE_PER_HOUR,GRIND_TYPE, BUILDING_NO, STREET, COUNTY, EIRCODE, USERNAME) VALUES
+(35, 1, 123,'FAKE STREET', 'DUBLIN','D05HK71','user2'),
+(35, 1, 123,'NEW STREET', 'CARLOW','C06ABC','user2'),
+(40, 3, 33,'OLD STREET', 'KILKENNY','K03ERC','user2'),
+ (35, 4, 69,'JAMES STREET', 'CLARE','K05HK78','user2');
+ commit;
+  
 
 
-alter table t_grinds
-add `GRIND_LEVEL` VARCHAR(2000) NOT NULL;
 
-update t_grinds set grind_level= 'junior certificate' where grind_id =1;
- update t_grinds set grind_level= 'leaving certificate' where grind_id =2;
- update t_grinds set grind_level= 'university level' where grind_id =3;
-
-
-
-drop table if exists t_user;
-create table t_user (ID bigint not null auto_increment, PASSWORD varchar(255), FIRST_NAME varchar(255), LAST_NAME varchar(255), USERNAME varchar(255), EMAIL_ADDRESS varchar(255) , `USER_ROLE` INT,primary key (ID)) engine=MyISAM
-
-INSERT INTO t_user (ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS) VALUES (1, 'user1', '$2a$04$Ye7/lJoJin6.m9sOJZ9ujeTgHEVM4VXgI2Ingpsnf9gXyXEXf/IlW', 'John', 'Doe', 'john.doe@yahoo.com');
-INSERT INTO t_user (ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS) VALUES (2, 'user2', '$2a$04$StghL1FYVyZLdi8/DIkAF./2rz61uiYPI3.MaAph5hUq03XKeflyW', 'Michael', 'Michael', 'michael.michael@gmail.com');
-INSERT INTO t_user (ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS) VALUES (3, 'user3', '$2a$04$Lk4zqXHrHd82w5/tiMy8ru9RpAXhvFfmHOuqTmFPWQcUhBD8SSJ6W', 'Cristian', 'Suia', 'cristian.suia@yahoo.ie');
-
-
-
-/////////////////////////////////////////////////////////////////////
-TABLE REDONE FROM BELOW
-/////////////////////////////////////////////////////////////////////
-
-//GET RID OF GRIND LEVEL AND GRIND ADDRESS COLUMNS 
-ALTER TABLE t_grinds drop grind_level;
-ALTER TABLE T_GRINDS DROP GRIND_ADDRESS;
-
-//ADD NEW COLUMNS FOR EACH CREATE GRIND FORM FIELD
- add column BUILDING_NO INT NOT NULL;
-add column STREET_ADDRESS VARCHAR (100) NOT NULL;
-add column COUNTY VARCHAR (100) NOT NULL;
-add column EIRCODE VARCHAR (100) NOT NULL;
-
-//CLEAR TABLE COMPLETELY
-TRUNCATE [TABLE] T_GRINDS;
-
-//POPULATE WITH NEW INFO
- INSERT INTO `GRINDS`.`T_GRINDS` (PRICE_PER_HOUR,GRIND_TYPE, BUILDING_NO, STREET_ADDRESS, COUNTY, EIRCODE) VALUES
-(35, 1, 123,'FAKE STREET', 'DUBLIN','D05HK71'),
-(35, 1, 123,'NEW STREET', 'CARLOW','C06ABC'),
-(40, 3, 33,'OLD STREET', 'KILKENNY','K03ERC'),
- (35, 4, 69,'JAMES STREET', 'CLARE','K05HK78');
-
-//ADD USERNAME COLUMN TO GRIND TABLE
- alter table t_grinds
-add column USER_NAME VARCHAR(100) NOT NULL;
 
 

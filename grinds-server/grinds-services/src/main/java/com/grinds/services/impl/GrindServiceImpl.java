@@ -41,26 +41,30 @@ public class GrindServiceImpl implements GrindService{
 		grindRepo.deleteById(id);
 	}
 
-	// finds a grind by id, needs implementation
-	@Override
-	public Grind findById(Long id) {
-		return null;
-	}
-
 	//create a new grind entity and calls the repository to save it in the database
 	@Override
     public Grind save(Grind grind) {
 		logger.info("GrindServiceImpl --> save");
 	    GrindEntity newGrind = new GrindEntity();
-	    newGrind.setGrindAddress(grind.getGrindAddress());//Street Name
+	    newGrind.setStreet(grind.getStreet());//Street Name
 	    newGrind.setBuildingNo(grind.getBuildingNo());
 	    newGrind.setCounty(grind.getCounty());
 	    newGrind.setEircode(grind.getEircode());
 	    newGrind.setGrindType(grind.getGrindType());
 	    newGrind.setPricePerHour(grind.getPricePerHour());
+	    newGrind.setUsername(grind.getUsername());
 	    
 	    logger.info("UserServiceImpl --> save user"+grind);
         return (Grind) grindRepo.save(newGrind);
     }
+
+	@Override
+	public List<Grind> grindListByUsername(String username) {
+		List list = new ArrayList<Grind>();
+		grindRepo.findByUsername(username).iterator().forEachRemaining(list::add);
+		return list;
+	}
+	
+	
 
 }
