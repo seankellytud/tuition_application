@@ -1,5 +1,3 @@
-        <!--Empty div for Show Address result to be put into via AJAX-->
-       <div id="addressReveal" ></div>
       <div id="searchFields">
       <mat-form-field>
         <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')" placeholder="Search By Subject">
@@ -13,73 +11,34 @@
      </div>   
      
       <table mat-table [dataSource]="dataSource" class="grinds_table mat-elevation-z8">
-      
-        <!-- Grind Type Column -->
+
         <ng-container matColumnDef="type">
           <th mat-header-cell *matHeaderCellDef> Subject
           </th>
           <td mat-cell *matCellDef="let grind"> {{grind.grindType}} </td>
         </ng-container>
-      
-        <!-- Price Column -->
+
         <ng-container matColumnDef="pricePerHour">
           <th mat-header-cell *matHeaderCellDef> Price Per Hour 
           </th>
           <td mat-cell *matCellDef="let grind"> {{grind.pricePerHour}} </td>
         </ng-container>
-
-        <!-- <ng-container matColumnDef="buildingNo">
-          <th mat-header-cell *matHeaderCellDef>Building Number
-          </th>
-          <td mat-cell *matCellDef="let grind"> {{grind.buildingNo}} </td>
-        </ng-container> -->
-
-        
           <ng-container matColumnDef="county">
               <th mat-header-cell *matHeaderCellDef> County
               </th>
               <td mat-cell *matCellDef="let grind"> {{grind.county}} </td>
             </ng-container>
-
-        <!-- <ng-container matColumnDef="eircode">
-          <th mat-header-cell *matHeaderCellDef> Eircode
-          </th>
-          <td mat-cell *matCellDef="let grind"> {{grind.eircode}} </td>
-        </ng-container> -->
-
-        <!-- <ng-container matColumnDef="grindAddress">
-            <th mat-header-cell *matHeaderCellDef>Street </th>
-                <td mat-cell *matCellDef="let grind">   Use this to get the index of the row to pass into function -->
-                  <!-- {{grind.grindAddress}}
-                </td>
-          </ng-container>  -->
-
-          <!-- <ng-container matColumnDef="grindAddress">
-              <th mat-header-cell *matHeaderCellDef> Address </th>
-                  <td mat-cell *matCellDef="let grind; let i = index;">  < Use this to get the index of the row to pass into function -->
-                    <!-- <button mat-button (click) = "showAddress(i)">
-                        Show Address
-                      </button>
-                  </td>
-            </ng-container> --> 
-        
-      
-        <!-- Address Column -->
-        
         <ng-container matColumnDef="moreDetails">
           <th mat-header-cell *matHeaderCellDef> </th>
-          <!-- <td mat-cell *matCellDef="let grind"> {{grind.grindAddress}} </td> -->
-              <td mat-cell *matCellDef="let grind; let i = index;">  <!-- Use this to get the index of the row to pass into function -->
-                <button *ngIf="isAuth()" mat-raised-button routerLink="/grinds-detail" > 
-                  <!--Thinking of using (click) = showAddress(i) function here and populating a dialog from this with all the info, getting rid 
-                    of the grinds-detail page completely https://material.angularjs.org/latest/demo/dialog -->
+              <td mat-cell *matCellDef="let grind; let i = index;">  
+                <!-- Use this to get the index of the row to pass into showAll function -->
+                <button *ngIf="isAuth()" mat-raised-button routerLink="/grinds-detail" (click)= "showAll(i)" > 
+                 
                 Show More Details -->
                   </button>
                 <button *ngIf="!isAuth()" mat-raised-button routerLink="/login">
                    Log In to See More Details --> 
                   </button>
-
-                    
               </td>
     
         </ng-container>

@@ -10,6 +10,7 @@ public interface Grind {
 	public String getGrindAddress();//Street Name
 	public String getCounty();
 	public String getEircode();
+	public String getEmail();
 	public void setBuildingNo(String buildingNo);
 	public void setCounty(String county);
 	public void setEircode(String eircode);
@@ -17,6 +18,7 @@ public interface Grind {
 	public void setId(long id);
 	public void setGrindType(GrindType grindType);
 	public void setPricePerHour(BigDecimal pricePerHour);
+	public void setEmail(String email);
 	
 }
 

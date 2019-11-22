@@ -58,6 +58,7 @@ public class GrindServiceImpl implements GrindService{
 	    newGrind.setEircode(grind.getEircode());
 	    newGrind.setGrindType(grind.getGrindType());
 	    newGrind.setPricePerHour(grind.getPricePerHour());
+	    newGrind.setEmail(grind.getEmail());
 	    
 	    logger.info("UserServiceImpl --> save user"+grind);
         return (Grind) grindRepo.save(newGrind);
