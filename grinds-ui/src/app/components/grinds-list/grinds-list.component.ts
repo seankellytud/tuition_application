@@ -50,14 +50,22 @@ export class GrindsListComponent implements OnInit {
     return this.userService.isUserAuth();
   }
 
- ////////////////AJAX REVEAL ADDRESS?/////////////////////
- public showAddress(index: number){
+
+
+
+
+
+public showAddress(index: number){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var myObj = JSON.parse(this.responseText);
       console.log(myObj[2].grindAddress); // returns 145 Fake Street Tallaght Dublin 18 when button clicked => attributes are accessible
-      var revealAddress = document.getElementById("addressReveal").innerHTML=('The address for that grind is: '+ myObj[index].grindAddress + 'And price per hour: '+myObj[index].pricePerHour); //Put into Empty div
+      var revealAddress = document.getElementById("address").innerHTML=
+        (myObj[index].buildingNo 
+        +", " + myObj[index].grindAddress 
+        +", " + myObj[index].county
+        +", " + myObj[index].eircode)
       return revealAddress;
     }
   };
@@ -65,44 +73,55 @@ export class GrindsListComponent implements OnInit {
   xmlhttp.send();
   
 }
- 
+  public showType(index: number){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      console.log(myObj[2].grindAddress); // returns 145 Fake Street Tallaght Dublin 18 when button clicked => attributes are accessible
+      var revealType = document.getElementById("type").innerHTML=(myObj[index].grindType)
+      return revealType;
+    }
+  };
+  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
+  xmlhttp.send();
+  
+}
+  public showPrice(index: number){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      var revealPrice = document.getElementById("price").innerHTML=(myObj[index].pricePerHour)
+      return revealPrice;
+    }
+  };
+  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
+  xmlhttp.send();
+  
+}
+  public showEmail(index: number){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      var revealEmail = document.getElementById("email").innerHTML=(myObj[index].email)
+      return revealEmail;
+    }
+  };
+  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
+  xmlhttp.send();
+  
+}
+
+
+public showAll(index: number){
+this.showAddress(index);
+this.showPrice(index);
+this.showType(index);
+this.showEmail(index); //A very inefficient wasof populating the grind details table. It works though....
+}
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // applyFilter(filterValue: string) {
-  //   this.dataSource.grindType.filterPredicate = function(dataSource, filterValue: string): boolean {
-  //     return dataSource.grindType.toLowerCase().includes(filterValue);
-      // dataSource.grindAddress.toLowerCase().includes(filterValue) || 
-      // dataSource.pricePerHour.toString() === filterValue ||
-      // dataSource.id.toString() === filterValue;
-  //   };
-  // }
-
-
-  // applyFilter(filterValue: string) {
-  //   this.dataSource.filterPredicate = function(data, filterValue: string): boolean {
-  //     return data.grindType.toLowerCase().includes(filterValue);
-  //   }
-  // }
-
-
-
-//   logData(row){
-//     console.log(row);// This is a click method set up for clicking rows in

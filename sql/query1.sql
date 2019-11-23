@@ -51,4 +51,13 @@ commit;
 
 
 
+//ADD EMAIL COLUMB TO GRIND TABLE
+alter table t_grinds
+add column email varchar(100) not null
+
+GIVE grind_id = 1 an email to populat the grind detail data table:
+update t_grinds
+set email = 'teacher@me.com'
+ where grind_id = 1;
+
 
