@@ -4,6 +4,7 @@ import { RegisterService } from './services/register_service';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { Role } from 'src/app/models/Role';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-register-tutor',
@@ -20,6 +21,13 @@ export class RegisterTutorComponent extends RegisterComponent implements OnInit 
   }
 
   ngOnInit() {
+  }
+
+  protected createUser(): User {
+    let newUser: User = super.createUser();;
+    newUser.ocupation = this.ocupation.value;
+    newUser.teachingExperience = this.experience.value;
+    return newUser;
   }
 
   getErrorMessage(value: string):string {

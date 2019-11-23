@@ -6,5 +6,7 @@ export class User {
     username: string;
     password: string;
     userRole: string;
+    teachingExperience: string;
+    ocupation: string;
     token?: any;
 }
