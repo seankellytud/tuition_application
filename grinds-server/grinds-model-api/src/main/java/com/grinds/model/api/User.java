@@ -15,6 +15,10 @@ public interface User {
 	
 	public UserRole getUserRole();
 	
+	public String getOcupation();
+	
+	public String getTeachingExperience();
+	
 	public void setFirstName(String firstName);
 
 	public void setLastName(String lastName);
@@ -26,5 +30,9 @@ public interface User {
 	public void setEmailAddress(String emailAddress);
 	
 	public void setUserRole(UserRole userRole);
+	
+	public void setOcupation(String ocupation);
+	
+	public void setTeachingExperience(String teachingExperience);
 	
 }

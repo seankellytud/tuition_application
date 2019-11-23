@@ -63,7 +63,11 @@ public class UserServiceImpl implements UserService {
 	    newUser.setLastName(user.getLastName());
 	    newUser.setEmailAddress(user.getEmailAddress());
 	    newUser.setUserRole(user.getUserRole());
-	    newUser.setPassword(bcryptEncoder.encode(user.getPassword()));  
+	    newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+	    if(user.getTeachingExperience() != null)
+	    	newUser.setTeachingExperience(user.getTeachingExperience());
+	    if(user.getOcupation() != null)
+	    	newUser.setOcupation(user.getOcupation());
 	    logger.info("UserServiceImpl --> save user"+user);
         return (User) userRepo.save(newUser);
     }
@@ -94,6 +98,11 @@ public class UserServiceImpl implements UserService {
 		updateUser.setLastName(user.getLastName());
 		updateUser.setUsername(user.getUsername());
 		updateUser.setEmailAddress(user.getEmailAddress());
+		 if(user.getTeachingExperience() != null)
+		    	updateUser.setTeachingExperience(user.getTeachingExperience());
+		    if(user.getOcupation() != null)
+		    	updateUser.setOcupation(user.getOcupation());
+		
 		this.userRepo.save(updateUser);
 	}
 	

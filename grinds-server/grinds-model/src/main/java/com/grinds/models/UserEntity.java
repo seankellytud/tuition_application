@@ -52,6 +52,29 @@ public class UserEntity implements User{
     @Column(name = "USER_ROLE")
 	@Convert(converter = UserRoleConverter.class)
 	private UserRole userRole;
+    
+    @Column(name="OCUPATION")
+	private String ocupation;
+    
+    @Column(name="TEACHING_EXPERIENCE")
+	private String teachingExperience;
+
+    @Override
+	public String getOcupation() {
+		return ocupation;
+	}
+    @Override
+	public void setOcupation(String ocupation) {
+		this.ocupation = ocupation;
+	}
+    @Override
+	public String getTeachingExperience() {
+		return teachingExperience;
+	}
+    @Override
+	public void setTeachingExperience(String teachingExperience) {
+		this.teachingExperience = teachingExperience;
+	}
 
 	public long getId() {
 		return id;

@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Grind } from 'src/app/models/Grind';
 import { DataSource } from '@angular/cdk/table';
 import { UserService } from '../auth/services/user.service';
+import { User } from 'src/app/models/User';
 
 
 @Component({
@@ -51,76 +52,31 @@ export class GrindsListComponent implements OnInit {
   }
 
 
-
-
-
-
-public showAddress(index: number){
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var myObj = JSON.parse(this.responseText);
-      console.log(myObj[2].grindAddress); // returns 145 Fake Street Tallaght Dublin 18 when button clicked => attributes are accessible
-      var revealAddress = document.getElementById("address").innerHTML=
-        (myObj[index].buildingNo 
-        +", " + myObj[index].grindAddress 
-        +", " + myObj[index].county
-        +", " + myObj[index].eircode)
-      return revealAddress;
-    }
-  };
-  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
-  xmlhttp.send();
+public showAddress(grind: Grind){
+  document.getElementById("address").innerHTML = grind.buildingNo +", " + grind.street +", " + grind.county+", " + grind.eircode;
+}
+  public showType(grind: Grind){
+  document.getElementById("type").innerHTML=grind.grindType;
+}
+  public showPrice(grind: Grind){
+    document.getElementById("price").innerHTML=grind.pricePerHour.toString();
   
 }
-  public showType(index: number){
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var myObj = JSON.parse(this.responseText);
-      console.log(myObj[2].grindAddress); // returns 145 Fake Street Tallaght Dublin 18 when button clicked => attributes are accessible
-      var revealType = document.getElementById("type").innerHTML=(myObj[index].grindType)
-      return revealType;
-    }
-  };
-  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
-  xmlhttp.send();
-  
-}
-  public showPrice(index: number){
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var myObj = JSON.parse(this.responseText);
-      var revealPrice = document.getElementById("price").innerHTML=(myObj[index].pricePerHour)
-      return revealPrice;
-    }
-  };
-  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
-  xmlhttp.send();
-  
-}
-  public showEmail(index: number){
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var myObj = JSON.parse(this.responseText);
-      var revealEmail = document.getElementById("email").innerHTML=(myObj[index].email)
-      return revealEmail;
-    }
-  };
-  xmlhttp.open("GET", "/server/api/v1/grinds", true); 
-  xmlhttp.send();
-  
+  public showEmail(user: User){
+    document.getElementById("email").innerHTML=user.emailAddress; 
 }
 
 
-public showAll(index: number){
-this.showAddress(index);
-this.showPrice(index);
-this.showType(index);
-this.showEmail(index); //A very inefficient wasof populating the grind details table. It works though....
-}
+  public showAll(index: number){
+    let grind: Grind = this.dataSource.data[index];
+    //retrieve user to display some user details 
+    this.grindService.getUserByUsername(grind.username).subscribe((user: User) => {
+      this.showAddress(grind);
+      this.showPrice(grind);
+      this.showType(grind);
+      this.showEmail(user);
+    });
+  }
 }
 
 

@@ -1,12 +1,20 @@
 CREATE DATABASE grinds;
 
 drop table if exists t_user;
-create table t_user (ID bigint not null auto_increment, PASSWORD varchar(255), FIRST_NAME varchar(255), LAST_NAME varchar(255), USERNAME varchar(255), EMAIL_ADDRESS varchar(255) , `USER_ROLE` INT,primary key (ID)) engine=MyISAM
+create table t_user (ID bigint not null auto_increment, 
+					 PASSWORD varchar(255), 
+					 FIRST_NAME varchar(255), 
+					 LAST_NAME varchar(255), 
+					 USERNAME varchar(255), 
+					 EMAIL_ADDRESS varchar(255) , 
+					 OCUPATION varchar(255), 
+					 TEACHING_EXPERIENCE varchar(255),
+					 USER_ROLE INT,primary key (ID)) engine=MyISAM
 
 #student
 INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user1', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'John', 'Doe', 'john.doe@yahoo.com',2);
 #teacher
-INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user2', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Michael', 'Michael', 'michael.michael@gmail.com',3);
+INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, OCUPATION, TEACHING_EXPERIENCE, USER_ROLE) VALUES ('user2', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Michael', 'Michael', 'michael.michael@gmail.com', 'XXXX', 'YYYYYY',3);
 #student
 INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user3', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Cristian', 'Suia', 'cristian.suia@yahoo.ie',2);
 
