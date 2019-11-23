@@ -12,6 +12,7 @@ const MINIMUM_PASSWORD_LENGTH: number = 6;
 const MAXIMUM_PASSWORD_LENGTH: number = 30;
 const STRENGTH_MESSAGES: Array<string> = ['Low', 'Medium', 'High', 'Very high'];
 const STRENGHT_COLORS: Array<string> = ['low-strength', 'medium-stregth', 'high-strenght', 'very-high-strenght'];
+const regExpr : RegExp = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,30}$/);
 
 const THEMES: any[] = [{ label: 'theme.dark', value: 'dark' }, { label: 'theme.light', value: 'classic' }];
 
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
   public lastName =  new FormControl('', [Validators.required, Validators.minLength(2)]);
   public emailAddress =  new FormControl('', [Validators.required, Validators.email]);
   public userName =  new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), usernameValidator]));
-  public password =  new FormControl('', [Validators.required, Validators.minLength(6)]);
+  public password =  new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(regExpr)]);
   public confirmPassword =  new FormControl('', [Validators.required, this.passwordValidator.bind(this)]);
   public newPasswordStrength: number = 0;
   public newPasswordStrenghtMessage: string = null;
@@ -87,10 +88,11 @@ export class RegisterComponent implements OnInit {
                  this.userName.hasError('userNameTaken') ? 'Sorry username already exists. ' : '';
       case'5':
       return this.password.hasError('required') ? 'Please enter password. ' :
-                 this.password.hasError('minlength') ? 'Password should be minimum 6 characters long. ' : '';  
+             this.password.hasError('minlength') ? 'Password should be minimum 6 characters long. ' :
+             this.password.hasError('pattern') ? 'Password must include capital letter, number and symbol.' : '';  
       case'6':
       return this.confirmPassword.hasError('required') ? 'Please confirm password. ' :
-                 this.confirmPassword.hasError('passwordNotMatching') ? 'Both Passwords Should Match. ' : '';
+             this.confirmPassword.hasError('passwordNotMatching') ? 'Both Passwords Should Match. ' : '';
 
     }
     return '';
