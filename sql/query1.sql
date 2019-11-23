@@ -10,20 +10,23 @@ INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, US
 #student
 INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user3', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Cristian', 'Suia', 'cristian.suia@yahoo.ie',2);
 
+drop table if exists `grinds`.`tr_grind_type`;
 CREATE TABLE `grinds`.`tr_grind_type` (
   `GRIND_TYPE_ID` INT NOT NULL PRIMARY KEY,
   `GRIND_TYPE_DESC` VARCHAR(500) NOT NULL);
 
 INSERT INTO `grinds`.`tr_grind_type` (GRIND_TYPE_ID, GRIND_TYPE_DESC) VALUES(1, 'MATHEMATICS'),(2, 'ENGLISH'),(3,'SPANISH'), (4,'MUSIC'), (5,'IRISH'), (6,'BIOLOGY'), (7,'CHEMISTRY'), (8,'PHYSICS'),(9, 'TECHNICAL_DRAWING');
 
+drop table if exists `grinds`.`tr_role`;
 CREATE TABLE `grinds`.`tr_role` (
   `ROLE_ID` INT NOT NULL PRIMARY KEY,
   `ROLE_DESC` VARCHAR(500) NOT NULL);
   
 INSERT INTO `grinds`.`tr_role` (ROLE_ID, ROLE_DESC) VALUES(1, 'ADMIN'),(2, 'STUDENT'),(3,'TEACHER');
+commit;
 
 
-drop table if exists t_grind;
+drop table if exists `grinds`.`t_grind`;
 commit;
 
 CREATE TABLE `grinds`.`t_grind` (
