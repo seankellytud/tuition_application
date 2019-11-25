@@ -17,6 +17,29 @@ h1{
 }
 
 body {
-padding-top: 50px; 
 font-family: 'BioRhyme';font-size: 15px;
+}
+
+@media (max-width: 992px) {
+     .opaque-navbar {
+      background-color: black;
+      height: 60px;
+      transition: background-color .5s ease 0s;
+}
+}
+/***********************************************************************
+*  OPAQUE NAVBAR SECTION
+***********************************************************************/
+.opaque-navbar {
+    background-color: rgba(0,0,0,0.5);
+  /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  */
+    height: 60px;
+    border-bottom: 0px;
+    transition: background-color .5s ease 0s;
+}
+
+.opaque-navbar.opaque {
+    background-color: black;
+    height: 60px;
+    transition: background-color .5s ease 0s;
 }
