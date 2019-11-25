@@ -47,7 +47,7 @@ CREATE TABLE `grinds`.`t_grind` (
   `EIRCODE` VARCHAR (100) NOT NULL,
   `USERNAME` VARCHAR(100)
 );
-commit;
+commit; 
  
 #POPULATE WITH NEW INFO
 #user2 is the username of a teacher
