@@ -60,12 +60,16 @@ public showAddress(grind: Grind){
 }
   public showPrice(grind: Grind){
     document.getElementById("price").innerHTML=grind.pricePerHour.toString();
-  
 }
   public showEmail(user: User){
     document.getElementById("email").innerHTML=user.emailAddress; 
 }
-
+public showExp(user: User){
+  document.getElementById("experience").innerHTML=user.teachingExperience;
+}
+public showOcc(user:User){
+  document.getElementById("occupation").innerHTML=user.ocupation;
+}
 
   public showAll(index: number){
     let grind: Grind = this.dataSource.data[index];
@@ -75,6 +79,8 @@ public showAddress(grind: Grind){
       this.showPrice(grind);
       this.showType(grind);
       this.showEmail(user);
+      this.showOcc(user);
+      this.showExp(user);
     });
   }
 }

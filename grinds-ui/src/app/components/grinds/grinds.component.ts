@@ -35,7 +35,7 @@ export class GrindsComponent implements OnInit {
     'type',
     'pricePerHour',
     'grindAddress',
-    'moreDetails'
+
   ];
 
   public isAuth() {
