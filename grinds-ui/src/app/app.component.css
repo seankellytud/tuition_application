@@ -16,4 +16,7 @@ h1{
  margin-right: 10px;;
 }
 
-body { padding-top: 70px; }
+body {
+padding-top: 70px; 
+font-family: 'BioRhyme';font-size: 15px;
+}

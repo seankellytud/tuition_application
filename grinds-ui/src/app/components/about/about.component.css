@@ -24,9 +24,6 @@
   margin: 70px 0;
 }
 
-.ptop {
-  padding-top: 70px;
- }
 .item span {
   font-style: normal;
 }
@@ -47,12 +44,10 @@
 }
 /*scroll spy code*/
 .current-section {
-  background-color: cornflowerblue
+  color: lightgrey;
 }
 .current-section::after { 
   content: "\039e";
-  background-color: yellow; 
-  color: red;
   font-weight: bold;
   font-size: 1.5rem;
   margin-left: 0.5rem;
