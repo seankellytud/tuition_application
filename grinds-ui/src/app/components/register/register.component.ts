@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
       
   }
 
-  private createUser(): User {
+  protected createUser(): User {
     let newUser: User = new User();
     newUser.firstName = this.firstName.value;
     newUser.lastName = this.lastName.value;
