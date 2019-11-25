@@ -3,6 +3,7 @@ import { AuthService } from './components/auth/services/auth.service';
 import { GrindService } from './services/grind.service'
 import { UserService } from './components/auth/services/user.service';
 import { Role } from './models/Role';
+import * as $ from '../../node_modules/jquery';// import Jquery here
 
 @Component({
   selector: 'app-root',
