@@ -17,7 +17,7 @@
 }
 
 .item h4 {
-  font-size: 19px;
+  font-size: 16px;
   line-height: 1.375em;
   font-weight: 400;
   font-style: italic;
@@ -33,22 +33,26 @@
 }
 /* Add media queries to center the "logo column" on screens smaller than 768 pixels wide.*/
 @media screen and (max-width: 768px) {
-  .col-sm-4 {
+  .col-sm-6 {
     text-align: center;
-    margin: 25px 0;
+    margin: 25px 25px;
   }
-  .col-sm-8 {
+  .col-sm-6 {
     text-align: center;
-    margin: 25px 0;
+    margin: 25px 25px;
   }
 }
 /*scroll spy code*/
 .current-section {
-  color: lightgrey;
+  color: rgb(161, 139, 139);
 }
 .current-section::after { 
   content: "\039e";
   font-weight: bold;
   font-size: 1.5rem;
   margin-left: 0.5rem;
+}
+
+.thumbnail img{
+  max-width: 100%; /* do not stretch the bootstrap column */
 }
