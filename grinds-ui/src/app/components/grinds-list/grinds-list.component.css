@@ -2,29 +2,24 @@
 .grinds_table {
     width: 100%;
 }
-  
-.mat-form-field {
-    font-size: 14px;
-    width: 25%;
-    min-width: 50px;
-}
 
 .mat-cell {
     text-align: left;
 }
-#search{
-    display: inline-block;
-}
+
 h1{
     text-align: center;
 }
 
-#searchFields{
-    background-color: black;   
-    /* OR     #5bc0de; */
+.header {
+    padding-right: 10px;
 }
-#addressReveal{
-    text-align: center;
-    font-size: 28px;
-    color: red;
+
+.header > span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.filter {
+    display: block;
 }

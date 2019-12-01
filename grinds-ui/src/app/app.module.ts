@@ -57,7 +57,7 @@ import { GrindsDetailComponent } from './components/grinds-detail/grinds-detail.
 import { MyAccountModule } from './components/my-account/my-account.module';
 import { UriConstructorService } from './services/uri-contructor.service';
 import { ScrollSpyDirective } from './components/about/scroll-spy.directive';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -126,7 +126,8 @@ import { FormsModule } from '@angular/forms';
     ScrollingModule,
     AuthModule, 
     MyAccountModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     A11yModule,
@@ -171,7 +172,8 @@ import { FormsModule } from '@angular/forms';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    AuthModule
+    AuthModule,
+    ReactiveFormsModule
   ],
   providers: [GrindService, UriConstructorService],
   bootstrap: [AppComponent]

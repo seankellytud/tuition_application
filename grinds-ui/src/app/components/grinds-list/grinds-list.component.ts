@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GrindService } from 'src/app/services/grind.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Grind } from 'src/app/models/Grind';
 import { DataSource } from '@angular/cdk/table';
 import { UserService } from '../auth/services/user.service';
 import { User } from 'src/app/models/User';
+import { MatSort } from '@angular/material';
+import { FormControl } from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
 
 
 @Component({
@@ -14,13 +17,24 @@ import { User } from 'src/app/models/User';
 })
 export class GrindsListComponent implements OnInit {
 
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
   dataSource = new MatTableDataSource<Grind>();
+  grindTypeFilter = new FormControl('');
+  pricePerHourFilter = new FormControl('');
+  countyFilter = new FormControl('');
+
   public displayedColumns = [
-    'type',
+    'grindType',
     'pricePerHour',
     'county',
     'moreDetails'
   ];
+  filterValues = {
+    grindType: '',
+    pricePerHour: '',
+    county: '',
+  };
 
   constructor(private grindService: GrindService, private userService: UserService) { }
 
@@ -28,12 +42,34 @@ export class GrindsListComponent implements OnInit {
     // this.dataSource = this.grindService.getGrinds();
     // this.dataSource = new MatTableDataSource(this.dataSource);
     this.initializeGrindsProvider();
+    // this.subjectCheckPermissions.debounceTime(100).subscribe(this.checkActionPermissions.bind(this));
+    this.grindTypeFilter.valueChanges.pipe(debounceTime(1000)).subscribe(
+      (grindTypeValue) => {
+        this.filterValues['grindType'] = grindTypeValue;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    )
+    this.pricePerHourFilter.valueChanges.pipe(debounceTime(1000)).subscribe(
+      (pricePerHourValue) => {
+        this.filterValues['pricePerHour'] = pricePerHourValue;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    )
+    this.countyFilter.valueChanges.pipe(debounceTime(1000)).subscribe(
+      (countyValue) => {
+        this.filterValues['county'] = countyValue;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    )
+
+    this.dataSource.filterPredicate = this.customFilterPredicate();
+
   }
 
   initializeGrindsProvider() {
     this.grindService.getGrinds().subscribe(grinds => {
       console.log(JSON.stringify(grinds));
-      this.dataSource =  new MatTableDataSource<Grind>(grinds); 
+      this.dataSource.data =  grinds; 
     }, err =>{
       console.error(err);
     }, () => console.log('grinds loaded'));
@@ -41,11 +77,29 @@ export class GrindsListComponent implements OnInit {
 
 
 
-  applyFilter(filterValue: string, predicate: string) {
-    console.log("GrindsListComponent --> applyFilter "+"filterValue: "+filterValue+" predicate: "+predicate);
-    this.dataSource.filterPredicate = (data: Grind, filterValue:string) => data[predicate].toString().trim().toLowerCase().includes(filterValue.trim().toLowerCase()); 
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  } //THIS IS THE WORKING GLOBAL ONE
+  applyFilter(filter) {
+    this.dataSource.filter = JSON.stringify(this.filterValues);
+  }
+
+  customFilterPredicate() {
+    const myFilterPredicate = (data: Grind, filter: string): boolean => {
+      let searchString = JSON.parse(filter);
+      if(searchString.grindType.length > 0 && searchString.pricePerHour.length == 0 && searchString.county.length == 0){
+        return data.grindType.toString().trim().toLowerCase().includes(searchString.grindType.trim().toLowerCase());
+      }
+      else if(searchString.grindType.length == 0 && searchString.pricePerHour.length > 0 && searchString.county.length == 0){
+        return data.pricePerHour.toString().trim().toLowerCase().includes(searchString.pricePerHour.trim().toLowerCase());
+      }
+      else if(searchString.grindType.length == 0 && searchString.pricePerHour.length == 0 && searchString.county.length > 0){
+        return data.county.toString().trim().toLowerCase().includes(searchString.county.trim().toLowerCase());
+      }
+      return data.grindType.toString().trim().toLowerCase().includes(searchString.grindType.trim().toLowerCase()) &&
+        data.pricePerHour.toString().trim().toLowerCase().includes(searchString.pricePerHour.trim().toLowerCase()) &&
+        data.county.toString().trim().toLowerCase().includes(searchString.county.trim().toLowerCase());
+    }
+    return myFilterPredicate;
+  }
+
  
   public isAuth() {
     return this.userService.isUserAuth();
@@ -56,7 +110,7 @@ public showAddress(grind: Grind){
   document.getElementById("address").innerHTML = grind.buildingNo +", " + grind.street +", " + grind.county+", " + grind.eircode;
 }
   public showType(grind: Grind){
-  document.getElementById("type").innerHTML=grind.grindType;
+  document.getElementById("grindType").innerHTML=grind.grindType;
 }
   public showPrice(grind: Grind){
     document.getElementById("price").innerHTML=grind.pricePerHour.toString();

@@ -23,7 +23,7 @@ font-family: 'BioRhyme';font-size: 15px;
 @media (max-width: 992px) {
      .opaque-navbar {
       background-color: black;
-      height: 60px;
+      height: 50px;
       transition: background-color .5s ease 0s;
 }
 }
@@ -33,13 +33,13 @@ font-family: 'BioRhyme';font-size: 15px;
 .opaque-navbar {
     background-color: rgba(0,0,0,0.5);
   /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  */
-    height: 60px;
+    height: 50px;
     border-bottom: 0px;
     transition: background-color .5s ease 0s;
 }
 
 .opaque-navbar.opaque {
     background-color: black;
-    height: 60px;
+    height: 50px;
     transition: background-color .5s ease 0s;
 }
