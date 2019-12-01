@@ -1,7 +1,7 @@
 <div class="container bg-grey">
 <mat-card class="my-card">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <h3>View Profile</h3>
+  <h3>View and Edit Profile</h3>
   <mat-card-content>
 
 
@@ -22,11 +22,11 @@
       </mat-form-field>
 
       <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input required matInput placeholder="Occupation" formControlName="occupation">
+        <input matInput placeholder="Occupation" formControlName="occupation">
       </mat-form-field>
 
       <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input required matInput placeholder="Teaching Experience" formControlName="experience">
+        <input matInput placeholder="Teaching Experience" formControlName="experience">
       </mat-form-field>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">

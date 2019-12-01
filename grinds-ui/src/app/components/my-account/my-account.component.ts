@@ -43,11 +43,9 @@ export class MyAccountComponent implements OnInit {
                     Validators.minLength(6)
                   ]),
                   experience: new FormControl('', [
-                    Validators.required,
                     Validators.minLength(6)
                   ]),
                   occupation: new FormControl('', [
-                    Validators.required,
                     Validators.minLength(6)
                   ])
                 });
