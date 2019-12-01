@@ -22,7 +22,7 @@
               <li><a routerLink="register">Student</a></li>
               <li><a routerLink="register_tutor">Teacher</a></li>
             </ul>
-          <li><a routerLink="login" class='login_button'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a routerLink="login" class='login_button'><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
         </ul>
         <ul *ngIf="isAuth()"class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -36,9 +36,7 @@
       </div>
     </div>
 </nav>
-      <div>
-        <router-outlet></router-outlet>
-      </div>
+<router-outlet></router-outlet>
 <hr>
 <footer class="container text-center fixed-bottom">
     <div class="row">

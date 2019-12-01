@@ -67,8 +67,14 @@ h1{
 html,
 body {
     height: 100%;
+    font-family: Montserrat, sans-serif;
 }
 
 footer {
     margin: 50px 0;
+}
+
+.container{
+  padding-top: 70px;
+  padding-bottom: 70px;
 }

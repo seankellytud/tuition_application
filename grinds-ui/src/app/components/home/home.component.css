@@ -4,3 +4,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  p.ex, h2.ex{
+    color: rgb(114, 114, 66);
+  }
