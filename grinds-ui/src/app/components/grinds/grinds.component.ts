@@ -16,12 +16,12 @@ import { UserService } from '../auth/services/user.service';
 export class GrindsComponent implements OnInit {
 
   public message: string = ''
-  public buildingNo =  new FormControl('', [Validators.required, Validators.minLength(2)]);
+  public buildingNo =  new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(2)]);
   public streetAddress =  new FormControl('', [Validators.required, Validators.minLength(2)]);
-  public county =  new FormControl('', [Validators.required, Validators.minLength(2)]);
-  public eircode =  new FormControl('', [Validators.required, Validators.minLength(2)]);
+  public county =  new FormControl('', [Validators.required, Validators.minLength(4)]); //No counties with 3 or less letters
+  public eircode =  new FormControl('', [Validators.required, Validators.minLength(7),Validators.maxLength(7)]);
   public grindType =  new FormControl('', [Validators.required, Validators.minLength(2)]);
-  public pricePerHour =  new FormControl('', [Validators.required, Validators.minLength(2)]);
+  public pricePerHour =  new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(1)]);
 
   constructor(private grindService: GrindService,
     protected service: GrindService, 

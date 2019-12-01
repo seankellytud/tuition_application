@@ -4,6 +4,7 @@ import { User } from 'src/app/models/User';
 import { GrindService } from 'src/app/services/grind.service';
 import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
+import { Role } from 'src/app/models/Role';
 import { UserService } from '../auth/services/user.service';
 
 @Component({
@@ -40,6 +41,14 @@ export class MyAccountComponent implements OnInit {
                   userName: new FormControl('', [
                     Validators.required,
                     Validators.minLength(6)
+                  ]),
+                  experience: new FormControl('', [
+                    Validators.required,
+                    Validators.minLength(6)
+                  ]),
+                  occupation: new FormControl('', [
+                    Validators.required,
+                    Validators.minLength(6)
                   ])
                 });
 }
@@ -50,7 +59,7 @@ export class MyAccountComponent implements OnInit {
         if(user){
           console.info('MyAccountComponent --> ngOnInit user returned'+JSON.stringify(user));
           this.user = user;
-          this.pofileViewForm.setValue({firstName: user.firstName, lastName: user.lastName, emailAddress: user.emailAddress, userName: user.username});
+          this.pofileViewForm.setValue({firstName: user.firstName, lastName: user.lastName, emailAddress: user.emailAddress, occupation:user.ocupation, experience:user.teachingExperience, userName: user.username});
           this.pofileViewForm.disable();
         }else {
           console.error('MyAccountComponent --> ngOnInit no user returned');
@@ -67,10 +76,17 @@ export class MyAccountComponent implements OnInit {
     this.user.lastName = this.pofileViewForm.controls['lastName'].value;
     this.user.emailAddress = this.pofileViewForm.controls['emailAddress'].value;
     this.user.username = this.pofileViewForm.controls['userName'].value;
+    this.user.ocupation = this.pofileViewForm.controls['occupation'].value;
+    this.user.teachingExperience = this.pofileViewForm.controls['experience'].value;
+
   }
 
   public getUsername(): string {
     return sessionStorage.getItem('currentUser');
+  }
+
+  public isTeacher(): boolean {
+    return this.userService.getUserRole() === Role.TEACHER;
   }
 
   public updateUser(){

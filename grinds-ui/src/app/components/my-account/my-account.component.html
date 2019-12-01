@@ -21,6 +21,14 @@
         <input required matInput placeholder="Email Address" formControlName="emailAddress">
       </mat-form-field>
 
+      <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
+        <input required matInput placeholder="Occupation" formControlName="occupation">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
+        <input required matInput placeholder="Teaching Experience" formControlName="experience">
+      </mat-form-field>
+
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Username" formControlName="userName">
       </mat-form-field>
