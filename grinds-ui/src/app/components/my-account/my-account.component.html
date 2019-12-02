@@ -22,11 +22,11 @@
       </mat-form-field>
 
       <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input matInput placeholder="Occupation" formControlName="occupation">
+        <input required matInput placeholder="Occupation" formControlName="occupation">
       </mat-form-field>
 
       <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input matInput placeholder="Teaching Experience" formControlName="experience">
+        <input required matInput placeholder="Teaching Experience" formControlName="experience">
       </mat-form-field>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">

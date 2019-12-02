@@ -5,5 +5,6 @@
     transform: translate(-50%, -50%);
   }
   p.ex, h2.ex{
-    color: rgb(114, 114, 66);
+    color: rgb(5, 66, 13);
+    background-color: white;
   }

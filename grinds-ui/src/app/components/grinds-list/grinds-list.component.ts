@@ -109,6 +109,9 @@ export class GrindsListComponent implements OnInit {
 public showAddress(grind: Grind){
   document.getElementById("address").innerHTML = grind.buildingNo +", " + grind.street +", " + grind.county+", " + grind.eircode;
 }
+  public showName(user: User){
+  document.getElementById("grindType").innerHTML=user.firstName + user.lastName;
+}
   public showType(grind: Grind){
   document.getElementById("grindType").innerHTML=grind.grindType;
 }
@@ -130,6 +133,7 @@ public showOcc(user:User){
     //retrieve user to display some user details 
     this.grindService.getUserByUsername(grind.username).subscribe((user: User) => {
       this.showAddress(grind);
+      this.showName(user);
       this.showPrice(grind);
       this.showType(grind);
       this.showEmail(user);
