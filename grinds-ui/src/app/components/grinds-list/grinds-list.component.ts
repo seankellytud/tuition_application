@@ -84,17 +84,21 @@ export class GrindsListComponent implements OnInit {
   customFilterPredicate() {
     const myFilterPredicate = (data: Grind, filter: string): boolean => {
       let searchString = JSON.parse(filter);
+      if(searchString.grindType.length == 0 && searchString.pricePerHour.length == 0 && searchString.county.length == 0)
+        return true;
       if(searchString.grindType.length > 0 && searchString.pricePerHour.length == 0 && searchString.county.length == 0){
         return data.grindType.toString().trim().toLowerCase().includes(searchString.grindType.trim().toLowerCase());
       }
       else if(searchString.grindType.length == 0 && searchString.pricePerHour.length > 0 && searchString.county.length == 0){
-        return data.pricePerHour.toString().trim().toLowerCase().includes(searchString.pricePerHour.trim().toLowerCase());
+        let price: number = searchString.pricePerHour;
+        return data.pricePerHour <= price;
       }
       else if(searchString.grindType.length == 0 && searchString.pricePerHour.length == 0 && searchString.county.length > 0){
         return data.county.toString().trim().toLowerCase().includes(searchString.county.trim().toLowerCase());
       }
+      let pr: number = searchString.pricePerHour;;
       return data.grindType.toString().trim().toLowerCase().includes(searchString.grindType.trim().toLowerCase()) &&
-        data.pricePerHour.toString().trim().toLowerCase().includes(searchString.pricePerHour.trim().toLowerCase()) &&
+        data.pricePerHour <= pr &&
         data.county.toString().trim().toLowerCase().includes(searchString.county.trim().toLowerCase());
     }
     return myFilterPredicate;
@@ -108,9 +112,6 @@ export class GrindsListComponent implements OnInit {
 
 public showAddress(grind: Grind){
   document.getElementById("address").innerHTML = grind.buildingNo +", " + grind.street +", " + grind.county+", " + grind.eircode;
-}
-  public showName(user: User){
-  document.getElementById("grindType").innerHTML=user.firstName + user.lastName;
 }
   public showType(grind: Grind){
   document.getElementById("grindType").innerHTML=grind.grindType;
@@ -133,7 +134,6 @@ public showOcc(user:User){
     //retrieve user to display some user details 
     this.grindService.getUserByUsername(grind.username).subscribe((user: User) => {
       this.showAddress(grind);
-      this.showName(user);
       this.showPrice(grind);
       this.showType(grind);
       this.showEmail(user);
