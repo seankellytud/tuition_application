@@ -15,11 +15,10 @@
         <ng-container matColumnDef="grindType">
           <th class="header" mat-header-cell *matHeaderCellDef>
             <mat-form-field class="filter" floatLabel="never">
-              <mat-label>Search By Subject</mat-label>
+              <mat-label>Search Subject</mat-label>
               <input matInput [formControl]="grindTypeFilter">
-              <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
             </mat-form-field>
-            <span>Subject</span>
+            <span>Subjects</span>
           </th>
           <td mat-cell *matCellDef="let grind"> {{grind.grindType}} </td>
         </ng-container>
@@ -27,20 +26,18 @@
         <ng-container matColumnDef="pricePerHour">
           <th class="header" mat-header-cell *matHeaderCellDef> 
               <mat-form-field class="filter" floatLabel="never">
-                  <mat-label>Search By Max Price</mat-label>
+                  <mat-label>Search Max Price</mat-label>
                   <input matInput [formControl]="pricePerHourFilter">
-                  <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
                 </mat-form-field>
-                <span>Price Per Hour</span> 
+                <span>Price</span>
           </th>
           <td mat-cell *matCellDef="let grind"> {{grind.pricePerHour}} </td>
         </ng-container>
         <ng-container matColumnDef="county">
           <th class="header" mat-header-cell *matHeaderCellDef> 
               <mat-form-field class="filter" floatLabel="never">
-                  <mat-label>Search By County</mat-label>
+                  <mat-label>Search County</mat-label>
                   <input matInput [formControl]="countyFilter">
-                  <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
                 </mat-form-field>
                 <span>County</span>
             </th>
