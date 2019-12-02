@@ -128,11 +128,15 @@ public showExp(user: User){
 public showOcc(user:User){
   document.getElementById("occupation").innerHTML=user.ocupation;
 }
+public showName(user:User){
+  document.getElementById("name").innerHTML=user.firstName + ' ' + user.lastName;
+}
 
   public showAll(index: number){
     let grind: Grind = this.dataSource.data[index];
     //retrieve user to display some user details 
     this.grindService.getUserByUsername(grind.username).subscribe((user: User) => {
+      this.showName(user);
       this.showAddress(grind);
       this.showPrice(grind);
       this.showType(grind);
