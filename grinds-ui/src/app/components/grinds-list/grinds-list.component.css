@@ -24,3 +24,18 @@ h1{
     display: block;
     max-width: 100px;
 }
+
+.dropdown-toggle{ 
+    cursor: pointer; 
+}
+
+#login{ 
+    cursor: pointer; 
+    /* background-color: gray; */
+    /* display: inline-block; */
+}
+#details{ 
+    cursor: pointer; 
+    /* background-color: gray; */
+    /* display: inline-block; */
+}

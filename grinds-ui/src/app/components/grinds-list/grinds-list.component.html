@@ -47,13 +47,13 @@
           <th mat-header-cell *matHeaderCellDef> </th>
               <td mat-cell *matCellDef="let grind; let i = index;">  
                 <!-- Use this to get the index of the row to pass into showAll function -->
-                <button *ngIf="isAuth()" mat-raised-button routerLink="/grinds-detail" (click)= "showAll(i)" > 
+                <mat-label id="details" *ngIf="isAuth()"  routerLink="/grinds-detail" (click)= "showAll(i)" > 
                  
-                Show More Details -->
-                  </button>
-                <button *ngIf="!isAuth()" mat-raised-button routerLink="/login">
-                   Log In to See More Details --> 
-                  </button>
+                More Details -->
+                  </mat-label>
+                <mat-label id="login" *ngIf="!isAuth()" routerLink="/login">
+                   Log In For More Details --> 
+                </mat-label>
               </td>
     
         </ng-container>
