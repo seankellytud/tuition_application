@@ -63,7 +63,8 @@ export class GrindsListComponent implements OnInit {
     )
 
     this.dataSource.filterPredicate = this.customFilterPredicate();
-
+ 
+    this.dataSource.sort = this.sort;
   }
 
   initializeGrindsProvider() {
@@ -134,6 +135,7 @@ public showName(user:User){
 
   public showAll(index: number){
     let grind: Grind = this.dataSource.data[index];
+
     //retrieve user to display some user details 
     this.grindService.getUserByUsername(grind.username).subscribe((user: User) => {
       this.showName(user);
