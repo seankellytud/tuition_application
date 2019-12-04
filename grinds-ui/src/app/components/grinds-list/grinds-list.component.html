@@ -11,14 +11,17 @@
      </div>   
      
       <table mat-table [dataSource]="dataSource" class="grinds_table mat-elevation-z8" matSort>
-
+        
         <ng-container matColumnDef="grindType">
           <th class="header" mat-header-cell *matHeaderCellDef mat-sort-header>
             <mat-form-field class="filter" floatLabel="never">
               <mat-label>Search Subject</mat-label>
-              <input matInput [formControl]="grindTypeFilter">
+              <input matInput [formControl]="grindTypeFilter" [(ngModel)]="grindTypeFilter.value">
+              <button mat-button *ngIf="grindTypeFilter.value" matSuffix mat-icon-button aria-label="Clear" (click)="grindTypeFilter.value='' ">
+                <mat-icon>close</mat-icon>
+              </button>
             </mat-form-field>
-            <span>Subjects</span>
+            <!-- <span>Subjects</span> -->
           </th>
           <td mat-cell *matCellDef="let grind"> {{grind.grindType}} </td>
         </ng-container>
@@ -27,9 +30,12 @@
           <th class="header" mat-header-cell *matHeaderCellDef mat-sort-header> 
               <mat-form-field class="filter" floatLabel="never">
                   <mat-label>Search Max Price</mat-label>
-                  <input matInput [formControl]="pricePerHourFilter">
+                  <input matInput [formControl]="pricePerHourFilter"[(ngModel)]="pricePerHourFilter.value">
+                  <button mat-button *ngIf="pricePerHourFilter.value" matSuffix mat-icon-button aria-label="Clear" (click)="pricePerHourFilter.value='' ">
+                    <mat-icon>close</mat-icon>
+                  </button>
                 </mat-form-field>
-                <span>Price</span>
+                <!-- <span>Price</span> -->
           </th>
           <td mat-cell *matCellDef="let grind"> {{grind.pricePerHour}} </td>
         </ng-container>
@@ -37,14 +43,22 @@
           <th class="header" mat-header-cell *matHeaderCellDef mat-sort-header> 
               <mat-form-field class="filter" floatLabel="never">
                   <mat-label>Search County</mat-label>
-                  <input matInput [formControl]="countyFilter">
+                  <input matInput [formControl]="countyFilter"[(ngModel)]="countyFilter.value">
+                  <button mat-button *ngIf="countyFilter.value" matSuffix mat-icon-button aria-label="Clear" (click)="countyFilter.value='' ">
+                    <mat-icon>close</mat-icon>
+                  </button>
                 </mat-form-field>
-                <span>County</span>
+                <!-- <span>County</span> -->
             </th>
           <td mat-cell *matCellDef="let grind"> {{grind.county}} </td>
         </ng-container>
         <ng-container matColumnDef="moreDetails">
-          <th mat-header-cell *matHeaderCellDef> </th>
+          <th mat-header-cell *matHeaderCellDef>
+            <button id ="clearSearch" *ngIf="countyFilter.value || pricePerHourFilter.value || grindTypeFilter.value" 
+            mat-raised-button form="ngForm" (click) ="searchClearForm()">
+            Clear Search
+          </button> 
+          </th>
               <td mat-cell *matCellDef="let grind; let i = index;">  
                 <!-- Use this to get the index of the row to pass into showAll function -->
                 <mat-label id="details" *ngIf="isAuth()"  routerLink="/grinds-detail" (click)= "showAll(i)" > 

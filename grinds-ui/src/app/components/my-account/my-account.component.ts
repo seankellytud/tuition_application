@@ -28,11 +28,11 @@ export class MyAccountComponent implements OnInit {
                 this.pofileViewForm = new FormGroup({
                   firstName: new FormControl('', [
                     Validators.required,
-                    Validators.minLength(2)
+                    Validators.minLength(1)
                   ]), 
                   lastName: new FormControl('', [
                     Validators.required,
-                    Validators.minLength(2)
+                    Validators.minLength(1)
                   ]),
                   emailAddress: new FormControl('', [
                     Validators.required,
@@ -67,6 +67,11 @@ export class MyAccountComponent implements OnInit {
     }else {
       this.router.navigate(['home']);
     }
+  }
+
+  restoreFields(){
+    this.ngOnInit();
+    this.editMode = false;
   }
 
   private overWriteUser() {

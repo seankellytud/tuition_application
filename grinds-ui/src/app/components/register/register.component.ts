@@ -71,7 +71,7 @@ export class RegisterComponent implements OnInit {
     return newUser;
   }
 
-  getErrorMessage(value: string):string {
+  public getErrorMessage(value: string):string {
     switch(value){
       case'1':
           return this.firstName.hasError('required') ? 'Please enter your first name.':

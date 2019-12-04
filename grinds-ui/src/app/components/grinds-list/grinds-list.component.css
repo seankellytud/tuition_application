@@ -21,7 +21,7 @@ h1{
 }
 
 .filter {
-    display: block;
+    /* display: block; */
     max-width: 100px;
 }
 

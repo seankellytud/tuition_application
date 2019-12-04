@@ -4,53 +4,61 @@
   <h3>View and Edit Profile</h3>
   <mat-card-content>
 
-
-
-
-    <form class="registration-form" [formGroup]="pofileViewForm" (ngSubmit)="onUpdateAccount()" id="ngForm"
-      #documentEditForm="ngForm">
+    <form class="registration-form" [formGroup]="pofileViewForm" (ngSubmit)="onUpdateAccount()" id="ngForm"#documentEditForm="ngForm">
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
-        <input required matInput formControlName="firstName" placeholder="First Name">
+          <input matInput required placeholder="First Name" formControlName="firstName">
       </mat-form-field>
+      <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.firstName.invalid">
+          You need a First Name!
+      </span>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Last Name" formControlName="lastName">
       </mat-form-field>
+      <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.lastName.invalid">
+          You need a Last Name!
+      </span>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Email Address" formControlName="emailAddress">
       </mat-form-field>
+      <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.emailAddress.invalid">
+          Email should be in someone@something.format
+      </span>
 
       <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Occupation" formControlName="occupation">
       </mat-form-field>
+      <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.occupation.invalid">
+          Don't leave this blank!
+      </span>
 
       <mat-form-field *ngIf="isTeacher()" class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Teaching Experience" formControlName="experience">
       </mat-form-field>
+      <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.experience.invalid">
+          Don't leave this blank!
+      </span>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Username" formControlName="userName">
       </mat-form-field>
-      <div class="validations">
-        <span>
-          <i class="fa fa-check-circle" style="color:green;" *ngIf="pofileViewForm.controls.emailAddress.valid"></i>
-          <i class="fa fa-times-circle" style="color:red;"  *ngIf="pofileViewForm.controls.emailAddress.invalid"></i>
-          Email Address should be in someone@something.something format.
-      </span>
-    <br>
-      <span>
-          <i class="fa fa-check-circle" style="color:green;" *ngIf="pofileViewForm.controls.userName.valid"></i>
-          <i class="fa fa-times-circle" style="color:red;"  *ngIf="pofileViewForm.controls.userName.invalid"></i>
+      <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.userName.invalid">
           Username should be minimum 6 characters long.
       </span>
-    </div>
+      <!-- <div class="validations">
+       
+    <br>
+      
+    </div> -->
     </form>
   </mat-card-content>
-  <mat-card-actions class>
+  <mat-card-actions class="editbuttons">
       <button id="edit" [disabled]="editMode" mat-raised-button (click)="activateFields()">Edit Profile</button>
-      <button id="saveChanges" mat-raised-button (click)="updateUser()" [disabled]="!documentEditForm.form.valid">Save Changes</button>
+      <button id="saveChanges" mat-raised-button (click)="updateUser()" [disabled]="!documentEditForm.form.valid">Save Changes</button><br>
       <button id="deleteAccount"  mat-raised-button color="warn" [disabled]="deleteMode" (click)="deleteUserMode()">Delete Account</button>
+      <button id="restore" [disabled]="!editMode"  mat-raised-button (click)="restoreFields()">Restore Defaults</button>
+
     </mat-card-actions>  
   <div id="messageContainer">
     {{message}}

@@ -81,6 +81,11 @@ export class GrindsListComponent implements OnInit {
     }, () => console.log('grinds loaded'));
   }
 
+  searchClearForm() {
+    this.grindTypeFilter.setValue('');
+    this.countyFilter.setValue('');
+    this.pricePerHourFilter.setValue('');
+}
 
 
   applyFilter(filter) {
