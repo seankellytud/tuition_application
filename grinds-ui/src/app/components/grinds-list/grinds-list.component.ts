@@ -23,6 +23,7 @@ export class GrindsListComponent implements OnInit {
   grindTypeFilter = new FormControl('');
   pricePerHourFilter = new FormControl('');
   countyFilter = new FormControl('');
+  isLoading: boolean = false;
 
   public displayedColumns = [
     'grindType',
@@ -68,9 +69,13 @@ export class GrindsListComponent implements OnInit {
   }
 
   initializeGrindsProvider() {
+    this.isLoading = true;
     this.grindService.getGrinds().subscribe(grinds => {
       console.log(JSON.stringify(grinds));
-      this.dataSource.data =  grinds; 
+      setTimeout(() => {
+        this.dataSource.data =  grinds;
+        this.isLoading = false;
+      },1500); 
     }, err =>{
       console.error(err);
     }, () => console.log('grinds loaded'));

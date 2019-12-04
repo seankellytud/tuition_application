@@ -22,6 +22,7 @@ export class GrindsComponent implements OnInit {
   public eircode =  new FormControl('', [Validators.required, Validators.minLength(7),Validators.maxLength(7)]);
   public grindType =  new FormControl('', [Validators.required, Validators.minLength(2)]);
   public pricePerHour =  new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(1)]);
+  public isLoading: boolean = false;
 
   constructor(private grindService: GrindService,
     protected service: GrindService, 
@@ -43,17 +44,20 @@ export class GrindsComponent implements OnInit {
   }
 
  initializeMyGrindsProvider(userName:string) {
+   this.isLoading = true;
     this.grindService.getGrindsByUsername(userName).subscribe(grinds => {
       console.log(JSON.stringify(grinds));
-      this.dataSource =  new MatTableDataSource<Grind>(grinds); 
+      setTimeout(() => {
+        this.dataSource.data =  grinds;
+        this.isLoading = false;
+      },1500);
+      // this.dataSource =  new MatTableDataSource<Grind>(grinds); 
     }, err =>{
       console.error(err);
     }, () => console.log('grinds loaded'));
   }
 
   ngOnInit() {
-    // this.dataSource = this.grindService.getGrinds();
-    // this.dataSource = new MatTableDataSource(this.dataSource);
     let currentUserName:string = this.getUsername();
     console.log('user currently logged in: ' + currentUserName);
     this.initializeMyGrindsProvider(currentUserName);
