@@ -17,7 +17,7 @@ export class GrindService {
   getGrinds() {
     let uri = this.uriConstructor.constructUri(UriType.GRIND);
     console.log("GrindService --> getGrinds() " + uri);
-    return this.httpClient.get<Grind[]>(uri);
+    return this.httpClient.get<Grind[]>(uri, { headers: httpOptions.headers}).pipe();
   }
 
 

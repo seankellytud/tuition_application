@@ -97,6 +97,9 @@ export class GrindsListComponent implements OnInit {
       else if(searchString.grindType.length == 0 && searchString.pricePerHour.length == 0 && searchString.county.length > 0){
         return data.county.toString().trim().toLowerCase().includes(searchString.county.trim().toLowerCase());
       }
+      else if(searchString.grindType.length > 0 && searchString.pricePerHour.length == 0 && searchString.county.length > 0){
+        return data.county.toString().trim().toLowerCase().includes(searchString.county.trim().toLowerCase());
+      }
       let pr: number = searchString.pricePerHour;;
       return data.grindType.toString().trim().toLowerCase().includes(searchString.grindType.trim().toLowerCase()) &&
         data.pricePerHour <= pr &&

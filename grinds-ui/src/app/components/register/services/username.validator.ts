@@ -17,8 +17,8 @@ export function usernameValidator(control: AbstractControl) {
             }
           };
           let data = 'username='+control.value;
-          let uri: string = this.uriConstructor.constructUri(UriType.USER); 
-          xmlhttp.open("GET", uri, true); 
+          let uri: string = this.uriConstructor.constructUri(UriType.REGISTRATION); 
+          xmlhttp.open("POST", uri, true); 
           xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
           xmlhttp.send(data);
         }, 1000);      

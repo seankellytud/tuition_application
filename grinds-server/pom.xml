@@ -27,6 +27,7 @@
 		<module>./grinds-services</module>
 		<module>./grinds-services-api</module>
 		<module>./grinds-security</module>
+		<module>./grinds-error-handlers</module>
 		<!--module>./bcdfx-javadoc-generation/trunk</module-->
 	</modules>
 	<dependencies>
