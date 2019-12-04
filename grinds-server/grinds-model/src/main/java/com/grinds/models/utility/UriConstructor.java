@@ -7,5 +7,4 @@ public final class UriConstructor {
 	public static final String GRIND = "/grinds";
 	public static final String AUTHENTICATION = "/authentication";
 	public static final String REGISTRATION = "/registration";
-	public static final String USERNAME = "/username";
 } 

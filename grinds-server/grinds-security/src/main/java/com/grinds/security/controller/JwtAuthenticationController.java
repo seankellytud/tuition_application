@@ -23,7 +23,10 @@ import com.grinds.security.model.JwtRequest;
 import com.grinds.security.model.JwtResponse;
 import com.grinds.security.utils.JwtTokenUtil;
 import com.grinds.services.UserService;
-
+/**
+ * @author cristian suia
+ *
+ */
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
@@ -35,7 +38,12 @@ public class JwtAuthenticationController {
 	private JwtTokenUtil jwtTokenUtil;
 	@Autowired
 	private UserService userService;
-
+	
+	/**
+	* Creates authentication token.
+	*
+	* @return token
+	*/
 	@RequestMapping(value = PATH, method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		try {

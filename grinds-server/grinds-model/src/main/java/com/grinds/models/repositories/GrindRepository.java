@@ -13,5 +13,9 @@ public interface GrindRepository extends JpaRepository<GrindEntity, Long>  {
 	
 	@Query(value = "SELECT * FROM T_GRIND WHERE username = ?1", nativeQuery = true)
 	 List<GrindEntity> findByUsername(String username);
+	
+	@Query(value = "SELECT * FROM T_GRIND WHERE id = ?1", nativeQuery = true)
+	 GrindEntity findById(long id);
+	
 
 }

@@ -33,7 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String AUTHPATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.AUTHENTICATION;
 	private static final String REGISTERPATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.REGISTRATION;
 	private static final String GRINDPATH = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.GRIND;
-	private static final String PATHUSERNAME = UriConstructor.BASE+UriConstructor.APIVERSION+UriConstructor.USERNAME;
 	
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -84,9 +83,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                     .antMatchers(AUTHPATH)
                         .permitAll()
-                    .antMatchers(PATHUSERNAME)
-                        .permitAll()
                     .antMatchers(HttpMethod.POST, REGISTERPATH)
+                        .permitAll()
+                    .antMatchers(HttpMethod.GET, REGISTERPATH)
                         .permitAll()
                     .antMatchers(HttpMethod.GET, GRINDPATH)
                         .permitAll()
