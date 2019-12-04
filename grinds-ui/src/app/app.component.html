@@ -1,42 +1,45 @@
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>             
-        </button>
-        <a class="navbar-brand" routerLink="home">Grinds Tutorial</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a routerLink="home" routerLinkActive="active">Home</a></li>
-          <li><a routerLink="about" routerLinkActive="active">How It Works</a></li>
-          <li *ngIf="isTeacher()"><a routerLink="grinds" routerLinkActive="active">Post a Grind</a></li>
-        </ul>
-        <ul *ngIf="!isAuth()" class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown">Sign Up<span class="glyphicon glyphicon-user"></span></a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="register">Student</a></li>
-              <li><a routerLink="register_tutor">Teacher</a></li>
+<div class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>             
+            </button>
+            <a class="navbar-brand" routerLink="home">Grinds Tutorial</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li><a routerLink="home" routerLinkActive="active">Home</a></li>
+              <li><a routerLink="about" routerLinkActive="active">How It Works</a></li>
+              <li *ngIf="isTeacher()"><a routerLink="grinds" routerLinkActive="active">Post a Grind</a></li>
             </ul>
-          <li><a routerLink="login" class='login_button'><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-        </ul>
-        <ul *ngIf="isAuth()"class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Hello {{getUsername()}}<span class="glyphicon glyphicon-user"></span></a>
-              <ul class="dropdown-menu">
-                <li><a routerLink="my-account">View/Edit Profile</a></li>
-                <li *ngIf="isTeacher()"><a routerLink="grinds">My Grinds</a></li>
-                <li><a (click)="logOut()">Logout</a></li>
+            <ul *ngIf="!isAuth()" class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Sign Up<span class="glyphicon glyphicon-user"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a routerLink="register">Student</a></li>
+                  <li><a routerLink="register_tutor">Teacher</a></li>
+                </ul>
+              <li><a routerLink="login" class='login_button'><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+            </ul>
+            <ul *ngIf="isAuth()"class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">Hello {{getUsername()}}<span class="glyphicon glyphicon-user"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a routerLink="my-account">View/Edit Profile</a></li>
+                    <li *ngIf="isTeacher()"><a routerLink="grinds">My Grinds</a></li>
+                    <li><a (click)="logOut()">Logout</a></li>
+                  </ul>
               </ul>
-          </ul>
-      </div>
-    </div>
-</nav>
-<router-outlet></router-outlet>
+          </div>
+        </div>
+    </nav>
+</div>
+<div class="container-fluid">
+    <router-outlet></router-outlet>
+</div>
 <hr>
 <footer class="container text-center fixed-bottom">
     <div class="row">
@@ -45,4 +48,3 @@
       </div>
     </div>
 </footer>
-</body>

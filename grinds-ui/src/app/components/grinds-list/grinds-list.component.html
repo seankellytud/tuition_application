@@ -1,71 +1,61 @@
-      <div id="searchFields">
-      <!-- <mat-form-field>
-        <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')" placeholder="Search By Subject">
-      </mat-form-field>
-      <mat-form-field>
-          <input id = "priceSearch" matInput (keyup)="applyFilter($event.target.value, 'pricePerHour')" placeholder="Search By Max Price">
-        </mat-form-field>   
-      <mat-form-field>
-        <input id = "addressSearch" matInput (keyup)="applyFilter($event.target.value, 'county')" placeholder="Search By County">
-      </mat-form-field> -->
-     </div>   
-     
-      <table mat-table [dataSource]="dataSource" class="grinds_table mat-elevation-z8">
-
-        <ng-container matColumnDef="grindType">
-          <th class="header" mat-header-cell *matHeaderCellDef>
-            <mat-form-field class="filter" floatLabel="never">
-              <mat-label>Search By Subject</mat-label>
-              <input matInput [formControl]="grindTypeFilter">
-              <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
-            </mat-form-field>
-            <span>Subject</span>
-          </th>
-          <td mat-cell *matCellDef="let grind"> {{grind.grindType}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="pricePerHour">
-          <th class="header" mat-header-cell *matHeaderCellDef> 
-              <mat-form-field class="filter" floatLabel="never">
-                  <mat-label>Search By Max Price</mat-label>
-                  <input matInput [formControl]="pricePerHourFilter">
+<div class="container">
+    <div class='table-responsive mat-elevation-z8'>
+        <mat-table [dataSource]="dataSource" class="grinds_table mat-elevation-z8">
+            <ng-container matColumnDef="grindType">
+              <th class="header" mat-header-cell *matHeaderCellDef>
+                <mat-form-field class="filter" floatLabel="never">
+                  <mat-label>Search By Subject</mat-label>
+                  <input matInput [formControl]="grindTypeFilter">
                   <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
                 </mat-form-field>
-                <span>Price Per Hour</span> 
-          </th>
-          <td mat-cell *matCellDef="let grind"> {{grind.pricePerHour}} </td>
-        </ng-container>
-        <ng-container matColumnDef="county">
-          <th class="header" mat-header-cell *matHeaderCellDef> 
-              <mat-form-field class="filter" floatLabel="never">
-                  <mat-label>Search By County</mat-label>
-                  <input matInput [formControl]="countyFilter">
-                  <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
-                </mat-form-field>
-                <span>County</span>
-            </th>
-          <td mat-cell *matCellDef="let grind"> {{grind.county}} </td>
-        </ng-container>
-        <ng-container matColumnDef="moreDetails">
-          <th mat-header-cell *matHeaderCellDef> </th>
-              <td mat-cell *matCellDef="let grind; let i = index;">  
-                <!-- Use this to get the index of the row to pass into showAll function -->
-                <button *ngIf="isAuth()" mat-raised-button routerLink="/grinds-detail" (click)= "showAll(i)" > 
-                 
-                Show More Details -->
-                  </button>
-                <button *ngIf="!isAuth()" mat-raised-button routerLink="/login">
-                   Log In to See More Details --> 
-                  </button>
-              </td>
+                <span>Subject</span>
+              </th>
+              <td mat-cell *matCellDef="let grind"> {{grind.grindType}} </td>
+            </ng-container>
     
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-       
-      </table>
-      <router-outlet></router-outlet>
+            <ng-container matColumnDef="pricePerHour">
+              <th class="header" mat-header-cell *matHeaderCellDef> 
+                  <mat-form-field class="filter" floatLabel="never">
+                      <mat-label>Search By Max Price</mat-label>
+                      <input matInput [formControl]="pricePerHourFilter">
+                      <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
+                    </mat-form-field>
+                    <span>Price Per Hour</span> 
+              </th>
+              <td mat-cell *matCellDef="let grind"> {{grind.pricePerHour}} </td>
+            </ng-container>
+            <ng-container matColumnDef="county">
+              <th class="header" mat-header-cell *matHeaderCellDef> 
+                  <mat-form-field class="filter" floatLabel="never">
+                      <mat-label>Search By County</mat-label>
+                      <input matInput [formControl]="countyFilter">
+                      <!-- <input id = "typeSearch" matInput (keyup)="applyFilter($event.target.value, 'grindType')"> -->
+                    </mat-form-field>
+                    <span>County</span>
+                </th>
+              <td mat-cell *matCellDef="let grind"> {{grind.county}} </td>
+            </ng-container>
+            <ng-container matColumnDef="moreDetails">
+              <th mat-header-cell *matHeaderCellDef> </th>
+                  <td mat-cell *matCellDef="let grind; let i = index;">  
+                    <!-- Use this to get the index of the row to pass into showAll function -->
+                    <button *ngIf="isAuth()" mat-raised-button routerLink="/grinds-detail" (click)= "showAll(i)" > 
+                     
+                    Show More Details -->
+                      </button>
+                    <button *ngIf="!isAuth()" mat-raised-button routerLink="/login">
+                       Log In to See More Details --> 
+                      </button>
+                  </td>
+        
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+           
+          </mat-table>
+    </div>
+</div>
 
     
 

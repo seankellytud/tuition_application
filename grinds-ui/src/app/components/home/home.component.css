@@ -1,9 +1,14 @@
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
   p.ex, h2.ex{
     color: rgb(114, 114, 66);
+  }
+
+  img.resize{
+    width:100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    .col-sm-6 {
+      text-align: center;
+      margin: 25px 25px;
+    }
   }
