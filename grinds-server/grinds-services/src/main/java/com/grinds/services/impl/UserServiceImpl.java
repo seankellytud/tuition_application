@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.grinds.handlers.RecordNotFoundException;
 import com.grinds.model.api.User;
 import com.grinds.models.UserEntity;
 import com.grinds.models.repositories.UserRepository;
@@ -50,6 +51,8 @@ public class UserServiceImpl implements UserService {
 	public User findByUsername(String username) {
 		logger.info("UserServiceImpl --> findByUserName "+username);
 		User myUser = userRepo.findByUsername(username);
+		if(myUser == null)
+			throw new RecordNotFoundException("Invalid username : " + username);
 		logger.info("UserServiceImpl --> findByUserName found "+myUser.toString());
 		return userRepo.findByUsername(username);
 	}
@@ -76,7 +79,7 @@ public class UserServiceImpl implements UserService {
 	public UserDetails findUserByUsername(String username) {
 		UserDetails user = userRepo.findUserByUsername(username);
 		if(user == null)
-			throw new UsernameNotFoundException("User not found with username: " + username);
+			throw new RecordNotFoundException("Invalid username : " + username);
 		return user;
 	}
 
@@ -85,7 +88,7 @@ public class UserServiceImpl implements UserService {
 		logger.info("UserServiceImpl --> findById");
 		User foundUser = this.userRepo.findById(id);
 		if(foundUser == null)
-			throw new UsernameNotFoundException("User not found with id: " + id);
+			throw new RecordNotFoundException("Invalid user id : " + id);
 		return foundUser;
 	}
 
@@ -93,7 +96,7 @@ public class UserServiceImpl implements UserService {
 	public void updateUser(User user) {
 		UserEntity updateUser = this.userRepo.findById(user.getId());
 		if(updateUser == null)
-			throw new UsernameNotFoundException("User not found with id: " + user.getId());
+			throw new RecordNotFoundException("Invalid user : " + user.getId());
 		updateUser.setFirstName(user.getFirstName());
 		updateUser.setLastName(user.getLastName());
 		updateUser.setUsername(user.getUsername());

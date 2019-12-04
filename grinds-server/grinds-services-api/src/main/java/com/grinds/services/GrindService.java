@@ -10,9 +10,11 @@ import com.grinds.model.api.Grind;
  */
 public interface GrindService {
 	
-	Grind save(Grind user);
+	Grind save(Grind grind);
     List<Grind> findAll();
     void delete(long id);
     List<Grind> grindListByUsername(String username);
+    Grind findGrindById(long id);
+    Grind updateGrind(long id, Grind grind);
 
 }

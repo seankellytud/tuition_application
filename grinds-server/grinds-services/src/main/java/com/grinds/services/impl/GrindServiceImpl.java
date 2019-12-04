@@ -6,10 +6,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.grinds.handlers.RecordNotFoundException;
 import com.grinds.model.api.Grind;
 import com.grinds.models.GrindEntity;
+import com.grinds.models.UserEntity;
 import com.grinds.models.repositories.GrindRepository;
 import com.grinds.services.GrindService;
 
@@ -64,7 +67,27 @@ public class GrindServiceImpl implements GrindService{
 		grindRepo.findByUsername(username).iterator().forEachRemaining(list::add);
 		return list;
 	}
-	
-	
 
+	@Override
+	public Grind findGrindById(long id) {
+		return grindRepo.findById(id);	
+	}
+
+	@Override
+	public Grind updateGrind(long id, Grind grind) {
+		logger.info("GrindServiceImpl --> save");
+		GrindEntity grindToUpdate = grindRepo.findById(id);
+		if(grindToUpdate == null)
+			throw new RecordNotFoundException("Invalid grind id : " + id);
+		grindToUpdate.setBuildingNo(grind.getBuildingNo());
+		grindToUpdate.setCounty(grind.getCounty());
+		grindToUpdate.setEircode(grind.getEircode());
+		grindToUpdate.setGrindType(grind.getGrindType());
+		grindToUpdate.setPricePerHour(grind.getPricePerHour());
+		grindToUpdate.setStreet(grind.getStreet());
+		grindToUpdate.setUsername(grind.getUsername());
+		
+		return this.grindRepo.save(grindToUpdate);
+	}
+	
 }
