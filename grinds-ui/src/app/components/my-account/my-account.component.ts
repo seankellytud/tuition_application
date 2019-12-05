@@ -28,11 +28,11 @@ export class MyAccountComponent implements OnInit {
                 this.pofileViewForm = new FormGroup({
                   firstName: new FormControl('', [
                     Validators.required,
-                    Validators.minLength(1)
+                    Validators.minLength(2)
                   ]), 
                   lastName: new FormControl('', [
                     Validators.required,
-                    Validators.minLength(1)
+                    Validators.minLength(2)
                   ]),
                   emailAddress: new FormControl('', [
                     Validators.required,
