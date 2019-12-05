@@ -23,7 +23,9 @@ const routes: Routes = [
   {path: 'register_tutor', component: RegisterTutorComponent},
   {path: 'my-account', component: MyAccountComponent},
   {path: 'grinds-detail',component: GrindsDetailComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full',},
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }
+  ,
 ];
 
 @NgModule({
