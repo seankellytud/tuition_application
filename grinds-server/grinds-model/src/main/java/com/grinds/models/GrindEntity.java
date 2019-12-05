@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.grinds.model.api.Grind;
 import com.grinds.model.api.GrindType;
 import com.grinds.models.utility.EntityDataConverters.GrindTypeConverter;
+import com.grinds.models.validators.NoHtml;
 
 @Entity(name = "GrindEntity")
 @Table(name = "t_grind")
@@ -27,33 +28,40 @@ public class GrindEntity implements Grind{
 	
 	@Column(name = "GRIND_TYPE")
 	@NotNull
+	@NoHtml
 	@Convert(converter = GrindTypeConverter.class)
 	private GrindType grindType;
 	
 	@Column(name = "PRICE_PER_HOUR")
 	@NotNull
+	@NoHtml
 	@DecimalMin(value = "0.0", inclusive = false)
     @Digits(integer=3, fraction=2)
 	private BigDecimal pricePerHour;
 	
 	@Column(name = "BUILDING_NO")
 	@NotNull
+	@NoHtml
 	private String buildingNo;
 	
 	@Column(name = "STREET")
 	@NotNull
+	@NoHtml
 	private String street;
 	
 	@Column(name = "COUNTY")
 	@NotNull
+	@NoHtml
 	private String county;
 	
 	@Column(name = "EIRCODE")
 	@NotNull
+	@NoHtml
 	private String eircode;
 	
 	@Column(name = "USERNAME")
 	@NotNull
+	@NoHtml
 	private String username;
 
 

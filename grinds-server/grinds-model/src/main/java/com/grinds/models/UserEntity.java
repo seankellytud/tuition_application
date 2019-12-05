@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 import com.grinds.model.api.User;
 import com.grinds.model.api.UserRole;
 import com.grinds.models.utility.EntityDataConverters.UserRoleConverter;
+import com.grinds.models.validators.NoHtml;
 import com.grinds.models.validators.ValidPassword;
 
 @Entity(name = "UserEntity")
@@ -26,37 +27,45 @@ public class UserEntity implements User{
 	
     @Column(name = "FIRST_NAME")
     @NotNull
+    @NoHtml
     @Size(min=2, max=40)
     private String firstName;
     
     @Column(name = "LAST_NAME")
     @NotNull
+    @NoHtml
     @Size(min=2, max=40)
     private String lastName;
     
     @Column(name = "USERNAME")
     @NotNull
+    @NoHtml
     @Size(min=6, max=30)
     private String username;
     
     @Column(name = "PASSWORD")
     @NotNull
+    @NoHtml
     @ValidPassword(message="validation.password.notValid")
     private String password;
     
     @Column(name="EMAIL_ADDRESS")
     @NotNull
+    @NoHtml
     @Email(message="{validation.email.notValid}")
 	private String emailAddress;
     
     @Column(name = "USER_ROLE")
+    @NoHtml
 	@Convert(converter = UserRoleConverter.class)
 	private UserRole userRole;
     
     @Column(name="OCUPATION")
+    @NoHtml
 	private String ocupation;
     
     @Column(name="TEACHING_EXPERIENCE")
+    @NoHtml
 	private String teachingExperience;
 
     @Override

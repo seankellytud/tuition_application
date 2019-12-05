@@ -39,6 +39,11 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+    		<groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+    		<artifactId>owasp-java-html-sanitizer</artifactId>
+    		<version>r156</version>
+		</dependency>
     </dependencies>
 	<build>
 		<finalName>grinds-model</finalName>
