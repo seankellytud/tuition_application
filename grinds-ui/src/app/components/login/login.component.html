@@ -5,23 +5,24 @@
      <form class="registration-form" [formGroup]="loginForm" (ngSubmit)="onLogin()" id="ngForm" #documentEditForm="ngForm">
       <mat-form-field class="full-width">
           <input matInput required  placeholder="Username" formControlName="username" [formControl]="uname" [(ngModel)]="uname.value">
-          <button mat-button *ngIf="uname.value" matSuffix mat-icon-button aria-label="Clear" (click)="uname.value=''">
+          <button *ngIf ="uname.value" type="button" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="uname.value=''">
               <mat-icon>close</mat-icon>
             </button>
       </mat-form-field>
       <mat-form-field class="full-width">
           <input matInput required placeholder="Password"  type="password"[formControl]="pword" formControlName="password" [(ngModel)]="pword.value">
-          <button mat-button *ngIf="pword.value" matSuffix mat-icon-button aria-label="Clear" (click)="pword.value=''">
+          <button *ngIf ="pword.value" type="button" mat-button  matSuffix mat-icon-button aria-label="Clear" (click)="pword.value=''">
               <mat-icon>close</mat-icon>
             </button>
       </mat-form-field>
      </form>
   </mat-card-content>
-  {{message}}
+
   <mat-card-actions>
       <button mat-raised-button form="ngForm" [disabled]="!documentEditForm.form.valid">Log In</button>
       <button mat-raised-button form="ngForm" (click) ="loginClearForm()">Clear</button>
   </mat-card-actions>
+  {{message}}
 
   Don't have an account?
   <a class="dropdown-toggle" data-toggle="dropdown">Sign Up Here<span class="glyphicon glyphicon-user"></span></a>

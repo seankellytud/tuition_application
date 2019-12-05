@@ -7,7 +7,7 @@
      <form class="registration-form"  id="ngForm" #documentEditForm="ngForm">
       <mat-form-field class="full-width">
           <input matInput required placeholder="First Name" [formControl]="firstName" [(ngModel)]="firstName.value">
-          <button mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="firstName.value=''">
+          <button type="button"  mat-button *ngIf="firstName.value" matSuffix mat-icon-button aria-label="Clear" (click)="firstName.value=''">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error *ngIf="firstName.invalid">{{getErrorMessage('1')}}</mat-error>
@@ -15,7 +15,7 @@
   
       <mat-form-field class="full-width">
           <input matInput required placeholder="Last Name" [formControl]="lastName" [(ngModel)]="lastName.value">
-          <button mat-button *ngIf="lastName.value" matSuffix mat-icon-button aria-label="Clear" (click)="lastName.value=''">
+          <button type="button"  mat-button *ngIf="lastName.value" matSuffix mat-icon-button aria-label="Clear" (click)="lastName.value=''">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error *ngIf="lastName.invalid">{{getErrorMessage('2')}}</mat-error>
@@ -23,7 +23,7 @@
   
       <mat-form-field class="full-width">
           <input matInput required  placeholder="Email Address" [formControl]="emailAddress" [(ngModel)]="emailAddress.value">
-          <button mat-button *ngIf="emailAddress.value" matSuffix mat-icon-button aria-label="Clear" (click)="emailAddress.value=''">
+          <button type="button"  mat-button *ngIf="emailAddress.value" matSuffix mat-icon-button aria-label="Clear" (click)="emailAddress.value=''">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error *ngIf="emailAddress.invalid">{{getErrorMessage('3')}}</mat-error>
@@ -31,7 +31,7 @@
   
       <mat-form-field class="full-width">
           <input matInput required  placeholder="Username" [formControl]="userName" [(ngModel)]="userName.value">
-          <button mat-button *ngIf="userName.value" matSuffix mat-icon-button aria-label="Clear" (click)="userName.value=''">
+          <button type="button"  mat-button *ngIf="userName.value" matSuffix mat-icon-button aria-label="Clear" (click)="userName.value=''">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error *ngIf="userName.invalid">{{getErrorMessage('4')}}</mat-error>
@@ -39,7 +39,7 @@
   
       <mat-form-field class="full-width">
           <input matInput required placeholder="Password"  type="password" [formControl]="password" (ngModelChange)="checkPasswordStrength();" [(ngModel)]="password.value">
-          <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Clear" (click)="password.value=''">
+          <button type="button"  mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Clear" (click)="password.value=''">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error *ngIf="password.invalid">{{getErrorMessage('5')}}</mat-error>
@@ -51,7 +51,7 @@
   
       <mat-form-field class="full-width">
           <input matInput  required placeholder="Confirm Password"  type="password" [formControl]="confirmPassword" [(ngModel)]="confirmPassword.value">
-          <button mat-button *ngIf="confirmPassword.value" matSuffix mat-icon-button aria-label="Clear" (click)="confirmPassword.value=''">
+          <button type="button"  mat-button *ngIf="confirmPassword.value" matSuffix mat-icon-button aria-label="Clear" (click)="confirmPassword.value=''">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error *ngIf="confirmPassword.invalid">{{getErrorMessage('6')}}</mat-error>

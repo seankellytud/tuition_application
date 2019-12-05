@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
     this.pword.setValue('');
 }
 
+onKeydown(event) {
+  console.log(event);
+  this.onLogin();
+}
+
   public onLogin() {
     this.message = '';
     if(this.loginForm.valid){

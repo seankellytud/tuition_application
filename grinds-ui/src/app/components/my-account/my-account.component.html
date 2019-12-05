@@ -9,14 +9,14 @@
           <input matInput required placeholder="First Name" formControlName="firstName">
       </mat-form-field>
       <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.firstName.invalid">
-          You need a First Name!
+          First Name should be minimum 2 characters long.
       </span>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Last Name" formControlName="lastName">
       </mat-form-field>
       <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.lastName.invalid">
-          You need a Last Name!
+          Last Name should be minimum 2 characters long.
       </span>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
@@ -46,11 +46,7 @@
       <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.userName.invalid">
           Username should be minimum 6 characters long.
       </span>
-      <!-- <div class="validations">
-       
-    <br>
-      
-    </div> -->
+    
     </form>
   </mat-card-content>
   <mat-card-actions class="editbuttons">
