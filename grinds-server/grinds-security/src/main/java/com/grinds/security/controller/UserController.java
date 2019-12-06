@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.grinds.model.api.Grind;
 import com.grinds.model.api.User;
 import com.grinds.models.UserEntity;
+import com.grinds.models.utility.SecurityEscapeUtil;
 import com.grinds.models.utility.UriConstructor;
 import com.grinds.services.UserService;
 
@@ -69,7 +70,8 @@ public class UserController {
 	*/
 	@GetMapping(value=PATH, params={"username"}, consumes={"application/json"}, produces={"application/json"})
 	public User get(@RequestParam("username")String username) {
-		return userService.findByUsername(username);
+		String uname = SecurityEscapeUtil.cleanIt(username);
+		return userService.findByUsername(uname);
 	}
     
 	/**
