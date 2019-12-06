@@ -7,7 +7,8 @@ import { UserService } from '../auth/services/user.service';
 import { User } from 'src/app/models/User';
 import { MatSort } from '@angular/material';
 import { FormControl } from '@angular/forms';
-import {debounceTime} from 'rxjs/operators';
+import {debounceTime, startWith, map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -24,6 +25,13 @@ export class GrindsListComponent implements OnInit {
   pricePerHourFilter = new FormControl('');
   countyFilter = new FormControl('');
   isLoading: boolean = false;
+  // HINTS LIST FOR THE TYPE SEARCH FIELD DROPDOWN
+  options: string[] = ['Mathematics', 'English', 'Spanish', 'Music', 'Irish', 'Biology', 'Chemistry', 'Physics'];
+  filteredOptions: Observable<string[]>;
+  // HINTS LIST FOR THE COUNTY SEARCH FIELD DROPDOWN
+  countyOptions: string[] = ['Antrim', 'Armagh', 'Carlow', 'Cavan', 'Clare', 'Cork', 'Derry', 'Donegal','Down', 'Dublin', 'Fermanagh', 'Galway', 'Kerry', 'Kildare', 'Kilkenny', 'Laois', 'Leitrim', 'Limerick', 'Longford', 'Louth', 'Mayo', 'Meath', 'Monaghan', 'Offaly', 'Roscommon', 'Sligo', 'Tipperary', 'Tyrone', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow'];
+  countyFilteredOptions: Observable<string[]>;
+
 
   public displayedColumns = [
     'grindType',
@@ -40,10 +48,8 @@ export class GrindsListComponent implements OnInit {
   constructor(private grindService: GrindService, private userService: UserService) { }
 
   ngOnInit() {
-    // this.dataSource = this.grindService.getGrinds();
-    // this.dataSource = new MatTableDataSource(this.dataSource);
     this.initializeGrindsProvider();
-    // this.subjectCheckPermissions.debounceTime(100).subscribe(this.checkActionPermissions.bind(this));
+   
     this.grindTypeFilter.valueChanges.pipe(debounceTime(1000)).subscribe(
       (grindTypeValue) => {
         this.filterValues['grindType'] = grindTypeValue;
@@ -66,6 +72,14 @@ export class GrindsListComponent implements OnInit {
     this.dataSource.filterPredicate = this.customFilterPredicate();
  
     this.dataSource.sort = this.sort;
+    this.filteredOptions = this.grindTypeFilter.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+    this.countyFilteredOptions = this.countyFilter.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filterCounty(value))
+    );
   }
 
   initializeGrindsProvider() {
@@ -159,6 +173,18 @@ public showName(user:User){
       this.showOcc(user);
       this.showExp(user);
     });
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  private _filterCounty(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.countyOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 }
 

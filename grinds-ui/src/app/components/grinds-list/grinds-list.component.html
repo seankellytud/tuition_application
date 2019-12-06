@@ -16,7 +16,12 @@
           <th class="header" mat-header-cell *matHeaderCellDef mat-sort-header>
             <mat-form-field class="filter" floatLabel="never">
               <mat-label>Search Subject</mat-label>
-              <input matInput [formControl]="grindTypeFilter" [(ngModel)]="grindTypeFilter.value">
+              <input matInput [formControl]="grindTypeFilter" [(ngModel)]="grindTypeFilter.value" [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
               <button mat-button *ngIf="grindTypeFilter.value" matSuffix mat-icon-button aria-label="Clear" (click)="grindTypeFilter.value='' ">
                 <mat-icon>close</mat-icon>
               </button>
@@ -43,7 +48,12 @@
           <th class="header" mat-header-cell *matHeaderCellDef mat-sort-header> 
               <mat-form-field class="filter" floatLabel="never">
                   <mat-label>Search County</mat-label>
-                  <input matInput [formControl]="countyFilter"[(ngModel)]="countyFilter.value">
+                  <input matInput [formControl]="countyFilter"[(ngModel)]="countyFilter.value" [matAutocomplete]="auto">
+                  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let countyOption of countyFilteredOptions | async" [value]="countyOption">
+                      {{countyOption}}
+                    </mat-option>
+                  </mat-autocomplete>
                   <button mat-button *ngIf="countyFilter.value" matSuffix mat-icon-button aria-label="Clear" (click)="countyFilter.value='' ">
                     <mat-icon>close</mat-icon>
                   </button>
