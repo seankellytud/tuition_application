@@ -81,6 +81,45 @@
         </mat-progress-spinner>
       </mat-card>
       <router-outlet></router-outlet>
+      
+      <div class="table-wrap">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <ng-container matColumnDef="grindType">
+              <th class="header" mat-header-cell *matHeaderCellDef mat-sort-header>
+                <mat-form-field class="filter" floatLabel="never">
+                  <mat-label>Search Subject</mat-label>
+                  <input matInput [formControl]="grindTypeFilter" [(ngModel)]="grindTypeFilter.value">
+                  <button mat-button *ngIf="grindTypeFilter.value" matSuffix mat-icon-button aria-label="Clear" (click)="grindTypeFilter.value='' ">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+                <!-- <span>Subjects</span> -->
+              </th>
+            </ng-container>
+              <th>Heading 2</th>
+              <th>Heading 3</th>
+              <th>Heading 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <ng-container matColumnDef="grindType">
+              <td mat-cell *matCellDef="let grind"> {{grind.grindType}} </td>
+              </ng-container>
+            </tr>
+            <tr>
+              <td>Row 2 Content 1</td>
+            </tr>
+            <tr>
+              <td>Row 3 Content 1</td>
+            </tr>
+            <tr>
+              <td>Row 4 Content 1</td>
+          </tbody>
+        </table>
+      </div>
 
     
 
