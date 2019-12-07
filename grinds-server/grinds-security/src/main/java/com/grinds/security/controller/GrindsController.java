@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.grinds.model.api.Grind;
 import com.grinds.models.GrindEntity;
 import com.grinds.models.UserEntity;
+import com.grinds.models.utility.SecurityEscapeUtil;
 import com.grinds.models.utility.UriConstructor;
 import com.grinds.services.GrindService;
 
@@ -57,7 +58,7 @@ public class GrindsController{
 	@GetMapping(value=PATH, params={"username"}, consumes={"application/json"}, produces={"application/json"})
 	public List<Grind> grindListByUsername(@RequestParam("username")String username){
 		logger.info("GrindController --> grindListByUsername "+PATH+" "+username);
-		return grindService.grindListByUsername(username);
+		return grindService.grindListByUsername(SecurityEscapeUtil.cleanIt(username));
 	}
 	
 	/**
