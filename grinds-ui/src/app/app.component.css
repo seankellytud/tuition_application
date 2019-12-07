@@ -19,7 +19,12 @@ body {
 font-family: 'BioRhyme';font-size: 15px;
 }
 
-@media (max-width: 992px) {
+@media screen and (max-width: 768px) {
+    #myNavbar{
+        background-color: rgb(224, 224, 224);
+    }
+  }
+@media screen and (max-width: 992px) {
      .opaque-navbar {
       background-color: black;
       height: 50px;
