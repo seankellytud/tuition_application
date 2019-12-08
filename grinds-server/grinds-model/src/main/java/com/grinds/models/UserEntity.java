@@ -56,7 +56,6 @@ public class UserEntity implements User{
 	private String emailAddress;
     
     @Column(name = "USER_ROLE")
-    @NoHtml
 	@Convert(converter = UserRoleConverter.class)
 	private UserRole userRole;
     

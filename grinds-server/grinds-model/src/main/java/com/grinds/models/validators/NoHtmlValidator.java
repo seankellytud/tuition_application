@@ -17,7 +17,10 @@ public class NoHtmlValidator implements ConstraintValidator<NoHtml, String> {
    @Override
    public boolean isValid(String value, ConstraintValidatorContext context)
    {
-      String sanitized = DISALLOW_ALL.sanitize(value);
+	   if(value==null)
+		   return true;
+      String sanitized = DISALLOW_ALL.sanitize(value).replace("&#64;", "@");
+      boolean val1 = sanitized.equals(value);
       return sanitized.equals(value);
    }
 }
