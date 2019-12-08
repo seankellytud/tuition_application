@@ -9,14 +9,14 @@
           <input matInput required placeholder="First Name" formControlName="firstName">
       </mat-form-field>
       <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.firstName.invalid">
-          First Name should be minimum 2 characters long.
+         First Name should be at least 2 characters long.
       </span>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
         <input required matInput placeholder="Last Name" formControlName="lastName">
       </mat-form-field>
       <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.lastName.invalid">
-          Last Name should be minimum 2 characters long.
+          Last Name should be at least 2 characters long.
       </span>
 
       <mat-form-field class="full-width" [hideRequiredMarker]="false" [floatLabel]="auto">
@@ -44,18 +44,21 @@
         <input required matInput placeholder="Username" formControlName="userName">
       </mat-form-field>
       <span class="warning" [hidden]="!editMode" *ngIf="pofileViewForm.controls.userName.invalid">
-          Username should be minimum 6 characters long.
+          Username should be minimum 6 characters long and unique.
       </span>
     
     </form>
   </mat-card-content>
+  <p>
   <mat-card-actions class="editbuttons">
       <button id="edit" [disabled]="editMode" mat-raised-button (click)="activateFields()">Edit Profile</button>
-      <button id="saveChanges" mat-raised-button (click)="updateUser()" [disabled]="!documentEditForm.form.valid">Save Changes</button><br>
-      <button id="deleteAccount"  mat-raised-button color="warn" [disabled]="deleteMode" (click)="deleteUserMode()">Delete Account</button>
-      <button id="restore" [disabled]="!editMode"  mat-raised-button (click)="restoreFields()">Restore Defaults</button>
-
-    </mat-card-actions>  
+      <button class ="saveChanges" id="saveChanges" mat-raised-button (click)="updateUser()" [disabled]="!documentEditForm.form.valid">Save Changes</button>
+    </mat-card-actions>   
+    <mat-card-actions class="otherbuttons">
+    <button id="deleteAccount"  mat-raised-button color="warn" [disabled]="deleteMode" (click)="deleteUserMode()">Delete Account</button>
+      <button  id="restore" [disabled]="!editMode"  mat-raised-button (click)="restoreFields()">Restore Defaults</button>
+</mat-card-actions><br>
+    
   <div id="messageContainer">
     {{message}}
     <span *ngIf="deleteMode">

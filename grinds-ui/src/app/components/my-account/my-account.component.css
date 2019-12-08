@@ -16,6 +16,14 @@ h3{
   font-size: 12px;
   color: #D12A36;
 }
-/* .editbuttons{
-  offset-distance: 10px;
+/* .editbuttons,.otherbuttons{
+  display: inline;
 } */
+#edit, #saveChanges, #deleteAccount, #restore {
+  width:130px;
+  height:40px;
+}
+
+.saveChanges{
+  background: green;
+}

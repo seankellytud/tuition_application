@@ -6,6 +6,7 @@ import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { Role } from 'src/app/models/Role';
 import { UserService } from '../auth/services/user.service';
+// import { usernameValidator } from '../register/services/validator';
 
 @Component({
   selector: 'app-my-account',
@@ -43,10 +44,10 @@ export class MyAccountComponent implements OnInit {
                     Validators.minLength(6)
                   ]),
                   experience: new FormControl('', [
-                    Validators.minLength(6)
+                    Validators.minLength(1)
                   ]),
                   occupation: new FormControl('', [
-                    Validators.minLength(6)
+                    Validators.minLength(1)
                   ])
                 });
 }
@@ -83,7 +84,6 @@ export class MyAccountComponent implements OnInit {
     this.user.teachingExperience = this.pofileViewForm.controls['experience'].value;
 
   }
-
   public getUsername(): string {
     return sessionStorage.getItem('currentUser');
   }

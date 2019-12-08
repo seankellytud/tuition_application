@@ -35,7 +35,7 @@ export class GrindsComponent implements OnInit {
   public displayedColumns = [
     'type',
     'pricePerHour',
-    'grindAddress',
+    'grindAddress'
 
   ];
 
