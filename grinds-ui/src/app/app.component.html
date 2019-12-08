@@ -26,11 +26,11 @@
         </ul>
         <ul *ngIf="isAuth()"class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Hello {{getUsername()}}<span class="glyphicon glyphicon-user"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown">Hello {{getUsername()}}<span id="username" class="glyphicon glyphicon-user"></span></a>
               <ul class="dropdown-menu">
                 <li><a routerLink="my-account">View/Edit Profile</a></li>
                 <li *ngIf="isTeacher()"><a routerLink="grinds">My Grinds</a></li>
-                <li><a (click)="logOut()">Logout</a></li>
+                <li><a class="dropdown-toggle" (click)="logOut()">Logout</a></li>
               </ul>
           </ul>
       </div>

@@ -98,6 +98,7 @@ export class MyAccountComponent implements OnInit {
       sessionStorage.setItem('currentUser',this.user.username);
       this.message = "Account updated.";
       this.editMode = false;
+      this.pofileViewForm.disable();
     }, err => {               
       console.error("MyAccountComponent --> update user failed");
   });
