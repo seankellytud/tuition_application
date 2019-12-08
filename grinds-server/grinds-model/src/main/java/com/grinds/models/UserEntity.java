@@ -45,7 +45,6 @@ public class UserEntity implements User{
     
     @Column(name = "PASSWORD")
     @NotNull
-    @NoHtml
     @ValidPassword(message="validation.password.notValid")
     private String password;
     
