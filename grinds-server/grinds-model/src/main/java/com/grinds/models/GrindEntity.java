@@ -28,13 +28,11 @@ public class GrindEntity implements Grind{
 	
 	@Column(name = "GRIND_TYPE")
 	@NotNull
-	@NoHtml
 	@Convert(converter = GrindTypeConverter.class)
 	private GrindType grindType;
 	
 	@Column(name = "PRICE_PER_HOUR")
 	@NotNull
-	@NoHtml
 	@DecimalMin(value = "0.0", inclusive = false)
     @Digits(integer=3, fraction=2)
 	private BigDecimal pricePerHour;
