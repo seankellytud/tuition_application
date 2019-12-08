@@ -14,7 +14,7 @@ create table t_user (ID bigint not null auto_increment,
 #student
 INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user1', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'John', 'Doe', 'john.doe@yahoo.com',2);
 #teacher
-INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, OCUPATION, TEACHING_EXPERIENCE, USER_ROLE) VALUES ('user2', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Michael', 'Michael', 'michael.michael@gmail.com', 'XXXX', 'YYYYYY',3);
+INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, OCUPATION, TEACHING_EXPERIENCE, USER_ROLE) VALUES ('user2', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Michael', 'Michael', 'michael.michael@gmail.com', 'Music, Spanish and Maths Teacher', '20 Years',3);
 #student
 INSERT INTO t_user (USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_ROLE) VALUES ('user3', '$2a$10$LLse0LiDHExWxxdYOuADu.Ocg.AuxTDNhfNu2HFUBPCZ6ifStCKJu', 'Cristian', 'Suia', 'cristian.suia@yahoo.ie',2);
 
@@ -53,8 +53,8 @@ commit;
 #user2 is the username of a teacher
  INSERT INTO `GRINDS`.`T_GRIND` (PRICE_PER_HOUR,GRIND_TYPE, BUILDING_NO, STREET, COUNTY, EIRCODE, USERNAME) VALUES
 (35, 1, 123,'FAKE STREET', 'DUBLIN','D05HK71','user2'),
-(35, 1, 123,'NEW STREET', 'CARLOW','C06ABC','user2'),
-(40, 3, 33,'OLD STREET', 'KILKENNY','K03ERC','user2'),
+(35, 1, 123,'NEW STREET', 'CARLOW','C06ABC4','user2'),
+(40, 3, 33,'OLD STREET', 'KILKENNY','K03ERC4','user2'),
  (35, 4, 69,'JAMES STREET', 'CLARE','K05HK78','user2');
  commit;
   
