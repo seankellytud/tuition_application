@@ -12,11 +12,7 @@ public class NoHtmlValidator implements ConstraintValidator<NoHtml, String> {
    private static final PolicyFactory DISALLOW_ALL = new HtmlPolicyBuilder().toFactory();
  
    @Override
-   public void initialize(NoHtml constraintAnnotation)
-   {
-      // TODO specify the policy as an annotation attribute
-      // to use them, values from annotation are stored in private properties here
-   }
+   public void initialize(NoHtml constraintAnnotation){}
  
    @Override
    public boolean isValid(String value, ConstraintValidatorContext context)
